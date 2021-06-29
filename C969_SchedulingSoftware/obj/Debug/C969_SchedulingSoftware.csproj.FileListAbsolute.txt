@@ -12,7 +12,6 @@ C:\Users\Tyler\source\repos\C969_SchedulingSoftware\C969_SchedulingSoftware\bin\
 C:\Users\Tyler\source\repos\C969_SchedulingSoftware\C969_SchedulingSoftware\bin\Debug\es\C969_SchedulingSoftware.resources.dll
 C:\Users\Tyler\source\repos\C969_SchedulingSoftware\C969_SchedulingSoftware\obj\Debug\C969_SchedulingSoftware.MainForm.resources
 C:\Users\Tyler\source\repos\C969_SchedulingSoftware\C969_SchedulingSoftware\obj\Debug\C969_SchedulingSoftware.LoginForm.en.resources
-C:\Users\Tyler\source\repos\C969_SchedulingSoftware\C969_SchedulingSoftware\obj\Debug\C969_SchedulingSoftware.Resources.locale.en.resources
-C:\Users\Tyler\source\repos\C969_SchedulingSoftware\C969_SchedulingSoftware\obj\Debug\C969_SchedulingSoftware.Resources.locale.es.resources
 C:\Users\Tyler\source\repos\C969_SchedulingSoftware\C969_SchedulingSoftware\obj\Debug\en\C969_SchedulingSoftware.resources.dll
 C:\Users\Tyler\source\repos\C969_SchedulingSoftware\C969_SchedulingSoftware\obj\Debug\es\C969_SchedulingSoftware.resources.dll
+C:\Users\Tyler\source\repos\C969_SchedulingSoftware\C969_SchedulingSoftware\obj\Debug\C969_SchedulingSoftware.LoginForm.es.resources

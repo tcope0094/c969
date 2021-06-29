@@ -19,18 +19,6 @@ namespace C969_SchedulingSoftware
             InitializeComponent();
         }
 
-        private void ChangeLocale(string locale)
-        {
-            CultureInfo cultureInfo = new CultureInfo(locale);
-            ResourceManager rm = new ResourceManager("C969_SchedulingSoftware.Resources.locale", typeof(LoginForm).Assembly);
-
-            usernameLabel.Text = rm.GetString("lang_username", cultureInfo);
-            passwordLabel.Text = rm.GetString("lang_password", cultureInfo);
-            loginButton.Text = rm.GetString("lang_login", cultureInfo);
-            exitButton.Text = rm.GetString("lang_exit", cultureInfo);
-        }
-
-
         private void exitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -65,7 +53,7 @@ namespace C969_SchedulingSoftware
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            ChangeLocale("es");
+            
         }
     }
 }

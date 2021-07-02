@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Resources;
 using System.Globalization;
+using System.Data.Entity;
+using MySql.Data.MySqlClient;
 
 namespace C969_SchedulingSoftware
 {
@@ -53,7 +55,27 @@ namespace C969_SchedulingSoftware
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            
+            using(var dbcontext = new DatabaseModel.U05tp4Entities())
+            {
+                
+                try
+                {
+                    var loginUser = dbcontext.users
+                        .Where(user => user.userName == usernameBox.Text && user.password == passwordBox.Text && user.active == 1)
+                        .Single();
+                }
+                catch (InvalidOperationException)
+                {
+                    if (CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "es")
+                    {
+                        MessageBox.Show("Error de Inicio de Sesion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Login Failed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }                    
+                }
+            }
         }
     }
 }

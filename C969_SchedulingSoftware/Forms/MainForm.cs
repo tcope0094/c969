@@ -13,6 +13,8 @@ using System.Data.Entity;
 using MySql.Data.MySqlClient;
 using C969_SchedulingSoftware.Properties;
 using System.Reflection;
+using DatabaseModel;
+using System.Net.NetworkInformation;
 
 namespace C969_SchedulingSoftware
 {
@@ -20,14 +22,21 @@ namespace C969_SchedulingSoftware
     {
         public static ResourceManager rm = new ResourceManager("C969_SchedulingSoftware.ResourceFiles.strings", Assembly.GetExecutingAssembly());
         private DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities();
+        public DatabaseModel.user CurrentUser { get; private set; }
         public MainForm(int userID)
         {
             InitializeComponent();
+            CurrentUser = dbcontext.users
+                .Where(user => user.userId == userID)
+                .Single();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.Text = rm.GetString("strScheduling");
+            navGroupBox.Text = $"{rm.GetString("strWelcome")} {CurrentUser.userName}";
+            
+
         }
     }
 }

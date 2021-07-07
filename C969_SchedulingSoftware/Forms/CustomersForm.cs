@@ -25,10 +25,10 @@ namespace C969_SchedulingSoftware
             InitializeComponent();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void CustomerForm_Load(object sender, EventArgs e)
         {
-            customerGroupBox.Text = rm.GetString("strCustomers");
-            this.Text = rm.GetString("strCustomers");
+            customerGroupBox.Text = rm.GetString("strCustomerManagement");
+            
             dbcontext.customers
                 .Load();
 

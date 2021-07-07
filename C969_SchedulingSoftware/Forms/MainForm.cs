@@ -23,5 +23,10 @@ namespace C969_SchedulingSoftware
         {
             InitializeComponent();
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            this.Text = rm.GetString("strScheduling");
+        }
     }
 }

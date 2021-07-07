@@ -192,7 +192,7 @@
             this.Controls.Add(this.customerGroupBox);
             this.Name = "CustomersForm";
             this.Text = "Customer Management";
-            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Load += new System.EventHandler(this.CustomerForm_Load);
             this.customerGroupBox.ResumeLayout(false);
             this.customerGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingNavigator)).EndInit();

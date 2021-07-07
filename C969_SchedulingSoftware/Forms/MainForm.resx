@@ -117,28 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="strCustomerManagement" xml:space="preserve">
-    <value>Gestión de Clientes</value>
-  </data>
-  <data name="strCustomers" xml:space="preserve">
-    <value>Clientes</value>
-  </data>
-  <data name="strExit" xml:space="preserve">
-    <value>Salida</value>
-  </data>
-  <data name="strLogin" xml:space="preserve">
-    <value>Acceso</value>
-  </data>
-  <data name="strLoginFailed" xml:space="preserve">
-    <value>Error de Inicio de Sesion</value>
-  </data>
-  <data name="strPassword" xml:space="preserve">
-    <value>Contraseña:</value>
-  </data>
-  <data name="strScheduling" xml:space="preserve">
-    <value>Planificación</value>
-  </data>
-  <data name="strUsername" xml:space="preserve">
-    <value>Nombe de usario:</value>
-  </data>
 </root>

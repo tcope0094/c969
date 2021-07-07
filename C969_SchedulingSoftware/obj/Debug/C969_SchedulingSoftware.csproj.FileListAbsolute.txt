@@ -65,3 +65,4 @@ C:\CODE\git\c969\C969_SchedulingSoftware\obj\Debug\C969_SchedulingSoftware.Resou
 C:\CODE\git\c969\C969_SchedulingSoftware\obj\Debug\es\C969_SchedulingSoftware.resources.dll
 C:\CODE\git\c969\C969_SchedulingSoftware\obj\Debug\C969_SchedulingSoftware.ResourceFiles.strings.en.resources
 C:\CODE\git\c969\C969_SchedulingSoftware\obj\Debug\C969_SchedulingSoftware.CustomersForm.resources
+C:\CODE\git\c969\C969_SchedulingSoftware\obj\Debug\C969_SchedulingSoftware.MainForm.resources

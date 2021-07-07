@@ -20,7 +20,7 @@ namespace C969_SchedulingSoftware
     {
         public static ResourceManager rm = new ResourceManager("C969_SchedulingSoftware.ResourceFiles.strings", Assembly.GetExecutingAssembly());
         private DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities();
-        public MainForm(string userName)
+        public MainForm(int userID)
         {
             InitializeComponent();
         }

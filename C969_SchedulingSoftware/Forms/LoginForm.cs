@@ -19,7 +19,7 @@ namespace C969_SchedulingSoftware
     public partial class LoginForm : Form
     {
 
-        public string UserName { get; set; }
+        public int UserID { get; set; }
 
         public static ResourceManager rm = new ResourceManager("C969_SchedulingSoftware.ResourceFiles.strings", Assembly.GetExecutingAssembly());
 
@@ -76,7 +76,7 @@ namespace C969_SchedulingSoftware
                         .Single();
                     if (loginUser != null)
                     {
-                        UserName = loginUser.userName;
+                        UserID = loginUser.userId;
                         this.DialogResult = DialogResult.OK;
                     }
                 }

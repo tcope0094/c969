@@ -28,13 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.navGroupBox = new System.Windows.Forms.GroupBox();
             this.SuspendLayout();
+            // 
+            // navGroupBox
+            // 
+            this.navGroupBox.Location = new System.Drawing.Point(12, 12);
+            this.navGroupBox.Name = "navGroupBox";
+            this.navGroupBox.Size = new System.Drawing.Size(452, 426);
+            this.navGroupBox.TabIndex = 0;
+            this.navGroupBox.TabStop = false;
+            this.navGroupBox.Text = "navGroupBox";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(478, 450);
+            this.Controls.Add(this.navGroupBox);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -43,5 +54,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.GroupBox navGroupBox;
     }
 }

@@ -141,4 +141,7 @@
   <data name="strUsername" xml:space="preserve">
     <value>Nombe de usario:</value>
   </data>
+  <data name="strWelcome" xml:space="preserve">
+    <value>Bienvenidos</value>
+  </data>
 </root>

@@ -117,26 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="exitButton.Text" xml:space="preserve">
-    <value>Salida</value>
+  <data name="strExit" xml:space="preserve">
+    <value>Exit</value>
   </data>
-  <data name="loginButton.Text" xml:space="preserve">
-    <value>Acceso</value>
+  <data name="strLogin" xml:space="preserve">
+    <value>Login</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="usernameLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 13</value>
+  <data name="strLoginFailed" xml:space="preserve">
+    <value>Login Failed</value>
   </data>
-  <data name="usernameLabel.Text" xml:space="preserve">
-    <value>Nombre de usuario:</value>
+  <data name="strPassword" xml:space="preserve">
+    <value>Password:</value>
   </data>
-  <data name="passwordLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 55</value>
-  </data>
-  <data name="passwordLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 13</value>
-  </data>
-  <data name="passwordLabel.Text" xml:space="preserve">
-    <value>Contraseña:</value>
+  <data name="strUsername" xml:space="preserve">
+    <value>Username:</value>
   </data>
 </root>

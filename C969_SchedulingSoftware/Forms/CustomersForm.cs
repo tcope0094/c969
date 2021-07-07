@@ -28,6 +28,7 @@ namespace C969_SchedulingSoftware
         private void MainForm_Load(object sender, EventArgs e)
         {
             customerGroupBox.Text = rm.GetString("strCustomers");
+            this.Text = rm.GetString("strCustomers");
             dbcontext.customers
                 .Load();
 

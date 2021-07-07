@@ -18,8 +18,8 @@ namespace C969_SchedulingSoftware
             Application.SetCompatibleTextRenderingDefault(false);
             LoginForm loginForm = new LoginForm();
             if (loginForm.ShowDialog() == DialogResult.OK)
-            {
-                Application.Run(new CustomersForm());
+            {                
+                Application.Run(new MainForm(loginForm.UserID));
             }
         }
     }

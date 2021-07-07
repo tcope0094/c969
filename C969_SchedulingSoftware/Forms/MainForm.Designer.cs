@@ -1,4 +1,4 @@
-﻿namespace C969_SchedulingSoftware.Forms
+﻿namespace C969_SchedulingSoftware
 {
     partial class MainForm
     {

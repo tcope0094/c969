@@ -1,6 +1,6 @@
 ﻿namespace C969_SchedulingSoftware
 {
-    partial class MainForm
+    partial class CustomersForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomersForm));
             this.customerGroupBox = new System.Windows.Forms.GroupBox();
-            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.customerBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.customerBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.customerDataGridView = new System.Windows.Forms.DataGridView();
@@ -46,9 +46,9 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingNavigator)).BeginInit();
             this.customerBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,14 +58,10 @@
             this.customerGroupBox.Controls.Add(this.customerDataGridView);
             this.customerGroupBox.Location = new System.Drawing.Point(12, 12);
             this.customerGroupBox.Name = "customerGroupBox";
-            this.customerGroupBox.Size = new System.Drawing.Size(819, 295);
+            this.customerGroupBox.Size = new System.Drawing.Size(819, 187);
             this.customerGroupBox.TabIndex = 2;
             this.customerGroupBox.TabStop = false;
             this.customerGroupBox.Text = "customerGroupBox";
-            // 
-            // customerBindingSource
-            // 
-            this.customerBindingSource.DataSource = typeof(DatabaseModel.customer);
             // 
             // customerBindingNavigator
             // 
@@ -97,6 +93,10 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // customerBindingSource
+            // 
+            this.customerBindingSource.DataSource = typeof(DatabaseModel.customer);
             // 
             // bindingNavigatorDeleteItem
             // 
@@ -184,21 +184,21 @@
             this.dataGridViewTextBoxColumn9.HeaderText = "appointments";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             // 
-            // MainForm
+            // CustomersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1233, 607);
             this.Controls.Add(this.customerGroupBox);
-            this.Name = "MainForm";
-            this.Text = "Appointment Scheduler";
+            this.Name = "CustomersForm";
+            this.Text = "Customer Management";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.customerGroupBox.ResumeLayout(false);
             this.customerGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingNavigator)).EndInit();
             this.customerBindingNavigator.ResumeLayout(false);
             this.customerBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerDataGridView)).EndInit();
             this.ResumeLayout(false);
 

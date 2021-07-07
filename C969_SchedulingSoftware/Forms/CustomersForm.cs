@@ -16,11 +16,11 @@ using System.Reflection;
 
 namespace C969_SchedulingSoftware
 {
-    public partial class MainForm : Form
+    public partial class CustomersForm : Form
     {
         public static ResourceManager rm = new ResourceManager("C969_SchedulingSoftware.ResourceFiles.strings", Assembly.GetExecutingAssembly());
         private DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities();
-        public MainForm()
+        public CustomersForm()
         {
             InitializeComponent();
         }

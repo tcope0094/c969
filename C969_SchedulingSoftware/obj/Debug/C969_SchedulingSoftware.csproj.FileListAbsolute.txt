@@ -21,7 +21,6 @@ C:\CODE\git\c969\C969_SchedulingSoftware\bin\Debug\C969_SchedulingSoftware.pdb
 C:\CODE\git\c969\C969_SchedulingSoftware\bin\Debug\en\C969_SchedulingSoftware.resources.dll
 C:\CODE\git\c969\C969_SchedulingSoftware\obj\Debug\C969_SchedulingSoftware.csprojAssemblyReference.cache
 C:\CODE\git\c969\C969_SchedulingSoftware\obj\Debug\C969_SchedulingSoftware.LoginForm.resources
-C:\CODE\git\c969\C969_SchedulingSoftware\obj\Debug\C969_SchedulingSoftware.MainForm.resources
 C:\CODE\git\c969\C969_SchedulingSoftware\obj\Debug\C969_SchedulingSoftware.Properties.Resources.resources
 C:\CODE\git\c969\C969_SchedulingSoftware\obj\Debug\C969_SchedulingSoftware.LoginForm.en.resources
 C:\CODE\git\c969\C969_SchedulingSoftware\obj\Debug\C969_SchedulingSoftware.csproj.GenerateResource.cache
@@ -65,3 +64,4 @@ C:\CODE\git\c969\C969_SchedulingSoftware\bin\Debug\es\C969_SchedulingSoftware.re
 C:\CODE\git\c969\C969_SchedulingSoftware\obj\Debug\C969_SchedulingSoftware.ResourceFiles.strings.es.resources
 C:\CODE\git\c969\C969_SchedulingSoftware\obj\Debug\es\C969_SchedulingSoftware.resources.dll
 C:\CODE\git\c969\C969_SchedulingSoftware\obj\Debug\C969_SchedulingSoftware.ResourceFiles.strings.en.resources
+C:\CODE\git\c969\C969_SchedulingSoftware\obj\Debug\C969_SchedulingSoftware.CustomersForm.resources

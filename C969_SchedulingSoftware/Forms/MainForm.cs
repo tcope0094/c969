@@ -52,9 +52,8 @@ namespace C969_SchedulingSoftware
 
         }
 
-        private void MainForm_Activated(object sender, EventArgs e)
+        private void MainForm_Shown(object sender, EventArgs e)
         {
-
             if (UpcomingAppointments != null)
             {
                 string apptMessage = $"{rm.GetString("strUpcomingAppointments")}: \n\n";

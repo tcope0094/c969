@@ -82,8 +82,8 @@
             this.Controls.Add(this.navGroupBox);
             this.Name = "MainForm";
             this.Text = "MainForm";
-            this.Activated += new System.EventHandler(this.MainForm_Activated);
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.navGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
 

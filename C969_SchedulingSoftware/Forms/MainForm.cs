@@ -50,10 +50,15 @@ namespace C969_SchedulingSoftware
             this.Text = rm.GetString("strScheduling");
             navGroupBox.Text = $"{rm.GetString("strWelcome")} {CurrentUser.userName}";
 
+        }
+
+        private void MainForm_Activated(object sender, EventArgs e)
+        {
+
             if (UpcomingAppointments != null)
             {
-                string apptMessage = "Upcoming appointments: \n\n";
-                using(DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities())
+                string apptMessage = $"{rm.GetString("strUpcomingAppointments")}: \n\n";
+                using (DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities())
                 {
                     foreach (var appt in UpcomingAppointments)
                     {
@@ -61,14 +66,12 @@ namespace C969_SchedulingSoftware
                             .Where(cust => cust.customerId == appt.customerId)
                             .Single();
 
-                        apptMessage += $"Customer: {customer.customerName} \nType: {appt.type} \nTime: {appt.start.ToLocalTime()} \n\n\n";
+                        apptMessage += $"{rm.GetString("strCustomer")}: {customer.customerName} \n{rm.GetString("strType")}: {appt.type} \n{rm.GetString("strTime")}: {appt.start.ToLocalTime()} \n\n\n";
                     }
                 }
-                    
-                
+
                 MessageBox.Show($"{apptMessage}");
             }
-
         }
     }
 }

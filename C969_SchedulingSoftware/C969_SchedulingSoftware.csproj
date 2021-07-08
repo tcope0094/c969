@@ -164,6 +164,7 @@
       <LastGenOutput>strings.es.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DatabaseModel.appointment.datasource" />
     <None Include="Properties\DataSources\DatabaseModel.customer.datasource" />
     <None Include="Properties\DataSources\DatabaseModel.user.datasource" />
     <None Include="Properties\Settings.settings">

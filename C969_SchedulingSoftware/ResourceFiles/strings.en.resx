@@ -138,6 +138,9 @@
   <data name="strScheduling" xml:space="preserve">
     <value>Scheduling</value>
   </data>
+  <data name="strUpcomingAppointments" xml:space="preserve">
+    <value>Upcoming Appointments</value>
+  </data>
   <data name="strUsername" xml:space="preserve">
     <value>Username:</value>
   </data>

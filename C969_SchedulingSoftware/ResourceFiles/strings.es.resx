@@ -138,6 +138,9 @@
   <data name="strScheduling" xml:space="preserve">
     <value>Planificación</value>
   </data>
+  <data name="strUpcomingAppointments" xml:space="preserve">
+    <value>Próximas Citas</value>
+  </data>
   <data name="strUsername" xml:space="preserve">
     <value>Nombe de usario:</value>
   </data>

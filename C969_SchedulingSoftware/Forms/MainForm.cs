@@ -14,28 +14,60 @@ using MySql.Data.MySqlClient;
 using C969_SchedulingSoftware.Properties;
 using System.Reflection;
 using DatabaseModel;
-using System.Net.NetworkInformation;
 
 namespace C969_SchedulingSoftware
 {
     public partial class MainForm : Form
     {
         public static ResourceManager rm = new ResourceManager("C969_SchedulingSoftware.ResourceFiles.strings", Assembly.GetExecutingAssembly());
-        private DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities();
+        //private DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities();
         public DatabaseModel.user CurrentUser { get; private set; }
+        public List<DatabaseModel.appointment> UpcomingAppointments { get; private set; }
+
+        
         public MainForm(int userID)
         {
             InitializeComponent();
-            CurrentUser = dbcontext.users
+            using (DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities())
+            {
+                CurrentUser = dbcontext.users
                 .Where(user => user.userId == userID)
                 .Single();
+
+                DateTime now = DateTime.UtcNow;
+                DateTime window = DateTime.UtcNow.AddDays(1);
+
+                UpcomingAppointments = dbcontext.appointments
+                .Where(appt => appt.userId == CurrentUser.userId)
+                .Where(appt => appt.start > now)
+                .Where(appt => appt.start <= window)
+                .ToList();
+            }            
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.Text = rm.GetString("strScheduling");
             navGroupBox.Text = $"{rm.GetString("strWelcome")} {CurrentUser.userName}";
-            
+
+            if (UpcomingAppointments != null)
+            {
+                string apptMessage = "Upcoming appointments: \n\n";
+                using(DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities())
+                {
+                    foreach (var appt in UpcomingAppointments)
+                    {
+                        var customer = dbcontext.customers
+                            .Where(cust => cust.customerId == appt.customerId)
+                            .Single();
+
+                        apptMessage += $"Customer: {customer.customerName} \nType: {appt.type} \nTime: {appt.start.ToLocalTime()} \n\n\n";
+                    }
+                }
+                    
+                
+                MessageBox.Show($"{apptMessage}");
+            }
 
         }
     }

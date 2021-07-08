@@ -22,10 +22,30 @@ namespace C969_SchedulingSoftware
         public int UserID { get; set; }
 
         public static ResourceManager rm = new ResourceManager("C969_SchedulingSoftware.ResourceFiles.strings", Assembly.GetExecutingAssembly());
+        private DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities();
 
         public LoginForm()
         {
-            InitializeComponent();            
+            InitializeComponent();
+        }
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            usernameLabel.Text = rm.GetString("strUsername");
+            passwordLabel.Text = rm.GetString("strPassword");
+            loginButton.Text = rm.GetString("strLogin");
+            exitButton.Text = rm.GetString("strExit");
+            loginButton.Enabled = false;
+
+            //temp so I dont have to login everytime
+            usernameBox.Text = "test";
+            passwordBox.Text = "test";
+            SubmitLogin();
+
+        }
+
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            SubmitLogin();
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -47,6 +67,15 @@ namespace C969_SchedulingSoftware
         {
             ParseKeys(e);
         }
+        private void usernameBox_TextChanged(object sender, EventArgs e)
+        {
+            ValidateLoginBoxes();
+        }
+
+        private void passwordBox_TextChanged(object sender, EventArgs e)
+        {
+            ValidateLoginBoxes();
+        }
 
         private void ParseKeys(KeyEventArgs e)
         {
@@ -60,16 +89,9 @@ namespace C969_SchedulingSoftware
             }
         }
 
-        private void loginButton_Click(object sender, EventArgs e)
-        {
-            SubmitLogin();
-        }
-
         private void SubmitLogin()
         {
-            using (var dbcontext = new DatabaseModel.U05tp4Entities())
-            {
-                try
+            try
                 {
                     var loginUser = dbcontext.users
                         .Where(user => user.userName == usernameBox.Text && user.password == passwordBox.Text && user.active == 1)
@@ -84,7 +106,6 @@ namespace C969_SchedulingSoftware
                 {
                     MessageBox.Show(rm.GetString("strLoginFailed"),"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
         }
 
         private bool ValidateLoginBoxes()
@@ -99,25 +120,6 @@ namespace C969_SchedulingSoftware
                 loginButton.Enabled = true;
                 return true;
             }
-        }
-
-        private void LoginForm_Load(object sender, EventArgs e)
-        {            
-            usernameLabel.Text = rm.GetString("strUsername");
-            passwordLabel.Text = rm.GetString("strPassword");
-            loginButton.Text = rm.GetString("strLogin");
-            exitButton.Text = rm.GetString("strExit");
-            loginButton.Enabled = false;
-        }
-
-        private void usernameBox_TextChanged(object sender, EventArgs e)
-        {
-            ValidateLoginBoxes();
-        }
-
-        private void passwordBox_TextChanged(object sender, EventArgs e)
-        {
-            ValidateLoginBoxes();
         }
     }
 }

@@ -38,11 +38,12 @@ namespace C969_SchedulingSoftware
                 DateTime now = DateTime.UtcNow;
                 DateTime window = DateTime.UtcNow.AddDays(1);
 
-                UpcomingAppointments = dbcontext.appointments
-                .Where(appt => appt.userId == CurrentUser.userId)
-                .Where(appt => appt.start > now)
-                .Where(appt => appt.start <= window)
-                .ToList();
+                //commented out so it doesn't pop up while testing
+                //UpcomingAppointments = dbcontext.appointments
+                //.Where(appt => appt.userId == CurrentUser.userId)
+                //.Where(appt => appt.start > now)
+                //.Where(appt => appt.start <= window)
+                //.ToList();
             }            
         }
 
@@ -62,7 +63,7 @@ namespace C969_SchedulingSoftware
         {
             if (UpcomingAppointments != null)
             {
-                string apptMessage = $"{rm.GetString("strUpcomingAppointments")}: \n\n";
+                string apptMessage = null;
                 using (DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities())
                 {
                     foreach (var appt in UpcomingAppointments)
@@ -75,8 +76,14 @@ namespace C969_SchedulingSoftware
                     }
                 }
 
-                MessageBox.Show($"{apptMessage}");
+                MessageBox.Show($"{apptMessage}",$"{rm.GetString("strUpcomingAppointments")}");
             }
+        }
+
+        private void mgrCustomerButton_Click(object sender, EventArgs e)
+        {
+            var customerForm = new CustomersForm();
+            customerForm.Show();
         }
     }
 }

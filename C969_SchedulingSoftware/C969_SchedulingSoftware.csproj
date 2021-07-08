@@ -103,6 +103,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AppointmentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AppointmentsForm.Designer.cs">
+      <DependentUpon>AppointmentsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CustomersForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,8 +170,12 @@
       <LastGenOutput>strings.es.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DatabaseModel.address.datasource" />
     <None Include="Properties\DataSources\DatabaseModel.appointment.datasource" />
+    <None Include="Properties\DataSources\DatabaseModel.city.datasource" />
+    <None Include="Properties\DataSources\DatabaseModel.country.datasource" />
     <None Include="Properties\DataSources\DatabaseModel.customer.datasource" />
+    <None Include="Properties\DataSources\DatabaseModel.U05tp4Entities.datasource" />
     <None Include="Properties\DataSources\DatabaseModel.user.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

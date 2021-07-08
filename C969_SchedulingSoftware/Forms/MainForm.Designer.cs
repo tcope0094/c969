@@ -79,6 +79,7 @@
             this.mgrCustomerButton.TabIndex = 0;
             this.mgrCustomerButton.Text = "mgrCustomer";
             this.mgrCustomerButton.UseVisualStyleBackColor = true;
+            this.mgrCustomerButton.Click += new System.EventHandler(this.mgrCustomerButton_Click);
             // 
             // calendarGroupBox
             // 

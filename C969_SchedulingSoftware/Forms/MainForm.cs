@@ -14,6 +14,7 @@ using MySql.Data.MySqlClient;
 using C969_SchedulingSoftware.Properties;
 using System.Reflection;
 using DatabaseModel;
+using System.Runtime.CompilerServices;
 
 namespace C969_SchedulingSoftware
 {
@@ -48,8 +49,13 @@ namespace C969_SchedulingSoftware
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.Text = rm.GetString("strScheduling");
-            navGroupBox.Text = $"{rm.GetString("strWelcome")} {CurrentUser.userName}";
-
+            navGroupBox.Text = $"{rm.GetString("strWelcome")} {CurrentUser.userName} {rm.GetString("strWWYLTD")}";
+            mgrAppointmentsButton.Text = $"{rm.GetString("strManageAppointments")}";
+            mgrCustomerButton.Text = $"{rm.GetString("strManageCustomers")}";
+            viewReportsButton.Text = $"{rm.GetString("strViewReports")}";
+            calendarGroupBox.Text = $"{rm.GetString("strCalendar")}";
+            weeklyRadioButton.Text = $"{rm.GetString("strWeekly")}";
+            monthlyRadioButton.Text = $"{rm.GetString("strMonthly")}";
         }
 
         private void MainForm_Shown(object sender, EventArgs e)

@@ -183,6 +183,9 @@
   <data name="strPostalCode" xml:space="preserve">
     <value>Postal Code</value>
   </data>
+  <data name="strSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
   <data name="strScheduling" xml:space="preserve">
     <value>Scheduling</value>
   </data>

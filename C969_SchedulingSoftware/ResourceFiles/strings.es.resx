@@ -183,6 +183,9 @@
   <data name="strPostalCode" xml:space="preserve">
     <value>Código Postal</value>
   </data>
+  <data name="strSave" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
   <data name="strScheduling" xml:space="preserve">
     <value>Planificación</value>
   </data>

@@ -19,7 +19,7 @@ namespace C969_SchedulingSoftware
     public partial class LoginForm : Form
     {
 
-        public int UserID { get; set; }
+        public DatabaseModel.user CurrentUser { get; private set; }
 
         public static ResourceManager rm = new ResourceManager("C969_SchedulingSoftware.ResourceFiles.strings", Assembly.GetExecutingAssembly());
         private DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities();
@@ -98,7 +98,7 @@ namespace C969_SchedulingSoftware
                         .Single();
                     if (loginUser != null)
                     {
-                        UserID = loginUser.userId;
+                        CurrentUser = loginUser;
                         this.DialogResult = DialogResult.OK;
                     }
                 }

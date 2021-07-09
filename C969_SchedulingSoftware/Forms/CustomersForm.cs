@@ -18,11 +18,13 @@ namespace C969_SchedulingSoftware
 {
     public partial class CustomersForm : Form
     {
+        public DatabaseModel.user CurrentUser { get; private set; }
         public static ResourceManager rm = new ResourceManager("C969_SchedulingSoftware.ResourceFiles.strings", Assembly.GetExecutingAssembly());
         private DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities();
-        public CustomersForm()
+        public CustomersForm(DatabaseModel.user user)
         {
             InitializeComponent();
+            CurrentUser = user;
         }
 
         private void CustomerForm_Load(object sender, EventArgs e)
@@ -34,6 +36,24 @@ namespace C969_SchedulingSoftware
             customerGroupBox.Text = rm.GetString("strCustomerManagement");
             dgvActive.HeaderText = "test";
 
+        }
+
+        private void saveToolStripButton_Click(object sender, EventArgs e)
+        {
+            Validate();
+            customerBindingSource.EndEdit();
+            addressBindingSource.EndEdit();
+            cityBindingSource.EndEdit();
+            countryBindingSource.EndEdit();
+            try
+            {
+                dbcontext.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

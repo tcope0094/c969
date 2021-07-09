@@ -27,14 +27,12 @@ namespace C969_SchedulingSoftware
         public List<DatabaseModel.appointment> UpcomingAppointments { get; private set; }
 
         
-        public MainForm(int userID)
+        public MainForm(DatabaseModel.user user)
         {
             InitializeComponent();
             using (DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities())
             {
-                CurrentUser = dbcontext.users
-                .Where(user => user.userId == userID)
-                .Single();
+                CurrentUser = user;
 
                 DateTime now = DateTime.UtcNow;
                 DateTime window = DateTime.UtcNow.AddDays(1);
@@ -83,7 +81,7 @@ namespace C969_SchedulingSoftware
 
         private void mgrCustomerButton_Click(object sender, EventArgs e)
         {
-            var customerForm = new CustomersForm();
+            var customerForm = new CustomersForm(CurrentUser);
             customerForm.Show();
         }
     }

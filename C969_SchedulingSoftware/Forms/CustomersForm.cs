@@ -28,12 +28,12 @@ namespace C969_SchedulingSoftware
         private void CustomerForm_Load(object sender, EventArgs e)
         {
             customerGroupBox.Text = rm.GetString("strCustomerManagement");
-            
+
             dbcontext.customers
                 .Load();
 
             customerBindingSource.DataSource = dbcontext.customers.Local;
-            
+
         }
     }
 }

@@ -117,8 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="strActive" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="strAddress" xml:space="preserve">
+    <value>Address</value>
+  </data>
   <data name="strCalendar" xml:space="preserve">
     <value>Calendar</value>
+  </data>
+  <data name="strCity" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="strCountry" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="strCreateDate" xml:space="preserve">
+    <value>Create Date</value>
+  </data>
+  <data name="strCreatedBy" xml:space="preserve">
+    <value>Created By</value>
   </data>
   <data name="strCustomer" xml:space="preserve">
     <value>Customer</value>
@@ -126,11 +144,20 @@
   <data name="strCustomerManagement" xml:space="preserve">
     <value>Customer Management</value>
   </data>
+  <data name="strCustomerName" xml:space="preserve">
+    <value>Customer Name</value>
+  </data>
   <data name="strCustomers" xml:space="preserve">
     <value>Customers</value>
   </data>
   <data name="strExit" xml:space="preserve">
     <value>Exit</value>
+  </data>
+  <data name="strLastUpdate" xml:space="preserve">
+    <value>Last Update</value>
+  </data>
+  <data name="strLastUpdatedBy" xml:space="preserve">
+    <value>Last Updated By</value>
   </data>
   <data name="strLogin" xml:space="preserve">
     <value>Login</value>
@@ -149,6 +176,12 @@
   </data>
   <data name="strPassword" xml:space="preserve">
     <value>Password:</value>
+  </data>
+  <data name="strPhone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="strPostalCode" xml:space="preserve">
+    <value>Postal Code</value>
   </data>
   <data name="strScheduling" xml:space="preserve">
     <value>Scheduling</value>

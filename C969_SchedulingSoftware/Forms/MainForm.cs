@@ -83,6 +83,8 @@ namespace C969_SchedulingSoftware
         {
             var customerForm = new CustomersForm(CurrentUser);
             customerForm.Show();
+            //var form1 = new Form1();
+            //form1.Show();
         }
     }
 }

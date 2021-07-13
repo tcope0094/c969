@@ -71,7 +71,7 @@
           <Property Name="customerName" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="addressId" Type="int" Nullable="false" />
           <Property Name="active" Type="bool" Nullable="false" />
-          <Property Name="createDate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="createDate" Type="datetime" Precision="0" Nullable="false" StoreGeneratedPattern="None" />
           <Property Name="createdBy" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="lastUpdate" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="lastUpdateBy" Type="varchar" MaxLength="40" Nullable="false" />
@@ -255,7 +255,7 @@
           <Property Name="customerName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="addressId" Type="Int32" Nullable="false" />
           <Property Name="active" Type="Boolean" Nullable="false" />
-          <Property Name="createDate" Type="DateTime" Nullable="false" />
+          <Property Name="createDate" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="createdBy" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="lastUpdate" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="lastUpdateBy" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />

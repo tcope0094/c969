@@ -13,6 +13,7 @@ using System.Data.Entity;
 using MySql.Data.MySqlClient;
 using C969_SchedulingSoftware.Properties;
 using System.Reflection;
+using DatabaseModel;
 
 namespace C969_SchedulingSoftware
 {
@@ -33,27 +34,63 @@ namespace C969_SchedulingSoftware
                 .Load();
             customerBindingSource.DataSource = dbcontext.customers.Local;
 
+            dbcontext.addresses.Load();
+            dbcontext.cities.Load();
+            dbcontext.countries.Load();
+
             customerGroupBox.Text = rm.GetString("strCustomerManagement");
             dgvActive.HeaderText = "test";
+
 
         }
 
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
-            Validate();
-            customerBindingSource.EndEdit();
-            addressBindingSource.EndEdit();
-            cityBindingSource.EndEdit();
-            countryBindingSource.EndEdit();
-            try
-            {
-                dbcontext.SaveChanges();
-            }
-            catch (Exception)
-            {
+            //addressIdTextBox.Text = AddressSearch().ToString();
 
-                throw;
-            }
+            Validate();
+
+            countryBindingSource.EndEdit();
+            dbcontext.SaveChanges();
+            cityBindingSource.EndEdit();
+            dbcontext.SaveChanges();
+            addressBindingSource.EndEdit();
+            dbcontext.SaveChanges();
+            customerBindingSource.EndEdit();
+
+            //try
+            //{
+            //    countryBindingSource.EndEdit();
+            //    dbcontext.SaveChanges();
+            //    cityBindingSource.EndEdit();
+            //    dbcontext.SaveChanges();
+            //    addressBindingSource.EndEdit();
+            //    dbcontext.SaveChanges();
+            //    customerBindingSource.EndEdit();
+            //}
+            //catch (Exception)
+            //{
+
+            //    throw;
+            //}            
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+            DateTime currentDateTime = DateTime.UtcNow;
+
+
+        }
+
+        private int AddressSearch()
+        {
+            int addressID = dbcontext.addresses
+                .Where(address => address.address1 == address1TextBox.Text)
+                .Where(address => address.postalCode == postalCodeTextBox.Text)
+                .Select(address => address.addressId)
+                .Single();
+
+            return addressID;
         }
     }
 }

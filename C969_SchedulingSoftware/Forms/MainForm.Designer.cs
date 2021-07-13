@@ -33,9 +33,9 @@
             this.mgrAppointmentsButton = new System.Windows.Forms.Button();
             this.mgrCustomerButton = new System.Windows.Forms.Button();
             this.calendarGroupBox = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.weeklyRadioButton = new System.Windows.Forms.RadioButton();
             this.monthlyRadioButton = new System.Windows.Forms.RadioButton();
+            this.weeklyRadioButton = new System.Windows.Forms.RadioButton();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.navGroupBox.SuspendLayout();
             this.calendarGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -93,13 +93,16 @@
             this.calendarGroupBox.TabStop = false;
             this.calendarGroupBox.Text = "calendarGroupBox";
             // 
-            // dataGridView1
+            // monthlyRadioButton
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 40);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(615, 380);
-            this.dataGridView1.TabIndex = 0;
+            this.monthlyRadioButton.AutoSize = true;
+            this.monthlyRadioButton.Location = new System.Drawing.Point(98, 17);
+            this.monthlyRadioButton.Name = "monthlyRadioButton";
+            this.monthlyRadioButton.Size = new System.Drawing.Size(61, 17);
+            this.monthlyRadioButton.TabIndex = 2;
+            this.monthlyRadioButton.TabStop = true;
+            this.monthlyRadioButton.Text = "monthly";
+            this.monthlyRadioButton.UseVisualStyleBackColor = true;
             // 
             // weeklyRadioButton
             // 
@@ -112,16 +115,13 @@
             this.weeklyRadioButton.Text = "weekly";
             this.weeklyRadioButton.UseVisualStyleBackColor = true;
             // 
-            // monthlyRadioButton
+            // dataGridView1
             // 
-            this.monthlyRadioButton.AutoSize = true;
-            this.monthlyRadioButton.Location = new System.Drawing.Point(98, 17);
-            this.monthlyRadioButton.Name = "monthlyRadioButton";
-            this.monthlyRadioButton.Size = new System.Drawing.Size(61, 17);
-            this.monthlyRadioButton.TabIndex = 2;
-            this.monthlyRadioButton.TabStop = true;
-            this.monthlyRadioButton.Text = "monthly";
-            this.monthlyRadioButton.UseVisualStyleBackColor = true;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(7, 40);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(615, 380);
+            this.dataGridView1.TabIndex = 0;
             // 
             // MainForm
             // 

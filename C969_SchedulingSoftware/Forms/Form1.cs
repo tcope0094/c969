@@ -27,5 +27,13 @@ namespace C969_SchedulingSoftware.Forms
             dbcontext.customers.Load();
             customerBindingSource.DataSource = dbcontext.customers.Local;
         }
+
+        private void customerBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            Validate();
+            customerBindingSource.EndEdit();
+            dbcontext.SaveChanges();
+            
+        }
     }
 }

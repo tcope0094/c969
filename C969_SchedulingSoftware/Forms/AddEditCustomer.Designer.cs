@@ -37,6 +37,7 @@
             System.Windows.Forms.Label phoneLabel;
             System.Windows.Forms.Label postalCodeLabel;
             System.Windows.Forms.Label country1Label;
+            System.Windows.Forms.Label country1Label1;
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.activeCheckBox = new System.Windows.Forms.CheckBox();
             this.customerNameTextBox = new System.Windows.Forms.TextBox();
@@ -51,6 +52,8 @@
             this.countryComboBox = new System.Windows.Forms.ComboBox();
             this.cityLinkLabel = new System.Windows.Forms.LinkLabel();
             this.countryLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.country2ComboBox = new System.Windows.Forms.ComboBox();
             activeLabel = new System.Windows.Forms.Label();
             customerNameLabel = new System.Windows.Forms.Label();
             address1Label = new System.Windows.Forms.Label();
@@ -59,6 +62,7 @@
             phoneLabel = new System.Windows.Forms.Label();
             postalCodeLabel = new System.Windows.Forms.Label();
             country1Label = new System.Windows.Forms.Label();
+            country1Label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cityBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).BeginInit();
@@ -218,9 +222,11 @@
             // countryBindingSource
             // 
             this.countryBindingSource.DataSource = typeof(DatabaseModel.country);
+            this.countryBindingSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.countryBindingSource_ListChanged);
             // 
             // countryComboBox
             // 
+            this.countryComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.countryBindingSource, "countryId", true));
             this.countryComboBox.DataSource = this.countryBindingSource;
             this.countryComboBox.DisplayMember = "country1";
             this.countryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -253,11 +259,42 @@
             this.countryLinkLabel.Text = "Add New";
             this.countryLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.countryLinkLabel_LinkClicked);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(320, 273);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 53;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // country1Label1
+            // 
+            country1Label1.AutoSize = true;
+            country1Label1.Location = new System.Drawing.Point(73, 306);
+            country1Label1.Name = "country1Label1";
+            country1Label1.Size = new System.Drawing.Size(51, 13);
+            country1Label1.TabIndex = 53;
+            country1Label1.Text = "country1:";
+            // 
+            // country2ComboBox
+            // 
+            this.country2ComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerBindingSource, "address.city.country.country1", true));
+            this.country2ComboBox.FormattingEnabled = true;
+            this.country2ComboBox.Location = new System.Drawing.Point(130, 303);
+            this.country2ComboBox.Name = "country2ComboBox";
+            this.country2ComboBox.Size = new System.Drawing.Size(121, 21);
+            this.country2ComboBox.TabIndex = 54;
+            // 
             // AddEditCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(496, 430);
+            this.Controls.Add(country1Label1);
+            this.Controls.Add(this.country2ComboBox);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.countryLinkLabel);
             this.Controls.Add(this.cityLinkLabel);
             this.Controls.Add(this.countryComboBox);
@@ -304,5 +341,7 @@
         private System.Windows.Forms.ComboBox countryComboBox;
         private System.Windows.Forms.LinkLabel cityLinkLabel;
         private System.Windows.Forms.LinkLabel countryLinkLabel;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox country2ComboBox;
     }
 }

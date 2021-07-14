@@ -36,7 +36,9 @@ namespace C969_SchedulingSoftware.Forms
             countryDbcontext.countries.Load();
 
             cityComboBox.DataSource = cityDbcontext.cities.Local;
-            countryComboBox.DataSource = countryDbcontext.countries.Local;
+
+            countryComboBox.DataSource = countryDbcontext.countries.Local.ToBindingList();
+
 
         }
         private void saveButton_Click(object sender, EventArgs e)
@@ -108,9 +110,24 @@ namespace C969_SchedulingSoftware.Forms
 
         private void countryLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var addCountryForm = new AddCountry();
+            var addCountryForm = new AddCountry(ref countryDbcontext);
             addCountryForm.Show();
         }
 
+        public void RefreshBoxes()
+        {
+            countryComboBox.Invalidate();
+            cityComboBox.Invalidate();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            countryComboBox.Invalidate();
+        }
+
+        private void countryBindingSource_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            countryComboBox.Refresh();
+        }
     }
 }

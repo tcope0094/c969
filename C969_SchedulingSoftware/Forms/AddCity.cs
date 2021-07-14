@@ -21,7 +21,7 @@ namespace C969_SchedulingSoftware.Forms
     public partial class AddCity : Form
     {
         private DatabaseModel.U05tp4Entities cityDbcontext = new DatabaseModel.U05tp4Entities();
-        private DatabaseModel.U05tp4Entities countryDbcontext = new DatabaseModel.U05tp4Entities();
+        public DatabaseModel.U05tp4Entities countryDbcontext = new DatabaseModel.U05tp4Entities();
         public AddCity()
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace C969_SchedulingSoftware.Forms
 
         private void countryLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var addCountryForm = new AddCountry();
+            var addCountryForm = new AddCountry(ref countryDbcontext);
             addCountryForm.Show();
         }
 

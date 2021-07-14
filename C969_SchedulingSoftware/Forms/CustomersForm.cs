@@ -14,6 +14,7 @@ using MySql.Data.MySqlClient;
 using C969_SchedulingSoftware.Properties;
 using System.Reflection;
 using DatabaseModel;
+using C969_SchedulingSoftware.Forms;
 
 namespace C969_SchedulingSoftware
 {
@@ -21,7 +22,11 @@ namespace C969_SchedulingSoftware
     {
         public DatabaseModel.user CurrentUser { get; private set; }
         public static ResourceManager rm = new ResourceManager("C969_SchedulingSoftware.ResourceFiles.strings", Assembly.GetExecutingAssembly());
-        private DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities();
+
+        private DatabaseModel.U05tp4Entities customerDbcontext = new DatabaseModel.U05tp4Entities();
+        private DatabaseModel.U05tp4Entities addressDbcontext = new DatabaseModel.U05tp4Entities();
+        private DatabaseModel.U05tp4Entities cityDbcontext = new DatabaseModel.U05tp4Entities();
+        private DatabaseModel.U05tp4Entities countryDbcontext = new DatabaseModel.U05tp4Entities();
         public CustomersForm(DatabaseModel.user user)
         {
             InitializeComponent();
@@ -30,13 +35,14 @@ namespace C969_SchedulingSoftware
 
         private void CustomerForm_Load(object sender, EventArgs e)
         {   
-            dbcontext.customers
-                .Load();
-            customerBindingSource.DataSource = dbcontext.customers.Local;
+            customerDbcontext.customers.Load();
+            customerBindingSource.DataSource = customerDbcontext.customers.Local;
 
-            dbcontext.addresses.Load();
-            dbcontext.cities.Load();
-            dbcontext.countries.Load();
+            addressDbcontext.addresses.Load();
+            addressBindingSource.DataSource = addressDbcontext.addresses.Local;
+
+            customerDbcontext.cities.Load();
+            customerDbcontext.countries.Load();
 
             customerGroupBox.Text = rm.GetString("strCustomerManagement");
             dgvActive.HeaderText = "test";
@@ -51,12 +57,10 @@ namespace C969_SchedulingSoftware
             Validate();
 
             countryBindingSource.EndEdit();
-            dbcontext.SaveChanges();
             cityBindingSource.EndEdit();
-            dbcontext.SaveChanges();
             addressBindingSource.EndEdit();
-            dbcontext.SaveChanges();
             customerBindingSource.EndEdit();
+            addressDbcontext.SaveChanges();            
 
             //try
             //{
@@ -78,19 +82,30 @@ namespace C969_SchedulingSoftware
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
             DateTime currentDateTime = DateTime.UtcNow;
-
+            address newAddress = new address();
 
         }
 
         private int AddressSearch()
         {
-            int addressID = dbcontext.addresses
+            int addressID = addressDbcontext.addresses
                 .Where(address => address.address1 == address1TextBox.Text)
                 .Where(address => address.postalCode == postalCodeTextBox.Text)
                 .Select(address => address.addressId)
                 .Single();
 
             return addressID;
+        }
+
+        private void customerDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var addCustomer = new AddEditCustomer();
+            addCustomer.Show();
         }
     }
 }

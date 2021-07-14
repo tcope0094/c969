@@ -20,7 +20,7 @@ namespace C969_SchedulingSoftware.Forms
 {
     public partial class AddCountry : Form
     {
-        private DatabaseModel.U05tp4Entities countryDbcontext = new DatabaseModel.U05tp4Entities();
+        private DatabaseModel.U05tp4Entities countryDbcontext;// = new DatabaseModel.U05tp4Entities();
         
         public AddCountry(ref DatabaseModel.U05tp4Entities countryDbcontext)
         {   
@@ -45,7 +45,7 @@ namespace C969_SchedulingSoftware.Forms
             newCountry.lastUpdateBy = "test";
 
             countryDbcontext.countries.Add(newCountry);
-            countryDbcontext.SaveChanges();            
+            countryDbcontext.SaveChanges();
 
             this.Close();
 

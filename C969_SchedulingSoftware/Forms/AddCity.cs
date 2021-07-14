@@ -20,11 +20,13 @@ namespace C969_SchedulingSoftware.Forms
 {
     public partial class AddCity : Form
     {
-        private DatabaseModel.U05tp4Entities cityDbcontext = new DatabaseModel.U05tp4Entities();
-        public DatabaseModel.U05tp4Entities countryDbcontext = new DatabaseModel.U05tp4Entities();
-        public AddCity()
+        private DatabaseModel.U05tp4Entities cityDbcontext;// = new DatabaseModel.U05tp4Entities();
+        public DatabaseModel.U05tp4Entities countryDbcontext;// = new DatabaseModel.U05tp4Entities();
+        public AddCity(ref DatabaseModel.U05tp4Entities cityDbcontext, ref DatabaseModel.U05tp4Entities countryDbcontext)
         {
             InitializeComponent();
+            this.cityDbcontext = cityDbcontext;
+            this.countryDbcontext = countryDbcontext;
         }
 
         private void countryLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -36,9 +38,11 @@ namespace C969_SchedulingSoftware.Forms
         private void AddCity_Load(object sender, EventArgs e)
         {
             cityDbcontext.cities.Load();
-            countryDbcontext.countries.Load();
+            countryDbcontext.countries
+                .OrderBy(c => c.country1)
+                .Load();
 
-            countryComboBox.DataSource = countryDbcontext.countries.Local;
+            countryComboBox.DataSource = countryDbcontext.countries.Local.ToBindingList();
             saveButton.Enabled = false;
         }
 

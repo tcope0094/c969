@@ -107,6 +107,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AddCity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddCity.Designer.cs">
+      <DependentUpon>AddCity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddCountry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddCountry.Designer.cs">
+      <DependentUpon>AddCountry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AppointmentsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +167,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>strings.es.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\AddCity.resx">
+      <DependentUpon>AddCity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddCountry.resx">
+      <DependentUpon>AddCountry.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddEditCustomer.resx">
       <DependentUpon>AddEditCustomer.cs</DependentUpon>
     </EmbeddedResource>

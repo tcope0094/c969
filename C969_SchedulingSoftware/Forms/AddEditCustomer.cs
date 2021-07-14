@@ -22,26 +22,24 @@ namespace C969_SchedulingSoftware.Forms
     {
         private DatabaseModel.U05tp4Entities addressDbcontext = new DatabaseModel.U05tp4Entities();
         private DatabaseModel.U05tp4Entities cityDbcontext = new DatabaseModel.U05tp4Entities();
+        private DatabaseModel.U05tp4Entities countryDbcontext = new DatabaseModel.U05tp4Entities();
         private DatabaseModel.U05tp4Entities customerDbcontext = new DatabaseModel.U05tp4Entities();
         public AddEditCustomer()
         {
             InitializeComponent();
         }
 
-        private void customerBindingNavigator_RefreshItems(object sender, EventArgs e)
-        {
-
-        }
-
         private void AddEditCustomer_Load(object sender, EventArgs e)
         {
             addressDbcontext.addresses.Load();
             cityDbcontext.cities.Load();
+            countryDbcontext.countries.Load();
+
             cityComboBox.DataSource = cityDbcontext.cities.Local;
+            countryComboBox.DataSource = countryDbcontext.countries.Local;
 
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void saveButton_Click(object sender, EventArgs e)
         {
             DateTime currentDateTime = DateTime.UtcNow;
             address newAddress = new address();
@@ -81,9 +79,7 @@ namespace C969_SchedulingSoftware.Forms
 
             customerDbcontext.customers.Add(newCustomer);
             customerDbcontext.SaveChanges();
-
-
-        }
+        }       
 
         private address AddressSearch(address addressToSearch)
         {
@@ -104,17 +100,17 @@ namespace C969_SchedulingSoftware.Forms
             }
         }
 
-        private bool AddressExists(address addressToCheck)
+        private void cityLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var check = addressDbcontext.addresses
-                .Where(a => a.address1 == addressToCheck.address1)
-                .Where(a => a.address2 == addressToCheck.address2)
-                .Where(a => a.cityId == addressToCheck.cityId)
-                .Where(a => a.phone == addressToCheck.phone)
-                .Where(a => a.postalCode == addressToCheck.postalCode)
-                .Any();
-
-            return check;
+            var addCityForm = new AddCity();
+            addCityForm.Show();
         }
+
+        private void countryLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var addCountryForm = new AddCountry();
+            addCountryForm.Show();
+        }
+
     }
 }

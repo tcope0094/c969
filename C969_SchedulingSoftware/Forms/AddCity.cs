@@ -45,8 +45,7 @@ namespace C969_SchedulingSoftware.Forms
             countryComboBox.DataSource = countryDbcontext.countries.Local.ToBindingList();
             saveButton.Enabled = false;
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void saveButton_Click(object sender, EventArgs e)
         {
 
             this.Close();
@@ -68,6 +67,28 @@ namespace C969_SchedulingSoftware.Forms
         private void city1TextBox_TextChanged(object sender, EventArgs e)
         {
             ValidateFields();
+        }
+
+        private city AddressSearch(city cityToSearch)
+        {
+            try
+            {
+                var search = cityDbcontext.cities
+                    .Where(c => c.city1 == cityToSearch.city1)
+                    .Where(c => c.countryId == cityToSearch.countryId)
+                    .First();
+                
+                return search;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

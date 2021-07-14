@@ -37,6 +37,7 @@
             this.countryComboBox = new System.Windows.Forms.ComboBox();
             this.countryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.countryLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.cancelButton = new System.Windows.Forms.Button();
             city1Label = new System.Windows.Forms.Label();
             country1Label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cityBindingSource)).BeginInit();
@@ -76,13 +77,13 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(39, 77);
+            this.saveButton.Location = new System.Drawing.Point(121, 80);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 38;
-            this.saveButton.Text = "save";
+            this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.button1_Click);
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // countryComboBox
             // 
@@ -111,17 +112,29 @@
             this.countryLinkLabel.Text = "Add New";
             this.countryLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.countryLinkLabel_LinkClicked);
             // 
+            // cancelButton
+            // 
+            this.cancelButton.Location = new System.Drawing.Point(246, 80);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 54;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
             // AddCity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(397, 115);
+            this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.countryLinkLabel);
             this.Controls.Add(this.countryComboBox);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(country1Label);
             this.Controls.Add(city1Label);
             this.Controls.Add(this.city1TextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddCity";
             this.Text = "AddCity";
             this.Load += new System.EventHandler(this.AddCity_Load);
@@ -140,5 +153,6 @@
         private System.Windows.Forms.ComboBox countryComboBox;
         private System.Windows.Forms.BindingSource countryBindingSource;
         private System.Windows.Forms.LinkLabel countryLinkLabel;
+        private System.Windows.Forms.Button cancelButton;
     }
 }

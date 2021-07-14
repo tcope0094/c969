@@ -107,6 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Resource.cs" />
     <Compile Include="Forms\AddCity.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -30,10 +30,10 @@ namespace C969_SchedulingSoftware
         }
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            usernameLabel.Text = rm.GetString("strUsername");
-            passwordLabel.Text = rm.GetString("strPassword");
-            loginButton.Text = rm.GetString("strLogin");
-            exitButton.Text = rm.GetString("strExit");
+            usernameLabel.Text = Resources.MyResources.GetString("strUsername");
+            passwordLabel.Text = Resources.MyResources.GetString("strPassword");
+            loginButton.Text = Resources.MyResources.GetString("strLogin");
+            exitButton.Text = Resources.MyResources.GetString("strExit");
             loginButton.Enabled = false;
 
             //temp so I dont have to login everytime

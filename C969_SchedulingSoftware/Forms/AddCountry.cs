@@ -69,5 +69,10 @@ namespace C969_SchedulingSoftware.Forms
         {
             ValidateFields();
         }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

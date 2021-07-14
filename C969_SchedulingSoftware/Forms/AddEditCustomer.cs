@@ -69,6 +69,7 @@ namespace C969_SchedulingSoftware.Forms
             newCustomer.lastUpdateBy = "test";
 
             var searchResults = AddressSearch(newAddress);
+            
 
             if (searchResults == null)
             {
@@ -84,7 +85,8 @@ namespace C969_SchedulingSoftware.Forms
 
             customerDbcontext.customers.Add(newCustomer);
             customerDbcontext.SaveChanges();
-        }       
+        
+        }
 
         private address AddressSearch(address addressToSearch)
         {

@@ -20,7 +20,7 @@ namespace C969_SchedulingSoftware.Forms
 {
     public partial class AddCountry : Form
     {
-        private DatabaseModel.U05tp4Entities countryDbcontext;// = new DatabaseModel.U05tp4Entities();
+        private DatabaseModel.U05tp4Entities countryDbcontext;
         
         public AddCountry(ref DatabaseModel.U05tp4Entities countryDbcontext)
         {   
@@ -34,7 +34,7 @@ namespace C969_SchedulingSoftware.Forms
             saveButton.Enabled = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void saveButton_Click(object sender, EventArgs e)
         {
             DateTime currentDateTime = DateTime.UtcNow;
             country newCountry = new country();
@@ -45,12 +45,12 @@ namespace C969_SchedulingSoftware.Forms
             newCountry.lastUpdateBy = "test";
 
             countryDbcontext.countries.Add(newCountry);
+
             countryDbcontext.SaveChanges();
 
             this.Close();
 
         }
-
         private void ValidateFields()
         {
             if (String.IsNullOrEmpty(country1TextBox.Text))
@@ -74,5 +74,8 @@ namespace C969_SchedulingSoftware.Forms
         {
             this.Close();
         }
+
+        
+        
     }
 }

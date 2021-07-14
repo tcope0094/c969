@@ -56,7 +56,7 @@
             this.saveButton.TabIndex = 51;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.button1_Click);
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // country1TextBox
             // 

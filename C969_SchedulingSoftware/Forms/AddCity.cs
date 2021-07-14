@@ -47,6 +47,8 @@ namespace C969_SchedulingSoftware.Forms
         }
         private void saveButton_Click(object sender, EventArgs e)
         {
+            DateTime currentDateTime = DateTime.UtcNow;
+            city newCity = new city();
 
             this.Close();
         }

@@ -16,11 +16,11 @@ namespace C969_SchedulingSoftware
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Resource res = new Resource();
+            AppInfo appinfo = new AppInfo();
             LoginForm loginForm = new LoginForm();
             if (loginForm.ShowDialog() == DialogResult.OK)
-            {                
-                Application.Run(new MainForm(loginForm.CurrentUser));
+            {   
+                Application.Run(new MainForm());
             }
         }
     }

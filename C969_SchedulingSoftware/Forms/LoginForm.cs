@@ -21,7 +21,7 @@ namespace C969_SchedulingSoftware
 
         public DatabaseModel.user CurrentUser { get; private set; }
 
-        public static ResourceManager rm = new ResourceManager("C969_SchedulingSoftware.ResourceFiles.strings", Assembly.GetExecutingAssembly());
+        //public static ResourceManager rm = new ResourceManager("C969_SchedulingSoftware.ResourceFiles.strings", Assembly.GetExecutingAssembly());
         private DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities();
 
         public LoginForm()
@@ -30,10 +30,10 @@ namespace C969_SchedulingSoftware
         }
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            usernameLabel.Text = Resources.MyResources.GetString("strUsername");
-            passwordLabel.Text = Resources.MyResources.GetString("strPassword");
-            loginButton.Text = Resources.MyResources.GetString("strLogin");
-            exitButton.Text = Resources.MyResources.GetString("strExit");
+            usernameLabel.Text = AppInfo.MyResources.GetString("strUsername");
+            passwordLabel.Text = AppInfo.MyResources.GetString("strPassword");
+            loginButton.Text = AppInfo.MyResources.GetString("strLogin");
+            exitButton.Text = AppInfo.MyResources.GetString("strExit");
             loginButton.Enabled = false;
 
             //temp so I dont have to login everytime
@@ -98,13 +98,13 @@ namespace C969_SchedulingSoftware
                         .Single();
                     if (loginUser != null)
                     {
-                        CurrentUser = loginUser;
+                        AppInfo.CurrentUser = loginUser;
                         this.DialogResult = DialogResult.OK;
                     }
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show(rm.GetString("strLoginFailed"),"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(AppInfo.MyResources.GetString("strLoginFailed"),"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
         }
 

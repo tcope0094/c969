@@ -32,24 +32,31 @@ namespace C969_SchedulingSoftware.Forms
         {
             countryDbcontext.countries.Load();
             saveButton.Enabled = false;
+            
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            DateTime currentDateTime = DateTime.UtcNow;
-            country newCountry = new country();
-            newCountry.country1 = country1TextBox.Text;
-            newCountry.createDate = currentDateTime.Date;
-            newCountry.createdBy = "test";
-            newCountry.lastUpdate = currentDateTime.Date;
-            newCountry.lastUpdateBy = "test";
+            try
+            {
+                DateTime currentDateTime = DateTime.UtcNow;
+                country newCountry = new country();
+                newCountry.country1 = country1TextBox.Text;
+                newCountry.createDate = currentDateTime.Date;
+                newCountry.createdBy = "test";
+                newCountry.lastUpdate = currentDateTime.Date;
+                newCountry.lastUpdateBy = "test";
 
-            countryDbcontext.countries.Add(newCountry);
+                countryDbcontext.countries.Add(newCountry);
 
-            countryDbcontext.SaveChanges();
-
-            this.Close();
-
+                countryDbcontext.SaveChanges();
+                this.DialogResult = DialogResult.OK;
+                
+            }
+            catch (Exception)
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
         }
         private void ValidateFields()
         {
@@ -74,8 +81,5 @@ namespace C969_SchedulingSoftware.Forms
         {
             this.Close();
         }
-
-        
-        
     }
 }

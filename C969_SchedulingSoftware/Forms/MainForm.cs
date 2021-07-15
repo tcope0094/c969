@@ -21,18 +21,16 @@ namespace C969_SchedulingSoftware
 {
     public partial class MainForm : Form
     {
-        public static ResourceManager rm = new ResourceManager("C969_SchedulingSoftware.ResourceFiles.strings", Assembly.GetExecutingAssembly());
+        
         //private DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities();
-        public DatabaseModel.user CurrentUser { get; private set; }
         public List<DatabaseModel.appointment> UpcomingAppointments { get; private set; }
 
         
-        public MainForm(DatabaseModel.user user)
+        public MainForm()
         {
             InitializeComponent();
             using (DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities())
             {
-                CurrentUser = user;
 
                 DateTime now = DateTime.UtcNow;
                 DateTime window = DateTime.UtcNow.AddDays(1);
@@ -48,14 +46,14 @@ namespace C969_SchedulingSoftware
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            this.Text = rm.GetString("strScheduling");
-            navGroupBox.Text = $"{rm.GetString("strWelcome")} {CurrentUser.userName} {rm.GetString("strWWYLTD")}";
-            mgrAppointmentsButton.Text = $"{rm.GetString("strManageAppointments")}";
-            mgrCustomerButton.Text = $"{rm.GetString("strManageCustomers")}";
-            viewReportsButton.Text = $"{rm.GetString("strViewReports")}";
-            calendarGroupBox.Text = $"{rm.GetString("strCalendar")}";
-            weeklyRadioButton.Text = $"{rm.GetString("strWeekly")}";
-            monthlyRadioButton.Text = $"{rm.GetString("strMonthly")}";
+            this.Text = AppInfo.MyResources.GetString("strScheduling");
+            navGroupBox.Text = $"{AppInfo.MyResources.GetString("strWelcome")} {AppInfo.CurrentUser.userName} {AppInfo.MyResources.GetString("strWWYLTD")}";
+            mgrAppointmentsButton.Text = $"{AppInfo.MyResources.GetString("strManageAppointments")}";
+            mgrCustomerButton.Text = $"{AppInfo.MyResources.GetString("strManageCustomers")}";
+            viewReportsButton.Text = $"{AppInfo.MyResources.GetString("strViewReports")}";
+            calendarGroupBox.Text = $"{AppInfo.MyResources.GetString("strCalendar")}";
+            weeklyRadioButton.Text = $"{AppInfo.MyResources.GetString("strWeekly")}";
+            monthlyRadioButton.Text = $"{AppInfo.MyResources.GetString("strMonthly")}";
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
@@ -71,17 +69,17 @@ namespace C969_SchedulingSoftware
                             .Where(cust => cust.customerId == appt.customerId)
                             .Single();
 
-                        apptMessage += $"{rm.GetString("strCustomer")}: {customer.customerName} \n{rm.GetString("strType")}: {appt.type} \n{rm.GetString("strTime")}: {appt.start.ToLocalTime()} \n\n\n";
+                        apptMessage += $"{AppInfo.MyResources.GetString("strCustomer")}: {customer.customerName} \n{AppInfo.MyResources.GetString("strType")}: {appt.type} \n{AppInfo.MyResources.GetString("strTime")}: {appt.start.ToLocalTime()} \n\n\n";
                     }
                 }
 
-                MessageBox.Show($"{apptMessage}",$"{rm.GetString("strUpcomingAppointments")}");
+                MessageBox.Show($"{apptMessage}",$"{AppInfo.MyResources.GetString("strUpcomingAppointments")}");
             }
         }
 
         private void mgrCustomerButton_Click(object sender, EventArgs e)
         {
-            var customerForm = new CustomersForm(CurrentUser);
+            var customerForm = new CustomersForm();
             customerForm.Show();
             //var form1 = new Form1();
             //form1.Show();

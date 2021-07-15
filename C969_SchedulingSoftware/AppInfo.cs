@@ -8,11 +8,12 @@ using System.Reflection;
 
 namespace C969_SchedulingSoftware
 {
-    class Resource
+    class AppInfo
     {
         public static ResourceManager MyResources { get; set; }
+        public static DatabaseModel.user CurrentUser { get; set; }
 
-        public Resource()
+        public AppInfo()
         {
             ResourceManager rm = new ResourceManager("C969_SchedulingSoftware.ResourceFiles.strings", Assembly.GetExecutingAssembly());
             MyResources = rm;

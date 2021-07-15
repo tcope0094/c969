@@ -29,10 +29,20 @@ namespace C969_SchedulingSoftware.Forms
             this.countryDbcontext = countryDbcontext;
         }
 
+        /// //////////////////
+        /// Event handlers ///
+        //////////////////////
+        
         private void countryLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var addCountryForm = new AddCountry(ref countryDbcontext);
-            addCountryForm.Show();
+            addCountryForm.Owner = this;
+            addCountryForm.ShowDialog();
+            if (addCountryForm.DialogResult == DialogResult.OK)
+            {
+                int size = countryDbcontext.countries.Local.Count;
+                countryComboBox.SelectedItem = countryDbcontext.countries.Local[size - 1];
+            }
         }
 
         private void AddCity_Load(object sender, EventArgs e)
@@ -48,9 +58,66 @@ namespace C969_SchedulingSoftware.Forms
         private void saveButton_Click(object sender, EventArgs e)
         {
             DateTime currentDateTime = DateTime.UtcNow;
-            city newCity = new city();
 
+            city newCity = new city();
+            newCity.city1 = city1TextBox.Text;
+            newCity.countryId = (int)countryComboBox.SelectedValue;
+            newCity.createDate = currentDateTime.Date;
+            newCity.createdBy = AppInfo.CurrentUser.userName;
+            newCity.lastUpdate = currentDateTime.Date;
+            newCity.lastUpdateBy = AppInfo.CurrentUser.userName;
+            city searchResult = AddressSearch(newCity);
+            
+            try
+            {
+                if (searchResult == null)
+                {
+                    cityDbcontext.cities.Add(newCity);
+                    cityDbcontext.SaveChanges();
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("City and Country combo already exists");
+                    this.Close();
+                }
+                
+            }
+            catch (Exception)
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
+        }
+
+        private void city1TextBox_TextChanged(object sender, EventArgs e)
+        {
+            ValidateFields();
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
             this.Close();
+        }
+
+        /// /////////////////
+        ////// Methods //////
+        /////////////////////        
+
+        private city AddressSearch(city cityToSearch)
+        {
+            try
+            {
+                var search = cityDbcontext.cities
+                    .Where(c => c.city1 == cityToSearch.city1)
+                    .Where(c => c.countryId == cityToSearch.countryId)
+                    .First();
+
+                return search;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
         private void ValidateFields()
         {
@@ -64,33 +131,6 @@ namespace C969_SchedulingSoftware.Forms
                 saveButton.Enabled = true;
                 city1TextBox.BackColor = Color.White;
             }
-        }
-
-        private void city1TextBox_TextChanged(object sender, EventArgs e)
-        {
-            ValidateFields();
-        }
-
-        private city AddressSearch(city cityToSearch)
-        {
-            try
-            {
-                var search = cityDbcontext.cities
-                    .Where(c => c.city1 == cityToSearch.city1)
-                    .Where(c => c.countryId == cityToSearch.countryId)
-                    .First();
-                
-                return search;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        private void cancelButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

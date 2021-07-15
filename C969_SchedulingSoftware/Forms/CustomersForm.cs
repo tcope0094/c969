@@ -20,22 +20,22 @@ namespace C969_SchedulingSoftware
 {
     public partial class CustomersForm : Form
     {
-        public DatabaseModel.user CurrentUser { get; private set; }
         public static ResourceManager rm = new ResourceManager("C969_SchedulingSoftware.ResourceFiles.strings", Assembly.GetExecutingAssembly());
 
         private DatabaseModel.U05tp4Entities customerDbcontext = new DatabaseModel.U05tp4Entities();
         private DatabaseModel.U05tp4Entities addressDbcontext = new DatabaseModel.U05tp4Entities();
         private DatabaseModel.U05tp4Entities cityDbcontext = new DatabaseModel.U05tp4Entities();
         private DatabaseModel.U05tp4Entities countryDbcontext = new DatabaseModel.U05tp4Entities();
-        public CustomersForm(DatabaseModel.user user)
+        public CustomersForm()
         {
             InitializeComponent();
-            CurrentUser = user;
         }
 
         private void CustomerForm_Load(object sender, EventArgs e)
         {   
-            customerDbcontext.customers.Load();
+            customerDbcontext.customers
+                .OrderBy(c => c.customerName)
+                .Load();
             customerBindingSource.DataSource = customerDbcontext.customers.Local;
 
             addressDbcontext.addresses.Load();
@@ -105,7 +105,11 @@ namespace C969_SchedulingSoftware
         private void button1_Click(object sender, EventArgs e)
         {
             var addCustomer = new AddEditCustomer();
-            addCustomer.Show();
+            addCustomer.ShowDialog();
+            if (addCustomer.DialogResult == DialogResult.OK)
+            {
+                customerBindingSource.ResetBindings(false);
+            }
         }
     }
 }

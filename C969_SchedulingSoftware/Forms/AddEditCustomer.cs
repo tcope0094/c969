@@ -85,6 +85,7 @@ namespace C969_SchedulingSoftware.Forms
 
             customerDbcontext.customers.Add(newCustomer);
             customerDbcontext.SaveChanges();
+            this.DialogResult = DialogResult.OK;
         
         }
 
@@ -110,13 +111,29 @@ namespace C969_SchedulingSoftware.Forms
         private void cityLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var addCityForm = new AddCity(ref cityDbcontext, ref countryDbcontext);
-            addCityForm.Show();
+            addCityForm.ShowDialog();
+            if (addCityForm.DialogResult == DialogResult.OK)
+            {
+                int size = cityDbcontext.cities.Local.Count;
+                cityComboBox.SelectedItem = cityDbcontext.cities.Local[size - 1];
+            }
         }
 
         private void countryLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var addCountryForm = new AddCountry(ref countryDbcontext);
-            addCountryForm.Show();
+            addCountryForm.Owner = this;
+            addCountryForm.ShowDialog();
+            if (addCountryForm.DialogResult == DialogResult.OK)
+            {
+                int size = countryDbcontext.countries.Local.Count;
+                countryComboBox.SelectedItem = countryDbcontext.countries.Local[size - 1];
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }

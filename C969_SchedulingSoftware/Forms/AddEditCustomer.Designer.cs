@@ -51,6 +51,7 @@
             this.countryComboBox = new System.Windows.Forms.ComboBox();
             this.cityLinkLabel = new System.Windows.Forms.LinkLabel();
             this.countryLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.button1 = new System.Windows.Forms.Button();
             activeLabel = new System.Windows.Forms.Label();
             customerNameLabel = new System.Windows.Forms.Label();
             address1Label = new System.Windows.Forms.Label();
@@ -254,11 +255,22 @@
             this.countryLinkLabel.Text = "Add New";
             this.countryLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.countryLinkLabel_LinkClicked);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(235, 258);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 53;
+            this.button1.Text = "Cancel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // AddEditCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(496, 430);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.countryLinkLabel);
             this.Controls.Add(this.cityLinkLabel);
             this.Controls.Add(this.countryComboBox);
@@ -305,5 +317,6 @@
         private System.Windows.Forms.ComboBox countryComboBox;
         private System.Windows.Forms.LinkLabel cityLinkLabel;
         private System.Windows.Forms.LinkLabel countryLinkLabel;
+        private System.Windows.Forms.Button button1;
     }
 }

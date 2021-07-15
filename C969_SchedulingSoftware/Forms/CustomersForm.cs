@@ -39,13 +39,18 @@ namespace C969_SchedulingSoftware
             customerBindingSource.DataSource = customerDbcontext.customers.Local;
 
             addressDbcontext.addresses.Load();
-            addressBindingSource.DataSource = addressDbcontext.addresses.Local;
+            addressBindingSource.DataSource = addressDbcontext.addresses.Local.ToBindingList();
 
             customerDbcontext.cities.Load();
             customerDbcontext.countries.Load();
 
-            customerGroupBox.Text = rm.GetString("strCustomerManagement");
-            dgvActive.HeaderText = "test";
+            //customerGroupBox.Text = rm.GetString("strCustomerManagement");
+            //dgvActive.HeaderText = "test";
+
+            var test = customerDataGridView.Rows[0].Cells[0].Value.ToString();
+            var currentAddress = addressBindingSource.List.OfType<address>().First(f => f.addressId == int.Parse(test));
+            addressBindingSource.Position = addressBindingSource.IndexOf(currentAddress);
+
 
 
         }
@@ -56,9 +61,9 @@ namespace C969_SchedulingSoftware
 
             Validate();
 
-            countryBindingSource.EndEdit();
-            cityBindingSource.EndEdit();
-            addressBindingSource.EndEdit();
+            //countryBindingSource.EndEdit();
+            //cityBindingSource.EndEdit();
+            //addressBindingSource.EndEdit();
             customerBindingSource.EndEdit();
             addressDbcontext.SaveChanges();            
 
@@ -86,16 +91,16 @@ namespace C969_SchedulingSoftware
 
         }
 
-        private int AddressSearch()
-        {
-            int addressID = addressDbcontext.addresses
-                .Where(address => address.address1 == address1TextBox.Text)
-                .Where(address => address.postalCode == postalCodeTextBox.Text)
-                .Select(address => address.addressId)
-                .Single();
+        //private int AddressSearch()
+        //{
+        //    int addressID = addressDbcontext.addresses
+        //        .Where(address => address.address1 == address1TextBox.Text)
+        //        .Where(address => address.postalCode == postalCodeTextBox.Text)
+        //        .Select(address => address.addressId)
+        //        .Single();
 
-            return addressID;
-        }
+        //    return addressID;
+        //}
 
         private void customerDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -110,6 +115,34 @@ namespace C969_SchedulingSoftware
             {
                 customerBindingSource.ResetBindings(false);
             }
+        }
+
+        private void customerBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            Validate();
+
+            customerBindingSource.EndEdit();
+            
+
+        }
+
+        private void customerDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }
+
+        private void customerDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var test = customerDataGridView.SelectedRows[0].Cells[0].Value.ToString();
+                var currentAddress = addressBindingSource.List.OfType<address>().First(f => f.addressId == int.Parse(test));
+                addressBindingSource.Position = addressBindingSource.IndexOf(currentAddress);
+
+
+            }
+            catch (ArgumentOutOfRangeException) { }
+            catch (InvalidOperationException) { }
         }
     }
 }

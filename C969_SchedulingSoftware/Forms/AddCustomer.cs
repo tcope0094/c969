@@ -18,16 +18,18 @@ using C969_SchedulingSoftware.Forms;
 
 namespace C969_SchedulingSoftware.Forms
 {
-    public partial class AddEditCustomer : Form
+    public partial class AddCustomer : Form
     {
         private DatabaseModel.U05tp4Entities addressDbcontext = new DatabaseModel.U05tp4Entities();
         private DatabaseModel.U05tp4Entities cityDbcontext = new DatabaseModel.U05tp4Entities();
         private DatabaseModel.U05tp4Entities countryDbcontext = new DatabaseModel.U05tp4Entities();
         private DatabaseModel.U05tp4Entities customerDbcontext = new DatabaseModel.U05tp4Entities();
-        public AddEditCustomer()
+        public AddCustomer(ref U05tp4Entities customerDbcontext)
         {
             InitializeComponent();
+            this.customerDbcontext = customerDbcontext;
         }
+
 
         private void AddEditCustomer_Load(object sender, EventArgs e)
         {
@@ -36,12 +38,9 @@ namespace C969_SchedulingSoftware.Forms
             countryDbcontext.countries
                 .OrderBy(c => c.country1)
                 .Load();
-            countryComboBox.DataSource = countryDbcontext.countries.Local.ToBindingList();
+            //countryComboBox.DataSource = countryDbcontext.countries.Local.ToBindingList();
 
-            cityComboBox.DataSource = cityDbcontext.cities.Local;
-
-            
-
+            cityComboBox.DataSource = cityDbcontext.cities.Local.ToBindingList();
 
         }
         private void saveButton_Click(object sender, EventArgs e)
@@ -127,13 +126,24 @@ namespace C969_SchedulingSoftware.Forms
             if (addCountryForm.DialogResult == DialogResult.OK)
             {
                 int size = countryDbcontext.countries.Local.Count;
-                countryComboBox.SelectedItem = countryDbcontext.countries.Local[size - 1];
+                //countryComboBox.SelectedItem = countryDbcontext.countries.Local[size - 1];
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void cityComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            var search = customerDbcontext.cities
+                .Where(c => c.cityId == (int)cityComboBox.SelectedValue)
+                .First();
+
+            country1TextBox.Text = search.country.country1;
+
         }
     }
 }

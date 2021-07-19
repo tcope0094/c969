@@ -136,7 +136,7 @@
             this.Controls.Add(this.city1TextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddCity";
-            this.Text = "AddCity";
+            this.Text = "8";
             this.Load += new System.EventHandler(this.AddCity_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cityBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).EndInit();

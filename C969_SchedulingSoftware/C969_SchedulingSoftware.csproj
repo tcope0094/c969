@@ -126,23 +126,29 @@
     <Compile Include="Forms\AppointmentsForm.Designer.cs">
       <DependentUpon>AppointmentsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\EditCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditCustomer.Designer.cs">
+      <DependentUpon>EditCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CustomersForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\CustomersForm.Designer.cs">
       <DependentUpon>CustomersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AddCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddCustomer.Designer.cs">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\AddEditCustomer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\AddEditCustomer.Designer.cs">
-      <DependentUpon>AddEditCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
@@ -174,8 +180,11 @@
     <EmbeddedResource Include="Forms\AddCountry.resx">
       <DependentUpon>AddCountry.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddEditCustomer.resx">
-      <DependentUpon>AddEditCustomer.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddCustomer.resx">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditCustomer.resx">
+      <DependentUpon>EditCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

@@ -26,6 +26,7 @@ namespace C969_SchedulingSoftware
         private DatabaseModel.U05tp4Entities addressDbcontext = new DatabaseModel.U05tp4Entities();
         private DatabaseModel.U05tp4Entities cityDbcontext = new DatabaseModel.U05tp4Entities();
         private DatabaseModel.U05tp4Entities countryDbcontext = new DatabaseModel.U05tp4Entities();
+        private DatabaseModel.U05tp4Entities appointmentDbcontext = new DatabaseModel.U05tp4Entities();
         public CustomersForm()
         {
             InitializeComponent();
@@ -58,6 +59,8 @@ namespace C969_SchedulingSoftware
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
             //addressIdTextBox.Text = AddressSearch().ToString();
+
+            
 
             Validate();
 
@@ -109,19 +112,19 @@ namespace C969_SchedulingSoftware
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var addCustomer = new AddEditCustomer();
+            var addCustomer = new AddCustomer(ref customerDbcontext);
             addCustomer.ShowDialog();
             if (addCustomer.DialogResult == DialogResult.OK)
             {
-                customerBindingSource.ResetBindings(false);
+                customerBindingSource.DataSource = customerDbcontext.customers.Local;
             }
         }
 
         private void customerBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             Validate();
-
             customerBindingSource.EndEdit();
+            customerDbcontext.SaveChanges();
             
 
         }
@@ -135,14 +138,19 @@ namespace C969_SchedulingSoftware
         {
             try
             {
-                var test = customerDataGridView.SelectedRows[0].Cells[0].Value.ToString();
-                var currentAddress = addressBindingSource.List.OfType<address>().First(f => f.addressId == int.Parse(test));
+                var currentCustomerAddressId = customerDataGridView.SelectedRows[0].Cells[0].Value.ToString();
+                var currentAddress = addressBindingSource.List.OfType<address>().First(f => f.addressId == int.Parse(currentCustomerAddressId));
                 addressBindingSource.Position = addressBindingSource.IndexOf(currentAddress);
 
 
             }
             catch (ArgumentOutOfRangeException) { }
             catch (InvalidOperationException) { }
+        }
+
+        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        {
+            customerBindingSource.Remove(customerBindingSource.Current);
         }
     }
 }

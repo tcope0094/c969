@@ -109,7 +109,7 @@ namespace C969_SchedulingSoftware.Forms
             {
                 var search = cityDbcontext.cities
                     .Where(c => c.city1 == cityToSearch.city1)
-                    .Where(c => c.countryId == cityToSearch.countryId)
+                    //.Where(c => c.countryId == cityToSearch.countryId)
                     .First();
 
                 return search;

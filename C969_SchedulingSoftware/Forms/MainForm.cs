@@ -79,10 +79,10 @@ namespace C969_SchedulingSoftware
 
         private void mgrCustomerButton_Click(object sender, EventArgs e)
         {
-            var customerForm = new CustomersForm();
-            customerForm.Show();
-            //var form1 = new Form1();
-            //form1.Show();
+            //var customersForm = new CustomersForm();
+            //customersForm.Show();
+            var form1 = new Form1();
+            form1.Show();
         }
     }
 }

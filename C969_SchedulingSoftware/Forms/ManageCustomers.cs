@@ -30,10 +30,10 @@ namespace C969_SchedulingSoftware.Forms
         }
         private void ManageCustomers_Load(object sender, EventArgs e)
         {
+            //customerDbcontext.addresses.Load();
+            //customerDbcontext.cities.Load();
+            //customerDbcontext.countries.Load();
             customerDbcontext.customers.Load();
-            customerDbcontext.cities.Load();
-            customerDbcontext.countries.Load();
-
             customerBindingSource.DataSource = customerDbcontext.customers.Local.ToBindingList();
         }
         private void addCustomerButton_Click(object sender, EventArgs e)
@@ -42,7 +42,8 @@ namespace C969_SchedulingSoftware.Forms
             addCustomer.ShowDialog();
             if (addCustomer.DialogResult == DialogResult.OK)
             {
-
+                customerDbcontext.customers.Load();
+                customerBindingSource.DataSource = customerDbcontext.customers.Local.ToBindingList();
             }
         }
         private void editCustomerButton_Click(object sender, EventArgs e)

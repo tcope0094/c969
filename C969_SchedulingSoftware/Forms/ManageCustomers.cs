@@ -18,18 +18,17 @@ using C969_SchedulingSoftware.Forms;
 
 namespace C969_SchedulingSoftware.Forms
 {
-    public partial class Form1 : Form
+    public partial class ManageCustomers : Form
     {        
         private DatabaseModel.U05tp4Entities addressDbcontext = new DatabaseModel.U05tp4Entities();
         private DatabaseModel.U05tp4Entities cityDbcontext = new DatabaseModel.U05tp4Entities();
         private DatabaseModel.U05tp4Entities countryDbcontext = new DatabaseModel.U05tp4Entities();
         private DatabaseModel.U05tp4Entities customerDbcontext = new DatabaseModel.U05tp4Entities();
-        public Form1()
+        public ManageCustomers()
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void ManageCustomers_Load(object sender, EventArgs e)
         {
             customerDbcontext.customers.Load();
             customerDbcontext.cities.Load();
@@ -37,27 +36,16 @@ namespace C969_SchedulingSoftware.Forms
 
             customerBindingSource.DataSource = customerDbcontext.customers.Local.ToBindingList();
         }
-
-        private void customerBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            Validate();
-            customerBindingSource.EndEdit();
-            customerDbcontext.SaveChanges();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void addCustomerButton_Click(object sender, EventArgs e)
         {
             var addCustomer = new AddEditCustomer(ref customerDbcontext);
             addCustomer.ShowDialog();
             if (addCustomer.DialogResult == DialogResult.OK)
             {
-                //customerDbcontext = new DatabaseModel.U05tp4Entities();
-                //customerDbcontext.customers.Load();
-                //customerBindingSource.DataSource = customerDbcontext.customers.Local;
+
             }
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void editCustomerButton_Click(object sender, EventArgs e)
         {
             var editCustomer = new AddEditCustomer((customer)customerBindingSource.Current, ref customerDbcontext);
             editCustomer.ShowDialog();

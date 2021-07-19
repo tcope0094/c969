@@ -1,6 +1,6 @@
 ﻿namespace C969_SchedulingSoftware.Forms
 {
-    partial class Form1
+    partial class ManageCustomers
     {
         /// <summary>
         /// Required designer variable.
@@ -43,9 +43,9 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.addCustomerButton = new System.Windows.Forms.Button();
+            this.editCustomerButton = new System.Windows.Forms.Button();
+            this.deleteCustomerButton = new System.Windows.Forms.Button();
             this.address1TextBox = new System.Windows.Forms.TextBox();
             this.address2TextBox = new System.Windows.Forms.TextBox();
             this.phoneTextBox = new System.Windows.Forms.TextBox();
@@ -61,6 +61,60 @@
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerDataGridView)).BeginInit();
             this.SuspendLayout();
+            // 
+            // address1Label
+            // 
+            address1Label.AutoSize = true;
+            address1Label.Location = new System.Drawing.Point(904, 63);
+            address1Label.Name = "address1Label";
+            address1Label.Size = new System.Drawing.Size(53, 13);
+            address1Label.TabIndex = 15;
+            address1Label.Text = "address1:";
+            // 
+            // address2Label
+            // 
+            address2Label.AutoSize = true;
+            address2Label.Location = new System.Drawing.Point(904, 89);
+            address2Label.Name = "address2Label";
+            address2Label.Size = new System.Drawing.Size(53, 13);
+            address2Label.TabIndex = 17;
+            address2Label.Text = "address2:";
+            // 
+            // phoneLabel
+            // 
+            phoneLabel.AutoSize = true;
+            phoneLabel.Location = new System.Drawing.Point(904, 115);
+            phoneLabel.Name = "phoneLabel";
+            phoneLabel.Size = new System.Drawing.Size(40, 13);
+            phoneLabel.TabIndex = 19;
+            phoneLabel.Text = "phone:";
+            // 
+            // postalCodeLabel
+            // 
+            postalCodeLabel.AutoSize = true;
+            postalCodeLabel.Location = new System.Drawing.Point(904, 141);
+            postalCodeLabel.Name = "postalCodeLabel";
+            postalCodeLabel.Size = new System.Drawing.Size(66, 13);
+            postalCodeLabel.TabIndex = 21;
+            postalCodeLabel.Text = "postal Code:";
+            // 
+            // city1Label
+            // 
+            city1Label.AutoSize = true;
+            city1Label.Location = new System.Drawing.Point(920, 176);
+            city1Label.Name = "city1Label";
+            city1Label.Size = new System.Drawing.Size(32, 13);
+            city1Label.TabIndex = 22;
+            city1Label.Text = "city1:";
+            // 
+            // country1Label
+            // 
+            country1Label.AutoSize = true;
+            country1Label.Location = new System.Drawing.Point(919, 206);
+            country1Label.Name = "country1Label";
+            country1Label.Size = new System.Drawing.Size(51, 13);
+            country1Label.TabIndex = 23;
+            country1Label.Text = "country1:";
             // 
             // customerBindingSource
             // 
@@ -120,43 +174,34 @@
             this.dataGridViewTextBoxColumn7.HeaderText = "lastUpdateBy";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
-            // button1
+            // addCustomerButton
             // 
-            this.button1.Location = new System.Drawing.Point(33, 254);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "add";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.addCustomerButton.Location = new System.Drawing.Point(33, 254);
+            this.addCustomerButton.Name = "addCustomerButton";
+            this.addCustomerButton.Size = new System.Drawing.Size(75, 23);
+            this.addCustomerButton.TabIndex = 13;
+            this.addCustomerButton.Text = "Add";
+            this.addCustomerButton.UseVisualStyleBackColor = true;
+            this.addCustomerButton.Click += new System.EventHandler(this.addCustomerButton_Click);
             // 
-            // button2
+            // editCustomerButton
             // 
-            this.button2.Location = new System.Drawing.Point(114, 254);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "edit";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.editCustomerButton.Location = new System.Drawing.Point(114, 254);
+            this.editCustomerButton.Name = "editCustomerButton";
+            this.editCustomerButton.Size = new System.Drawing.Size(75, 23);
+            this.editCustomerButton.TabIndex = 14;
+            this.editCustomerButton.Text = "Edit";
+            this.editCustomerButton.UseVisualStyleBackColor = true;
+            this.editCustomerButton.Click += new System.EventHandler(this.editCustomerButton_Click);
             // 
-            // button3
+            // deleteCustomerButton
             // 
-            this.button3.Location = new System.Drawing.Point(195, 254);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 15;
-            this.button3.Text = "delete";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // address1Label
-            // 
-            address1Label.AutoSize = true;
-            address1Label.Location = new System.Drawing.Point(904, 63);
-            address1Label.Name = "address1Label";
-            address1Label.Size = new System.Drawing.Size(53, 13);
-            address1Label.TabIndex = 15;
-            address1Label.Text = "address1:";
+            this.deleteCustomerButton.Location = new System.Drawing.Point(195, 254);
+            this.deleteCustomerButton.Name = "deleteCustomerButton";
+            this.deleteCustomerButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteCustomerButton.TabIndex = 15;
+            this.deleteCustomerButton.Text = "Delete";
+            this.deleteCustomerButton.UseVisualStyleBackColor = true;
             // 
             // address1TextBox
             // 
@@ -166,15 +211,6 @@
             this.address1TextBox.Size = new System.Drawing.Size(100, 20);
             this.address1TextBox.TabIndex = 16;
             // 
-            // address2Label
-            // 
-            address2Label.AutoSize = true;
-            address2Label.Location = new System.Drawing.Point(904, 89);
-            address2Label.Name = "address2Label";
-            address2Label.Size = new System.Drawing.Size(53, 13);
-            address2Label.TabIndex = 17;
-            address2Label.Text = "address2:";
-            // 
             // address2TextBox
             // 
             this.address2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerBindingSource, "address.address2", true));
@@ -182,15 +218,6 @@
             this.address2TextBox.Name = "address2TextBox";
             this.address2TextBox.Size = new System.Drawing.Size(100, 20);
             this.address2TextBox.TabIndex = 18;
-            // 
-            // phoneLabel
-            // 
-            phoneLabel.AutoSize = true;
-            phoneLabel.Location = new System.Drawing.Point(904, 115);
-            phoneLabel.Name = "phoneLabel";
-            phoneLabel.Size = new System.Drawing.Size(40, 13);
-            phoneLabel.TabIndex = 19;
-            phoneLabel.Text = "phone:";
             // 
             // phoneTextBox
             // 
@@ -200,15 +227,6 @@
             this.phoneTextBox.Size = new System.Drawing.Size(100, 20);
             this.phoneTextBox.TabIndex = 20;
             // 
-            // postalCodeLabel
-            // 
-            postalCodeLabel.AutoSize = true;
-            postalCodeLabel.Location = new System.Drawing.Point(904, 141);
-            postalCodeLabel.Name = "postalCodeLabel";
-            postalCodeLabel.Size = new System.Drawing.Size(66, 13);
-            postalCodeLabel.TabIndex = 21;
-            postalCodeLabel.Text = "postal Code:";
-            // 
             // postalCodeTextBox
             // 
             this.postalCodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerBindingSource, "address.postalCode", true));
@@ -216,15 +234,6 @@
             this.postalCodeTextBox.Name = "postalCodeTextBox";
             this.postalCodeTextBox.Size = new System.Drawing.Size(100, 20);
             this.postalCodeTextBox.TabIndex = 22;
-            // 
-            // city1Label
-            // 
-            city1Label.AutoSize = true;
-            city1Label.Location = new System.Drawing.Point(920, 176);
-            city1Label.Name = "city1Label";
-            city1Label.Size = new System.Drawing.Size(32, 13);
-            city1Label.TabIndex = 22;
-            city1Label.Text = "city1:";
             // 
             // city1TextBox
             // 
@@ -234,15 +243,6 @@
             this.city1TextBox.Size = new System.Drawing.Size(100, 20);
             this.city1TextBox.TabIndex = 23;
             // 
-            // country1Label
-            // 
-            country1Label.AutoSize = true;
-            country1Label.Location = new System.Drawing.Point(919, 206);
-            country1Label.Name = "country1Label";
-            country1Label.Size = new System.Drawing.Size(51, 13);
-            country1Label.TabIndex = 23;
-            country1Label.Text = "country1:";
-            // 
             // country1TextBox
             // 
             this.country1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerBindingSource, "address.city.country.country1", true));
@@ -251,7 +251,7 @@
             this.country1TextBox.Size = new System.Drawing.Size(100, 20);
             this.country1TextBox.TabIndex = 24;
             // 
-            // Form1
+            // ManageCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -268,13 +268,13 @@
             this.Controls.Add(this.phoneTextBox);
             this.Controls.Add(postalCodeLabel);
             this.Controls.Add(this.postalCodeTextBox);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.deleteCustomerButton);
+            this.Controls.Add(this.editCustomerButton);
+            this.Controls.Add(this.addCustomerButton);
             this.Controls.Add(this.customerDataGridView);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Name = "ManageCustomers";
+            this.Text = "Manage Customers";
+            this.Load += new System.EventHandler(this.ManageCustomers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerDataGridView)).EndInit();
             this.ResumeLayout(false);
@@ -292,9 +292,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button addCustomerButton;
+        private System.Windows.Forms.Button editCustomerButton;
+        private System.Windows.Forms.Button deleteCustomerButton;
         private System.Windows.Forms.TextBox address1TextBox;
         private System.Windows.Forms.TextBox address2TextBox;
         private System.Windows.Forms.TextBox phoneTextBox;

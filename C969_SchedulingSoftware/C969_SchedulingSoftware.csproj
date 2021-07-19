@@ -132,23 +132,17 @@
     <Compile Include="Forms\EditCustomer.Designer.cs">
       <DependentUpon>EditCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CustomersForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CustomersForm.Designer.cs">
-      <DependentUpon>CustomersForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\AddEditCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\AddEditCustomer.Designer.cs">
       <DependentUpon>AddEditCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form1.cs">
+    <Compile Include="Forms\ManageCustomers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\ManageCustomers.Designer.cs">
+      <DependentUpon>ManageCustomers.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
@@ -186,17 +180,14 @@
     <EmbeddedResource Include="Forms\EditCustomer.resx">
       <DependentUpon>EditCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ManageCustomers.resx">
+      <DependentUpon>ManageCustomers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.en.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CustomersForm.resx">
-      <DependentUpon>CustomersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

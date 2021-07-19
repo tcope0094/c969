@@ -47,15 +47,19 @@ namespace C969_SchedulingSoftware.Forms
         {
             addressDbcontext.addresses.Load();
             cityDbcontext.cities.Load();
-
-            cityComboBox.DataSource = cityDbcontext.cities.Local.ToBindingList();
-
-
+            customerDbcontext.cities.Load();
+            
             if (formType == FormType.Edit)
             {
                 customerBindingSource.DataSource = customerDbcontext.customers.Local.ToBindingList();
                 customerBindingSource.Position = customerBindingSourcePosition;
+                cityComboBox.DataSource = customerDbcontext.cities.Local.ToBindingList();
+                cityComboBox.SelectedValue = customerToEdit.address.cityId;
 
+            }
+            else
+            {
+                cityComboBox.DataSource = cityDbcontext.cities.Local.ToBindingList();
             }
 
         }
@@ -118,16 +122,7 @@ namespace C969_SchedulingSoftware.Forms
 
             country1TextBox.Text = search.country.country1;
 
-        }
-        private void PopulateControls(customer customerToPopulate)
-        {
-            activeCheckBox.Checked = customerToPopulate.active;
-            customerNameTextBox.Text = customerToPopulate.customerName;
-            address1TextBox.Text = customerToPopulate.address.address1;
-            address2TextBox.Text = customerToPopulate.address.address2;
-            cityComboBox.SelectedValue = customerToPopulate.address.cityId;
-            phoneTextBox.Text = customerToPopulate.address.phone;
-            postalCodeTextBox.Text = customerToPopulate.address.postalCode;
+
         }
 
         private void AddCustomerSave()
@@ -176,6 +171,14 @@ namespace C969_SchedulingSoftware.Forms
         }
         private void EditCustomerSave()
         {
+            if ((int)cityComboBox.SelectedValue != customerToEdit.address.cityId)
+            {
+                var addressToUpdate = customerDbcontext.addresses
+                    .Where(a => a.addressId == customerToEdit.addressId)
+                    .First();
+
+                addressToUpdate.cityId = (int)cityComboBox.SelectedValue;
+            }
             customerDbcontext.SaveChanges();
             this.DialogResult = DialogResult.OK;
         }

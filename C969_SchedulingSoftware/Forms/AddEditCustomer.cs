@@ -176,46 +176,6 @@ namespace C969_SchedulingSoftware.Forms
         }
         private void EditCustomerSave()
         {
-            DateTime currentDateTime = DateTime.UtcNow;
-            address newAddress = new address();
-            customer newCustomer = new customer();
-
-
-
-            //build new address entry, must be done before new customer added
-            newAddress.address1 = address1TextBox.Text;
-            newAddress.address2 = address2TextBox.Text;
-            newAddress.cityId = (int)cityComboBox.SelectedValue;
-            newAddress.createDate = currentDateTime.Date;
-            newAddress.createdBy = "test";
-            newAddress.lastUpdate = currentDateTime.Date;
-            newAddress.lastUpdateBy = "test";
-            newAddress.phone = phoneTextBox.Text;
-            newAddress.postalCode = postalCodeTextBox.Text;
-
-            newCustomer.active = activeCheckBox.Checked;
-            newCustomer.createDate = currentDateTime.Date;
-            newCustomer.createdBy = "test";
-            newCustomer.customerName = customerNameTextBox.Text;
-            newCustomer.lastUpdate = currentDateTime.Date;
-            newCustomer.lastUpdateBy = "test";
-
-            var searchResults = AddressSearch(newAddress);
-
-
-            if (searchResults == null)
-            {
-                addressDbcontext.addresses.Add(newAddress);
-                addressDbcontext.SaveChanges();
-
-                newCustomer.addressId = newAddress.addressId;
-            }
-            else
-            {
-                newCustomer.addressId = searchResults.addressId;
-            }
-
-            customerDbcontext.customers.Add(newCustomer);
             customerDbcontext.SaveChanges();
             this.DialogResult = DialogResult.OK;
         }

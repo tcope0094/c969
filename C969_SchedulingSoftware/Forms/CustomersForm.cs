@@ -112,7 +112,7 @@ namespace C969_SchedulingSoftware
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var addCustomer = new AddCustomer(ref customerDbcontext);
+            var addCustomer = new AddEditCustomer(ref customerDbcontext);
             addCustomer.ShowDialog();
             if (addCustomer.DialogResult == DialogResult.OK)
             {

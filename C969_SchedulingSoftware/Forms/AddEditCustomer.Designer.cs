@@ -1,6 +1,6 @@
 ﻿namespace C969_SchedulingSoftware.Forms
 {
-    partial class AddCustomer
+    partial class AddEditCustomer
     {
         /// <summary>
         /// Required designer variable.
@@ -49,7 +49,6 @@
             this.cityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.countryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cityLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.countryLinkLabel = new System.Windows.Forms.LinkLabel();
             this.button1 = new System.Windows.Forms.Button();
             this.country1TextBox = new System.Windows.Forms.TextBox();
             activeLabel = new System.Windows.Forms.Label();
@@ -232,18 +231,6 @@
             this.cityLinkLabel.Text = "Add New";
             this.cityLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.cityLinkLabel_LinkClicked);
             // 
-            // countryLinkLabel
-            // 
-            this.countryLinkLabel.AutoSize = true;
-            this.countryLinkLabel.Location = new System.Drawing.Point(317, 176);
-            this.countryLinkLabel.Name = "countryLinkLabel";
-            this.countryLinkLabel.Size = new System.Drawing.Size(51, 13);
-            this.countryLinkLabel.TabIndex = 52;
-            this.countryLinkLabel.TabStop = true;
-            this.countryLinkLabel.Text = "Add New";
-            this.countryLinkLabel.Visible = false;
-            this.countryLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.countryLinkLabel_LinkClicked);
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(235, 258);
@@ -269,7 +256,6 @@
             this.ClientSize = new System.Drawing.Size(384, 315);
             this.Controls.Add(this.country1TextBox);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.countryLinkLabel);
             this.Controls.Add(this.cityLinkLabel);
             this.Controls.Add(country1Label);
             this.Controls.Add(this.cityComboBox);
@@ -312,7 +298,6 @@
         private System.Windows.Forms.BindingSource cityBindingSource;
         private System.Windows.Forms.BindingSource countryBindingSource;
         private System.Windows.Forms.LinkLabel cityLinkLabel;
-        private System.Windows.Forms.LinkLabel countryLinkLabel;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox country1TextBox;
     }

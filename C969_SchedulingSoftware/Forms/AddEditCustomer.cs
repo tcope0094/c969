@@ -18,29 +18,40 @@ using C969_SchedulingSoftware.Forms;
 
 namespace C969_SchedulingSoftware.Forms
 {
-    public partial class AddCustomer : Form
+    public partial class AddEditCustomer : Form
     {
         private DatabaseModel.U05tp4Entities addressDbcontext = new DatabaseModel.U05tp4Entities();
         private DatabaseModel.U05tp4Entities cityDbcontext = new DatabaseModel.U05tp4Entities();
         private DatabaseModel.U05tp4Entities countryDbcontext = new DatabaseModel.U05tp4Entities();
         private DatabaseModel.U05tp4Entities customerDbcontext = new DatabaseModel.U05tp4Entities();
-        public AddCustomer(ref U05tp4Entities customerDbcontext)
+        private enum FormType { Add, Edit }
+        public customer customerToEdit;
+        private FormType formType;
+        public AddEditCustomer(ref U05tp4Entities customerDbcontext)
         {
             InitializeComponent();
             this.customerDbcontext = customerDbcontext;
+            this.formType = FormType.Add;
         }
-
+        public AddEditCustomer(customer customerToEdit, ref U05tp4Entities customerDbcontext)
+        {
+            InitializeComponent();
+            this.customerDbcontext = customerDbcontext;
+            this.formType = FormType.Edit;
+            this.customerToEdit = customerToEdit;
+        }
 
         private void AddEditCustomer_Load(object sender, EventArgs e)
         {
             addressDbcontext.addresses.Load();
             cityDbcontext.cities.Load();
-            countryDbcontext.countries
-                .OrderBy(c => c.country1)
-                .Load();
-            //countryComboBox.DataSource = countryDbcontext.countries.Local.ToBindingList();
 
             cityComboBox.DataSource = cityDbcontext.cities.Local.ToBindingList();
+
+            if (formType == FormType.Edit)
+            {
+                PopulateControls(this.customerToEdit);
+            }
 
         }
         private void saveButton_Click(object sender, EventArgs e)
@@ -118,17 +129,6 @@ namespace C969_SchedulingSoftware.Forms
             }
         }
 
-        private void countryLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            var addCountryForm = new AddCountry(ref countryDbcontext);
-            addCountryForm.Owner = this;
-            addCountryForm.ShowDialog();
-            if (addCountryForm.DialogResult == DialogResult.OK)
-            {
-                int size = countryDbcontext.countries.Local.Count;
-                //countryComboBox.SelectedItem = countryDbcontext.countries.Local[size - 1];
-            }
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -144,6 +144,16 @@ namespace C969_SchedulingSoftware.Forms
 
             country1TextBox.Text = search.country.country1;
 
+        }
+        private void PopulateControls(customer customerToPopulate)
+        {
+            activeCheckBox.Checked = customerToPopulate.active;
+            customerNameTextBox.Text = customerToPopulate.customerName;
+            address1TextBox.Text = customerToPopulate.address.address1;
+            address2TextBox.Text = customerToPopulate.address.address2;
+            cityComboBox.SelectedValue = customerToPopulate.address.cityId;
+            phoneTextBox.Text = customerToPopulate.address.phone;
+            postalCodeTextBox.Text = customerToPopulate.address.postalCode;
         }
     }
 }

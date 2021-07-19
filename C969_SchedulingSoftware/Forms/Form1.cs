@@ -47,13 +47,23 @@ namespace C969_SchedulingSoftware.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var addCustomer = new AddCustomer(ref customerDbcontext);
+            var addCustomer = new AddEditCustomer(ref customerDbcontext);
             addCustomer.ShowDialog();
             if (addCustomer.DialogResult == DialogResult.OK)
             {
-                customerDbcontext = new DatabaseModel.U05tp4Entities();
-                customerDbcontext.customers.Load();
-                customerBindingSource.DataSource = customerDbcontext.customers.Local;
+                //customerDbcontext = new DatabaseModel.U05tp4Entities();
+                //customerDbcontext.customers.Load();
+                //customerBindingSource.DataSource = customerDbcontext.customers.Local;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var editCustomer = new AddEditCustomer((customer)customerBindingSource.Current, ref customerDbcontext);
+            editCustomer.ShowDialog();
+            if (editCustomer.DialogResult == DialogResult.OK)
+            {
+
             }
         }
     }

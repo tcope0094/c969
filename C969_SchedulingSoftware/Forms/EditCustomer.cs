@@ -26,10 +26,14 @@ namespace C969_SchedulingSoftware.Forms
         private DatabaseModel.U05tp4Entities countryDbcontext = new DatabaseModel.U05tp4Entities();
         private DatabaseModel.U05tp4Entities customerDbcontext = new DatabaseModel.U05tp4Entities();
         public customer customerToEdit;
+        private enum FormType {Add, Edit}
+        private FormType formType;
         public EditCustomer(customer customerToEdit)
         {
             InitializeComponent();
             this.customerToEdit = customerToEdit;
+            this.formType = FormType.Edit;
+            
         }
 
         private void EditCustomer_Load(object sender, EventArgs e)

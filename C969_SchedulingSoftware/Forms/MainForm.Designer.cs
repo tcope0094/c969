@@ -70,6 +70,7 @@
             this.mgrAppointmentsButton.TabIndex = 1;
             this.mgrAppointmentsButton.Text = "mgrAppointments";
             this.mgrAppointmentsButton.UseVisualStyleBackColor = true;
+            this.mgrAppointmentsButton.Click += new System.EventHandler(this.mgrAppointmentsButton_Click);
             // 
             // mgrCustomerButton
             // 

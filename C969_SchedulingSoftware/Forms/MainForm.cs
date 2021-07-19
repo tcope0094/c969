@@ -84,5 +84,11 @@ namespace C969_SchedulingSoftware
             var form1 = new ManageCustomers();
             form1.Show();
         }
+
+        private void mgrAppointmentsButton_Click(object sender, EventArgs e)
+        {
+            var manageAppointments = new ManageAppointments();
+            manageAppointments.Show();
+        }
     }
 }

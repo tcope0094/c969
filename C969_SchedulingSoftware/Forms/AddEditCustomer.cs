@@ -25,20 +25,22 @@ namespace C969_SchedulingSoftware.Forms
         private DatabaseModel.U05tp4Entities countryDbcontext = new DatabaseModel.U05tp4Entities();
         private DatabaseModel.U05tp4Entities customerDbcontext = new DatabaseModel.U05tp4Entities();
         private enum FormType { Add, Edit }
-        public customer customerToEdit;
+        private customer customerToEdit;
         private FormType formType;
+        private int customerBindingSourcePosition;
         public AddEditCustomer(ref U05tp4Entities customerDbcontext)
         {
             InitializeComponent();
             this.customerDbcontext = customerDbcontext;
             this.formType = FormType.Add;
         }
-        public AddEditCustomer(customer customerToEdit, ref U05tp4Entities customerDbcontext)
+        public AddEditCustomer(int customerIdToEdit, ref U05tp4Entities customerDbcontext, int customerBindingSourcePosition)
         {
             InitializeComponent();
             this.customerDbcontext = customerDbcontext;
             this.formType = FormType.Edit;
-            this.customerToEdit = customerToEdit;
+            this.customerToEdit = CustomerSearch(customerIdToEdit);
+            this.customerBindingSourcePosition = customerBindingSourcePosition;
         }
 
         private void AddEditCustomer_Load(object sender, EventArgs e)
@@ -48,54 +50,27 @@ namespace C969_SchedulingSoftware.Forms
 
             cityComboBox.DataSource = cityDbcontext.cities.Local.ToBindingList();
 
+            customerBindingSource.DataSource = customerDbcontext.customers.Local.ToBindingList();
+            customerBindingSource.Position = customerBindingSourcePosition;
+
             if (formType == FormType.Edit)
             {
-                PopulateControls(this.customerToEdit);
+                //PopulateControls(this.customerToEdit);
+                
             }
 
         }
         private void saveButton_Click(object sender, EventArgs e)
         {
-            DateTime currentDateTime = DateTime.UtcNow;
-            address newAddress = new address();
-            customer newCustomer = new customer();
-
-            //build new address entry, must be done before new customer added
-            newAddress.address1 = address1TextBox.Text;
-            newAddress.address2 = address2TextBox.Text;
-            newAddress.cityId = (int)cityComboBox.SelectedValue;
-            newAddress.createDate = currentDateTime.Date;
-            newAddress.createdBy = "test";
-            newAddress.lastUpdate = currentDateTime.Date;
-            newAddress.lastUpdateBy = "test";
-            newAddress.phone = phoneTextBox.Text;
-            newAddress.postalCode = postalCodeTextBox.Text;
-
-            newCustomer.active = activeCheckBox.Checked;
-            newCustomer.createDate = currentDateTime.Date;
-            newCustomer.createdBy = "test";
-            newCustomer.customerName = customerNameTextBox.Text;
-            newCustomer.lastUpdate = currentDateTime.Date;
-            newCustomer.lastUpdateBy = "test";
-
-            var searchResults = AddressSearch(newAddress);
-            
-
-            if (searchResults == null)
+            if (this.formType == FormType.Add)
             {
-                addressDbcontext.addresses.Add(newAddress);
-                addressDbcontext.SaveChanges();
-
-                newCustomer.addressId = newAddress.addressId;
+                AddCustomerSave();
             }
             else
             {
-                newCustomer.addressId = searchResults.addressId;
+                EditCustomerSave();
             }
-
-            customerDbcontext.customers.Add(newCustomer);
-            customerDbcontext.SaveChanges();
-            this.DialogResult = DialogResult.OK;
+            
         
         }
 
@@ -154,6 +129,105 @@ namespace C969_SchedulingSoftware.Forms
             cityComboBox.SelectedValue = customerToPopulate.address.cityId;
             phoneTextBox.Text = customerToPopulate.address.phone;
             postalCodeTextBox.Text = customerToPopulate.address.postalCode;
+        }
+
+        private void AddCustomerSave()
+        {
+            DateTime currentDateTime = DateTime.UtcNow;
+            address newAddress = new address();
+            customer newCustomer = new customer();
+
+            //build new address entry, must be done before new customer added
+            newAddress.address1 = address1TextBox.Text;
+            newAddress.address2 = address2TextBox.Text;
+            newAddress.cityId = (int)cityComboBox.SelectedValue;
+            newAddress.createDate = currentDateTime.Date;
+            newAddress.createdBy = "test";
+            newAddress.lastUpdate = currentDateTime.Date;
+            newAddress.lastUpdateBy = "test";
+            newAddress.phone = phoneTextBox.Text;
+            newAddress.postalCode = postalCodeTextBox.Text;
+
+            newCustomer.active = activeCheckBox.Checked;
+            newCustomer.createDate = currentDateTime.Date;
+            newCustomer.createdBy = "test";
+            newCustomer.customerName = customerNameTextBox.Text;
+            newCustomer.lastUpdate = currentDateTime.Date;
+            newCustomer.lastUpdateBy = "test";
+
+            var searchResults = AddressSearch(newAddress);
+
+
+            if (searchResults == null)
+            {
+                addressDbcontext.addresses.Add(newAddress);
+                addressDbcontext.SaveChanges();
+
+                newCustomer.addressId = newAddress.addressId;
+            }
+            else
+            {
+                newCustomer.addressId = searchResults.addressId;
+            }
+
+            customerDbcontext.customers.Add(newCustomer);
+            customerDbcontext.SaveChanges();
+            this.DialogResult = DialogResult.OK;
+
+        }
+        private void EditCustomerSave()
+        {
+            DateTime currentDateTime = DateTime.UtcNow;
+            address newAddress = new address();
+            customer newCustomer = new customer();
+
+
+
+            //build new address entry, must be done before new customer added
+            newAddress.address1 = address1TextBox.Text;
+            newAddress.address2 = address2TextBox.Text;
+            newAddress.cityId = (int)cityComboBox.SelectedValue;
+            newAddress.createDate = currentDateTime.Date;
+            newAddress.createdBy = "test";
+            newAddress.lastUpdate = currentDateTime.Date;
+            newAddress.lastUpdateBy = "test";
+            newAddress.phone = phoneTextBox.Text;
+            newAddress.postalCode = postalCodeTextBox.Text;
+
+            newCustomer.active = activeCheckBox.Checked;
+            newCustomer.createDate = currentDateTime.Date;
+            newCustomer.createdBy = "test";
+            newCustomer.customerName = customerNameTextBox.Text;
+            newCustomer.lastUpdate = currentDateTime.Date;
+            newCustomer.lastUpdateBy = "test";
+
+            var searchResults = AddressSearch(newAddress);
+
+
+            if (searchResults == null)
+            {
+                addressDbcontext.addresses.Add(newAddress);
+                addressDbcontext.SaveChanges();
+
+                newCustomer.addressId = newAddress.addressId;
+            }
+            else
+            {
+                newCustomer.addressId = searchResults.addressId;
+            }
+
+            customerDbcontext.customers.Add(newCustomer);
+            customerDbcontext.SaveChanges();
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private customer CustomerSearch(int customerId)
+        {
+            customer search = customerDbcontext.customers.Local
+                .Where(c => c.customerId == customerId)
+                .First();
+
+            return search;
         }
     }
 }

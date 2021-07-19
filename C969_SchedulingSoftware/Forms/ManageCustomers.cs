@@ -47,7 +47,8 @@ namespace C969_SchedulingSoftware.Forms
         }
         private void editCustomerButton_Click(object sender, EventArgs e)
         {
-            var editCustomer = new AddEditCustomer((customer)customerBindingSource.Current, ref customerDbcontext);
+            customer customerToEdit = (customer)customerBindingSource.Current;
+            var editCustomer = new AddEditCustomer(customerToEdit.customerId, ref customerDbcontext, customerBindingSource.Position);
             editCustomer.ShowDialog();
             if (editCustomer.DialogResult == DialogResult.OK)
             {

@@ -249,7 +249,7 @@
             this.country1TextBox.Size = new System.Drawing.Size(199, 20);
             this.country1TextBox.TabIndex = 54;
             // 
-            // AddCustomer
+            // AddEditCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -273,7 +273,7 @@
             this.Controls.Add(this.activeCheckBox);
             this.Controls.Add(customerNameLabel);
             this.Controls.Add(this.customerNameTextBox);
-            this.Name = "AddCustomer";
+            this.Name = "AddEditCustomer";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.AddEditCustomer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();

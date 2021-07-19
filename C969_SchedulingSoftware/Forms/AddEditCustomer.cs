@@ -50,13 +50,12 @@ namespace C969_SchedulingSoftware.Forms
 
             cityComboBox.DataSource = cityDbcontext.cities.Local.ToBindingList();
 
-            customerBindingSource.DataSource = customerDbcontext.customers.Local.ToBindingList();
-            customerBindingSource.Position = customerBindingSourcePosition;
 
             if (formType == FormType.Edit)
             {
-                //PopulateControls(this.customerToEdit);
-                
+                customerBindingSource.DataSource = customerDbcontext.customers.Local.ToBindingList();
+                customerBindingSource.Position = customerBindingSourcePosition;
+
             }
 
         }

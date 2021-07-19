@@ -55,5 +55,13 @@ namespace C969_SchedulingSoftware.Forms
 
             }
         }
+
+        private void deleteCustomerButton_Click(object sender, EventArgs e)
+        {
+            //var confirmationBox = new MessageBox(MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            customerBindingSource.RemoveCurrent();
+            customerBindingSource.EndEdit();
+            customerDbcontext.SaveChanges();
+        }
     }
 }

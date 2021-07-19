@@ -101,7 +101,7 @@
             // city1Label
             // 
             city1Label.AutoSize = true;
-            city1Label.Location = new System.Drawing.Point(920, 176);
+            city1Label.Location = new System.Drawing.Point(904, 167);
             city1Label.Name = "city1Label";
             city1Label.Size = new System.Drawing.Size(32, 13);
             city1Label.TabIndex = 22;
@@ -110,7 +110,7 @@
             // country1Label
             // 
             country1Label.AutoSize = true;
-            country1Label.Location = new System.Drawing.Point(919, 206);
+            country1Label.Location = new System.Drawing.Point(906, 193);
             country1Label.Name = "country1Label";
             country1Label.Size = new System.Drawing.Size(51, 13);
             country1Label.TabIndex = 23;
@@ -209,6 +209,7 @@
             this.address1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerBindingSource, "address.address1", true));
             this.address1TextBox.Location = new System.Drawing.Point(976, 60);
             this.address1TextBox.Name = "address1TextBox";
+            this.address1TextBox.ReadOnly = true;
             this.address1TextBox.Size = new System.Drawing.Size(100, 20);
             this.address1TextBox.TabIndex = 16;
             // 
@@ -217,6 +218,7 @@
             this.address2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerBindingSource, "address.address2", true));
             this.address2TextBox.Location = new System.Drawing.Point(976, 86);
             this.address2TextBox.Name = "address2TextBox";
+            this.address2TextBox.ReadOnly = true;
             this.address2TextBox.Size = new System.Drawing.Size(100, 20);
             this.address2TextBox.TabIndex = 18;
             // 
@@ -225,6 +227,7 @@
             this.phoneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerBindingSource, "address.phone", true));
             this.phoneTextBox.Location = new System.Drawing.Point(976, 112);
             this.phoneTextBox.Name = "phoneTextBox";
+            this.phoneTextBox.ReadOnly = true;
             this.phoneTextBox.Size = new System.Drawing.Size(100, 20);
             this.phoneTextBox.TabIndex = 20;
             // 
@@ -233,22 +236,25 @@
             this.postalCodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerBindingSource, "address.postalCode", true));
             this.postalCodeTextBox.Location = new System.Drawing.Point(976, 138);
             this.postalCodeTextBox.Name = "postalCodeTextBox";
+            this.postalCodeTextBox.ReadOnly = true;
             this.postalCodeTextBox.Size = new System.Drawing.Size(100, 20);
             this.postalCodeTextBox.TabIndex = 22;
             // 
             // city1TextBox
             // 
             this.city1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerBindingSource, "address.city.city1", true));
-            this.city1TextBox.Location = new System.Drawing.Point(976, 169);
+            this.city1TextBox.Location = new System.Drawing.Point(976, 164);
             this.city1TextBox.Name = "city1TextBox";
+            this.city1TextBox.ReadOnly = true;
             this.city1TextBox.Size = new System.Drawing.Size(100, 20);
             this.city1TextBox.TabIndex = 23;
             // 
             // country1TextBox
             // 
             this.country1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerBindingSource, "address.city.country.country1", true));
-            this.country1TextBox.Location = new System.Drawing.Point(976, 203);
+            this.country1TextBox.Location = new System.Drawing.Point(976, 190);
             this.country1TextBox.Name = "country1TextBox";
+            this.country1TextBox.ReadOnly = true;
             this.country1TextBox.Size = new System.Drawing.Size(100, 20);
             this.country1TextBox.TabIndex = 24;
             // 

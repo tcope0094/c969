@@ -50,7 +50,7 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.countryLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.addCustomerLinkLabel = new System.Windows.Forms.LinkLabel();
             contactLabel = new System.Windows.Forms.Label();
             customerIdLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
@@ -92,6 +92,7 @@
             // 
             this.customerIdComboBox.DataSource = this.customerBindingSource;
             this.customerIdComboBox.DisplayMember = "customerName";
+            this.customerIdComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.customerIdComboBox.FormattingEnabled = true;
             this.customerIdComboBox.Location = new System.Drawing.Point(98, 31);
             this.customerIdComboBox.Name = "customerIdComboBox";
@@ -233,22 +234,23 @@
             // 
             this.customerBindingSource.DataSource = typeof(DatabaseModel.customer);
             // 
-            // countryLinkLabel
+            // addCustomerLinkLabel
             // 
-            this.countryLinkLabel.AutoSize = true;
-            this.countryLinkLabel.Location = new System.Drawing.Point(304, 34);
-            this.countryLinkLabel.Name = "countryLinkLabel";
-            this.countryLinkLabel.Size = new System.Drawing.Size(51, 13);
-            this.countryLinkLabel.TabIndex = 54;
-            this.countryLinkLabel.TabStop = true;
-            this.countryLinkLabel.Text = "Add New";
+            this.addCustomerLinkLabel.AutoSize = true;
+            this.addCustomerLinkLabel.Location = new System.Drawing.Point(304, 34);
+            this.addCustomerLinkLabel.Name = "addCustomerLinkLabel";
+            this.addCustomerLinkLabel.Size = new System.Drawing.Size(51, 13);
+            this.addCustomerLinkLabel.TabIndex = 54;
+            this.addCustomerLinkLabel.TabStop = true;
+            this.addCustomerLinkLabel.Text = "Add New";
+            this.addCustomerLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.addCustomerLinkLabel_LinkClicked);
             // 
             // AddAppointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(383, 357);
-            this.Controls.Add(this.countryLinkLabel);
+            this.Controls.Add(this.addCustomerLinkLabel);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(contactLabel);
@@ -292,6 +294,6 @@
         private System.Windows.Forms.TextBox urlTextBox;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.LinkLabel countryLinkLabel;
+        private System.Windows.Forms.LinkLabel addCustomerLinkLabel;
     }
 }

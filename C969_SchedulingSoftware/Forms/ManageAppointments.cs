@@ -37,5 +37,11 @@ namespace C969_SchedulingSoftware.Forms
             appointmentBindingSource.DataSource = appointmentDbcontext.appointments.Local;
 
         }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            var addAppointmentForm = new AddAppointment();
+            addAppointmentForm.ShowDialog();
+        }
     }
 }

@@ -120,11 +120,23 @@
     <Compile Include="Forms\AddCountry.Designer.cs">
       <DependentUpon>AddCountry.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AddAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddAppointment.Designer.cs">
+      <DependentUpon>AddAppointment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AppointmentsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\AppointmentsForm.Designer.cs">
       <DependentUpon>AppointmentsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditAppointment.Designer.cs">
+      <DependentUpon>EditAppointment.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\EditCustomer.cs">
       <SubType>Form</SubType>
@@ -179,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddCountry.resx">
       <DependentUpon>AddCountry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddAppointment.resx">
+      <DependentUpon>AddAppointment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddEditCustomer.resx">
       <DependentUpon>AddEditCustomer.cs</DependentUpon>

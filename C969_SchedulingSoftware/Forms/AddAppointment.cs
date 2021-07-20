@@ -19,22 +19,16 @@ using C969_SchedulingSoftware.Forms;
 
 namespace C969_SchedulingSoftware.Forms
 {
-    public partial class ManageAppointments : Form
+    public partial class AddAppointment : Form
     {
-        private U05tp4Entities appointmentDbcontext = new U05tp4Entities();
-        public ManageAppointments()
+        public AddAppointment()
         {
             InitializeComponent();
         }
 
-        private void ManageAppointments_Load(object sender, EventArgs e)
-        {
-            appointmentDbcontext.appointments
-                .Where(a => a.userId == AppInfo.CurrentUser.userId)
-                .OrderBy(a => a.start)
-                .Load();
 
-            appointmentBindingSource.DataSource = appointmentDbcontext.appointments.Local;
+        private void AddEditAppointment_Load(object sender, EventArgs e)
+        {
 
         }
     }

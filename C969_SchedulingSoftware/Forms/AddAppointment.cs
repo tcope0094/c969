@@ -34,13 +34,56 @@ namespace C969_SchedulingSoftware.Forms
             appointmentDbcontext.customers.Load();
 
             customerIdComboBox.DataSource = appointmentDbcontext.customers.Local.ToBindingList();
-
+            startDateTimePicker.Format = DateTimePickerFormat.Custom;
+            startDateTimePicker.CustomFormat = "MM/dd/yyyy hh:mm";
+            endDateTimePicker.Format = DateTimePickerFormat.Custom;
+            endDateTimePicker.CustomFormat = "MM/dd/yyyy hh:mm";
         }
 
         private void addCustomerLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var addCustomer = new AddEditCustomer(ref appointmentDbcontext);
             addCustomer.ShowDialog();
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            appointment newAppointment = new appointment();
+            DateTime currentDateTime = DateTime.UtcNow;
+
+            
+            newAppointment.customerId = (int)customerIdComboBox.SelectedValue;
+            newAppointment.contact = contactTextBox.Text;
+            newAppointment.title = titleTextBox.Text;
+            newAppointment.type = typeTextBox.Text;
+            newAppointment.description = descriptionTextBox.Text;
+            newAppointment.start = startDateTimePicker.Value;
+            newAppointment.end = endDateTimePicker.Value;
+            newAppointment.location = locationTextBox.Text;
+            newAppointment.url = urlTextBox.Text;
+            newAppointment.userId = AppInfo.CurrentUser.userId;
+
+            newAppointment.createDate = currentDateTime;
+            newAppointment.createdBy = AppInfo.CurrentUser.userName;
+            newAppointment.lastUpdate = currentDateTime;
+            newAppointment.lastUpdateBy = AppInfo.CurrentUser.userName;
+
+            appointmentDbcontext.appointments.Add(newAppointment);
+            try
+            {
+                appointmentDbcontext.SaveChanges();
+                this.DialogResult = DialogResult.OK;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }

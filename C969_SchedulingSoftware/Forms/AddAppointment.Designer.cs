@@ -159,6 +159,7 @@
             // 
             // startDateTimePicker
             // 
+            this.startDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.startDateTimePicker.Location = new System.Drawing.Point(98, 163);
             this.startDateTimePicker.Name = "startDateTimePicker";
             this.startDateTimePicker.Size = new System.Drawing.Size(200, 20);
@@ -220,6 +221,7 @@
             this.saveButton.TabIndex = 29;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // cancelButton
             // 
@@ -229,6 +231,7 @@
             this.cancelButton.TabIndex = 30;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // customerBindingSource
             // 

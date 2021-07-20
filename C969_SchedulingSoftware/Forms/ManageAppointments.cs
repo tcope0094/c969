@@ -34,7 +34,7 @@ namespace C969_SchedulingSoftware.Forms
                 .OrderBy(a => a.start)
                 .Load();
 
-            appointmentBindingSource.DataSource = appointmentDbcontext.appointments.Local;
+            appointmentBindingSource.DataSource = appointmentDbcontext.appointments.Local.ToBindingList();
 
         }
 
@@ -42,6 +42,13 @@ namespace C969_SchedulingSoftware.Forms
         {
             var addAppointmentForm = new AddAppointment();
             addAppointmentForm.ShowDialog();
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            appointmentBindingSource.RemoveCurrent();
+            appointmentBindingSource.EndEdit();
+            appointmentDbcontext.SaveChanges();
         }
     }
 }

@@ -38,7 +38,6 @@
             System.Windows.Forms.Label titleLabel;
             System.Windows.Forms.Label typeLabel;
             System.Windows.Forms.Label urlLabel;
-            System.Windows.Forms.Label userIdLabel;
             this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.contactTextBox = new System.Windows.Forms.TextBox();
             this.customerIdComboBox = new System.Windows.Forms.ComboBox();
@@ -49,7 +48,8 @@
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.typeTextBox = new System.Windows.Forms.TextBox();
             this.urlTextBox = new System.Windows.Forms.TextBox();
-            this.userIdTextBox = new System.Windows.Forms.TextBox();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             contactLabel = new System.Windows.Forms.Label();
             customerIdLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
@@ -59,14 +59,13 @@
             titleLabel = new System.Windows.Forms.Label();
             typeLabel = new System.Windows.Forms.Label();
             urlLabel = new System.Windows.Forms.Label();
-            userIdLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // contactLabel
             // 
             contactLabel.AutoSize = true;
-            contactLabel.Location = new System.Drawing.Point(32, 58);
+            contactLabel.Location = new System.Drawing.Point(31, 58);
             contactLabel.Name = "contactLabel";
             contactLabel.Size = new System.Drawing.Size(46, 13);
             contactLabel.TabIndex = 3;
@@ -77,81 +76,72 @@
             customerIdLabel.AutoSize = true;
             customerIdLabel.Location = new System.Drawing.Point(32, 136);
             customerIdLabel.Name = "customerIdLabel";
-            customerIdLabel.Size = new System.Drawing.Size(65, 13);
+            customerIdLabel.Size = new System.Drawing.Size(51, 13);
             customerIdLabel.TabIndex = 9;
-            customerIdLabel.Text = "customer Id:";
+            customerIdLabel.Text = "Customer";
             // 
             // descriptionLabel
             // 
             descriptionLabel.AutoSize = true;
             descriptionLabel.Location = new System.Drawing.Point(32, 163);
             descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.Size = new System.Drawing.Size(61, 13);
+            descriptionLabel.Size = new System.Drawing.Size(63, 13);
             descriptionLabel.TabIndex = 11;
-            descriptionLabel.Text = "description:";
+            descriptionLabel.Text = "Description:";
             // 
             // endLabel
             // 
             endLabel.AutoSize = true;
             endLabel.Location = new System.Drawing.Point(32, 190);
             endLabel.Name = "endLabel";
-            endLabel.Size = new System.Drawing.Size(28, 13);
+            endLabel.Size = new System.Drawing.Size(29, 13);
             endLabel.TabIndex = 13;
-            endLabel.Text = "end:";
+            endLabel.Text = "End:";
             // 
             // locationLabel
             // 
             locationLabel.AutoSize = true;
             locationLabel.Location = new System.Drawing.Point(31, 222);
             locationLabel.Name = "locationLabel";
-            locationLabel.Size = new System.Drawing.Size(47, 13);
+            locationLabel.Size = new System.Drawing.Size(51, 13);
             locationLabel.TabIndex = 19;
-            locationLabel.Text = "location:";
+            locationLabel.Text = "Location:";
             // 
             // startLabel
             // 
             startLabel.AutoSize = true;
             startLabel.Location = new System.Drawing.Point(31, 249);
             startLabel.Name = "startLabel";
-            startLabel.Size = new System.Drawing.Size(30, 13);
+            startLabel.Size = new System.Drawing.Size(32, 13);
             startLabel.TabIndex = 21;
-            startLabel.Text = "start:";
+            startLabel.Text = "Start:";
             // 
             // titleLabel
             // 
             titleLabel.AutoSize = true;
             titleLabel.Location = new System.Drawing.Point(31, 274);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new System.Drawing.Size(26, 13);
+            titleLabel.Size = new System.Drawing.Size(30, 13);
             titleLabel.TabIndex = 23;
-            titleLabel.Text = "title:";
+            titleLabel.Text = "Title:";
             // 
             // typeLabel
             // 
             typeLabel.AutoSize = true;
             typeLabel.Location = new System.Drawing.Point(31, 300);
             typeLabel.Name = "typeLabel";
-            typeLabel.Size = new System.Drawing.Size(30, 13);
+            typeLabel.Size = new System.Drawing.Size(34, 13);
             typeLabel.TabIndex = 25;
-            typeLabel.Text = "type:";
+            typeLabel.Text = "Type:";
             // 
             // urlLabel
             // 
             urlLabel.AutoSize = true;
             urlLabel.Location = new System.Drawing.Point(31, 326);
             urlLabel.Name = "urlLabel";
-            urlLabel.Size = new System.Drawing.Size(21, 13);
+            urlLabel.Size = new System.Drawing.Size(23, 13);
             urlLabel.TabIndex = 27;
-            urlLabel.Text = "url:";
-            // 
-            // userIdLabel
-            // 
-            userIdLabel.AutoSize = true;
-            userIdLabel.Location = new System.Drawing.Point(31, 352);
-            userIdLabel.Name = "userIdLabel";
-            userIdLabel.Size = new System.Drawing.Size(42, 13);
-            userIdLabel.TabIndex = 29;
-            userIdLabel.Text = "user Id:";
+            urlLabel.Text = "Url:";
             // 
             // appointmentBindingSource
             // 
@@ -168,11 +158,15 @@
             // customerIdComboBox
             // 
             this.customerIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.appointmentBindingSource, "customerId", true));
+            this.customerIdComboBox.DataSource = this.appointmentBindingSource;
+            this.customerIdComboBox.DisplayMember = "customer";
+            this.customerIdComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.customerIdComboBox.FormattingEnabled = true;
             this.customerIdComboBox.Location = new System.Drawing.Point(118, 133);
             this.customerIdComboBox.Name = "customerIdComboBox";
             this.customerIdComboBox.Size = new System.Drawing.Size(200, 21);
             this.customerIdComboBox.TabIndex = 10;
+            this.customerIdComboBox.ValueMember = "customerId";
             // 
             // descriptionTextBox
             // 
@@ -230,19 +224,32 @@
             this.urlTextBox.Size = new System.Drawing.Size(200, 20);
             this.urlTextBox.TabIndex = 28;
             // 
-            // userIdTextBox
+            // saveButton
             // 
-            this.userIdTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.appointmentBindingSource, "userId", true));
-            this.userIdTextBox.Location = new System.Drawing.Point(117, 349);
-            this.userIdTextBox.Name = "userIdTextBox";
-            this.userIdTextBox.Size = new System.Drawing.Size(200, 20);
-            this.userIdTextBox.TabIndex = 30;
+            this.saveButton.Location = new System.Drawing.Point(117, 349);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.TabIndex = 29;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Location = new System.Drawing.Point(243, 349);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 30;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // EditAppointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 417);
+            this.ClientSize = new System.Drawing.Size(401, 417);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(contactLabel);
             this.Controls.Add(this.contactTextBox);
             this.Controls.Add(customerIdLabel);
@@ -261,8 +268,6 @@
             this.Controls.Add(this.typeTextBox);
             this.Controls.Add(urlLabel);
             this.Controls.Add(this.urlTextBox);
-            this.Controls.Add(userIdLabel);
-            this.Controls.Add(this.userIdTextBox);
             this.Name = "EditAppointment";
             this.Text = "EditAppointment";
             this.Load += new System.EventHandler(this.EditAppointment_Load);
@@ -284,6 +289,7 @@
         private System.Windows.Forms.TextBox titleTextBox;
         private System.Windows.Forms.TextBox typeTextBox;
         private System.Windows.Forms.TextBox urlTextBox;
-        private System.Windows.Forms.TextBox userIdTextBox;
+        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button cancelButton;
     }
 }

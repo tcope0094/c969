@@ -53,7 +53,9 @@ namespace C969_SchedulingSoftware.Forms
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            var editAppointmentForm = new EditAppointment()
+            appointment appointmentToEdit = (appointment)appointmentBindingSource.Current;
+            var editAppointmentForm = new EditAppointment(ref appointmentDbcontext, appointmentToEdit.appointmentId, (int)appointmentBindingSource.Position);
+            editAppointmentForm.ShowDialog();
         }
     }
 }

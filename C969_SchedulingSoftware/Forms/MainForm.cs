@@ -22,17 +22,17 @@ namespace C969_SchedulingSoftware
     public partial class MainForm : Form
     {
         
-        //private DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities();
+        private DatabaseModel.U05tp4Entities weeklyDbcontext = new DatabaseModel.U05tp4Entities();
+        private DatabaseModel.U05tp4Entities monthlyDbcontext = new DatabaseModel.U05tp4Entities();
         public List<DatabaseModel.appointment> UpcomingAppointments { get; private set; }
-
+        
+        DateTime now = DateTime.UtcNow;
         
         public MainForm()
         {
             InitializeComponent();
             using (DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities())
             {
-
-                DateTime now = DateTime.UtcNow;
                 DateTime window = DateTime.UtcNow.AddDays(1);
 
                 //commented out so it doesn't pop up while testing
@@ -46,14 +46,8 @@ namespace C969_SchedulingSoftware
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            this.Text = AppInfo.MyResources.GetString("strScheduling");
-            navGroupBox.Text = $"{AppInfo.MyResources.GetString("strWelcome")} {AppInfo.CurrentUser.userName} {AppInfo.MyResources.GetString("strWWYLTD")}";
-            mgrAppointmentsButton.Text = $"{AppInfo.MyResources.GetString("strManageAppointments")}";
-            mgrCustomerButton.Text = $"{AppInfo.MyResources.GetString("strManageCustomers")}";
-            viewReportsButton.Text = $"{AppInfo.MyResources.GetString("strViewReports")}";
-            calendarGroupBox.Text = $"{AppInfo.MyResources.GetString("strCalendar")}";
-            weeklyRadioButton.Text = $"{AppInfo.MyResources.GetString("strWeekly")}";
-            monthlyRadioButton.Text = $"{AppInfo.MyResources.GetString("strMonthly")}";
+            weeklyRadioButton.Checked = true;
+            WeeklyView();
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
@@ -89,6 +83,57 @@ namespace C969_SchedulingSoftware
         {
             var manageAppointments = new ManageAppointments();
             manageAppointments.Show();
+        }
+
+        private void calendarDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value is DateTime)
+            {
+                e.Value = ((DateTime)e.Value).ToLocalTime();
+            }
+        }
+
+        private void WeeklyView()
+        {
+            DayOfWeek currentDay = DateTime.Now.DayOfWeek;
+            DateTime weekStart;
+            DateTime weekEnd;
+
+            if ((int)currentDay == 1)
+            {
+                weekStart = DateTime.Now.Date;
+            }
+            else
+            {
+                weekStart = DateTime.Now.AddDays(((int)currentDay - 1) * -1).Date;
+            }
+            weekEnd = weekStart.AddDays(4);
+
+            weeklyDbcontext.appointments
+                .Where(a => a.start >= weekStart.Date && a.start <= weekEnd.Date)
+                .Load();
+
+            appointmentBindingSource.DataSource = weeklyDbcontext.appointments.Local.ToBindingList();
+
+        }
+
+        private void weeklyRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            
+            if (weeklyRadioButton.Checked)
+            {
+                WeeklyView();
+            }
+            else
+            {
+                MonthlyView();
+            }
+        }
+
+        private void MonthlyView()
+        {
+            monthlyDbcontext.appointments.Load();
+            appointmentBindingSource.DataSource = monthlyDbcontext.appointments.Local.ToBindingList();
         }
     }
 }

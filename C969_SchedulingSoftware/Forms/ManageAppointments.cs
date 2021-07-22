@@ -38,6 +38,7 @@ namespace C969_SchedulingSoftware.Forms
             dgvStartColumn.DefaultCellStyle.Format = "MM/dd/yyy hh:mm:ss tt";
             dgvEndColumn.DefaultCellStyle.Format = "MM/dd/yyy hh:mm:ss tt";
 
+            appointmentDataGridView.ClearSelection();
             editButton.Enabled = false;
         }
 
@@ -64,10 +65,6 @@ namespace C969_SchedulingSoftware.Forms
                 appointmentBindingSource.RemoveCurrent();
                 appointmentBindingSource.EndEdit();
                 appointmentDbcontext.SaveChanges();
-            }
-            else
-            {
-
             }
         }
 

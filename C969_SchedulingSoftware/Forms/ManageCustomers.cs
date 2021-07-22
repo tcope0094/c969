@@ -32,6 +32,9 @@ namespace C969_SchedulingSoftware.Forms
         {
             customerDbcontext.customers.Load();
             customerBindingSource.DataSource = customerDbcontext.customers.Local.ToBindingList();
+
+            customerDataGridView.ClearSelection();
+            editCustomerButton.Enabled = false;
         }
         private void addCustomerButton_Click(object sender, EventArgs e)
         {
@@ -57,10 +60,18 @@ namespace C969_SchedulingSoftware.Forms
 
         private void deleteCustomerButton_Click(object sender, EventArgs e)
         {
-            //var confirmationBox = new MessageBox(MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            customerBindingSource.RemoveCurrent();
-            customerBindingSource.EndEdit();
-            customerDbcontext.SaveChanges();
+            DialogResult confirmationBox = MessageBox.Show("Are you sure you want to delete this customer?","Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (confirmationBox == DialogResult.Yes)
+            {
+                customerBindingSource.RemoveCurrent();
+                customerBindingSource.EndEdit();
+                customerDbcontext.SaveChanges();
+            }
+        }
+
+        private void customerDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            editCustomerButton.Enabled = true;
         }
     }
 }

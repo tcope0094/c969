@@ -37,12 +37,6 @@
             System.Windows.Forms.Label country1Label;
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.customerDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addCustomerButton = new System.Windows.Forms.Button();
             this.editCustomerButton = new System.Windows.Forms.Button();
             this.deleteCustomerButton = new System.Windows.Forms.Button();
@@ -52,6 +46,12 @@
             this.postalCodeTextBox = new System.Windows.Forms.TextBox();
             this.city1TextBox = new System.Windows.Forms.TextBox();
             this.country1TextBox = new System.Windows.Forms.TextBox();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             address1Label = new System.Windows.Forms.Label();
             address2Label = new System.Windows.Forms.Label();
             phoneLabel = new System.Windows.Forms.Label();
@@ -65,56 +65,56 @@
             // address1Label
             // 
             address1Label.AutoSize = true;
-            address1Label.Location = new System.Drawing.Point(904, 63);
+            address1Label.Location = new System.Drawing.Point(655, 66);
             address1Label.Name = "address1Label";
-            address1Label.Size = new System.Drawing.Size(53, 13);
+            address1Label.Size = new System.Drawing.Size(57, 13);
             address1Label.TabIndex = 15;
-            address1Label.Text = "address1:";
+            address1Label.Text = "Address 1:";
             // 
             // address2Label
             // 
             address2Label.AutoSize = true;
-            address2Label.Location = new System.Drawing.Point(904, 89);
+            address2Label.Location = new System.Drawing.Point(655, 92);
             address2Label.Name = "address2Label";
-            address2Label.Size = new System.Drawing.Size(53, 13);
+            address2Label.Size = new System.Drawing.Size(57, 13);
             address2Label.TabIndex = 17;
-            address2Label.Text = "address2:";
+            address2Label.Text = "Address 2:";
             // 
             // phoneLabel
             // 
             phoneLabel.AutoSize = true;
-            phoneLabel.Location = new System.Drawing.Point(904, 115);
+            phoneLabel.Location = new System.Drawing.Point(655, 118);
             phoneLabel.Name = "phoneLabel";
-            phoneLabel.Size = new System.Drawing.Size(40, 13);
+            phoneLabel.Size = new System.Drawing.Size(41, 13);
             phoneLabel.TabIndex = 19;
-            phoneLabel.Text = "phone:";
+            phoneLabel.Text = "Phone:";
             // 
             // postalCodeLabel
             // 
             postalCodeLabel.AutoSize = true;
-            postalCodeLabel.Location = new System.Drawing.Point(904, 141);
+            postalCodeLabel.Location = new System.Drawing.Point(655, 144);
             postalCodeLabel.Name = "postalCodeLabel";
-            postalCodeLabel.Size = new System.Drawing.Size(66, 13);
+            postalCodeLabel.Size = new System.Drawing.Size(67, 13);
             postalCodeLabel.TabIndex = 21;
-            postalCodeLabel.Text = "postal Code:";
+            postalCodeLabel.Text = "Postal Code:";
             // 
             // city1Label
             // 
             city1Label.AutoSize = true;
-            city1Label.Location = new System.Drawing.Point(904, 167);
+            city1Label.Location = new System.Drawing.Point(655, 170);
             city1Label.Name = "city1Label";
-            city1Label.Size = new System.Drawing.Size(32, 13);
+            city1Label.Size = new System.Drawing.Size(27, 13);
             city1Label.TabIndex = 22;
-            city1Label.Text = "city1:";
+            city1Label.Text = "City:";
             // 
             // country1Label
             // 
             country1Label.AutoSize = true;
-            country1Label.Location = new System.Drawing.Point(906, 193);
+            country1Label.Location = new System.Drawing.Point(657, 196);
             country1Label.Name = "country1Label";
-            country1Label.Size = new System.Drawing.Size(51, 13);
+            country1Label.Size = new System.Drawing.Size(46, 13);
             country1Label.TabIndex = 23;
-            country1Label.Text = "country1:";
+            country1Label.Text = "Country:";
             // 
             // customerBindingSource
             // 
@@ -122,6 +122,7 @@
             // 
             // customerDataGridView
             // 
+            this.customerDataGridView.AllowUserToAddRows = false;
             this.customerDataGridView.AutoGenerateColumns = false;
             this.customerDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.customerDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -134,45 +135,12 @@
             this.customerDataGridView.DataSource = this.customerBindingSource;
             this.customerDataGridView.Location = new System.Drawing.Point(33, 28);
             this.customerDataGridView.Name = "customerDataGridView";
+            this.customerDataGridView.ReadOnly = true;
             this.customerDataGridView.RowHeadersVisible = false;
-            this.customerDataGridView.Size = new System.Drawing.Size(773, 220);
+            this.customerDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.customerDataGridView.Size = new System.Drawing.Size(605, 220);
             this.customerDataGridView.TabIndex = 1;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "customerName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "customerName";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "active";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "active";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "createDate";
-            this.dataGridViewTextBoxColumn4.HeaderText = "createDate";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "createdBy";
-            this.dataGridViewTextBoxColumn5.HeaderText = "createdBy";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "lastUpdate";
-            this.dataGridViewTextBoxColumn6.HeaderText = "lastUpdate";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "lastUpdateBy";
-            this.dataGridViewTextBoxColumn7.HeaderText = "lastUpdateBy";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.customerDataGridView.SelectionChanged += new System.EventHandler(this.customerDataGridView_SelectionChanged);
             // 
             // addCustomerButton
             // 
@@ -207,62 +175,104 @@
             // address1TextBox
             // 
             this.address1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerBindingSource, "address.address1", true));
-            this.address1TextBox.Location = new System.Drawing.Point(976, 60);
+            this.address1TextBox.Location = new System.Drawing.Point(727, 63);
             this.address1TextBox.Name = "address1TextBox";
             this.address1TextBox.ReadOnly = true;
-            this.address1TextBox.Size = new System.Drawing.Size(100, 20);
+            this.address1TextBox.Size = new System.Drawing.Size(128, 20);
             this.address1TextBox.TabIndex = 16;
             // 
             // address2TextBox
             // 
             this.address2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerBindingSource, "address.address2", true));
-            this.address2TextBox.Location = new System.Drawing.Point(976, 86);
+            this.address2TextBox.Location = new System.Drawing.Point(727, 89);
             this.address2TextBox.Name = "address2TextBox";
             this.address2TextBox.ReadOnly = true;
-            this.address2TextBox.Size = new System.Drawing.Size(100, 20);
+            this.address2TextBox.Size = new System.Drawing.Size(128, 20);
             this.address2TextBox.TabIndex = 18;
             // 
             // phoneTextBox
             // 
             this.phoneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerBindingSource, "address.phone", true));
-            this.phoneTextBox.Location = new System.Drawing.Point(976, 112);
+            this.phoneTextBox.Location = new System.Drawing.Point(727, 115);
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.ReadOnly = true;
-            this.phoneTextBox.Size = new System.Drawing.Size(100, 20);
+            this.phoneTextBox.Size = new System.Drawing.Size(128, 20);
             this.phoneTextBox.TabIndex = 20;
             // 
             // postalCodeTextBox
             // 
             this.postalCodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerBindingSource, "address.postalCode", true));
-            this.postalCodeTextBox.Location = new System.Drawing.Point(976, 138);
+            this.postalCodeTextBox.Location = new System.Drawing.Point(727, 141);
             this.postalCodeTextBox.Name = "postalCodeTextBox";
             this.postalCodeTextBox.ReadOnly = true;
-            this.postalCodeTextBox.Size = new System.Drawing.Size(100, 20);
+            this.postalCodeTextBox.Size = new System.Drawing.Size(128, 20);
             this.postalCodeTextBox.TabIndex = 22;
             // 
             // city1TextBox
             // 
             this.city1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerBindingSource, "address.city.city1", true));
-            this.city1TextBox.Location = new System.Drawing.Point(976, 164);
+            this.city1TextBox.Location = new System.Drawing.Point(727, 167);
             this.city1TextBox.Name = "city1TextBox";
             this.city1TextBox.ReadOnly = true;
-            this.city1TextBox.Size = new System.Drawing.Size(100, 20);
+            this.city1TextBox.Size = new System.Drawing.Size(128, 20);
             this.city1TextBox.TabIndex = 23;
             // 
             // country1TextBox
             // 
             this.country1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.customerBindingSource, "address.city.country.country1", true));
-            this.country1TextBox.Location = new System.Drawing.Point(976, 190);
+            this.country1TextBox.Location = new System.Drawing.Point(727, 193);
             this.country1TextBox.Name = "country1TextBox";
             this.country1TextBox.ReadOnly = true;
-            this.country1TextBox.Size = new System.Drawing.Size(100, 20);
+            this.country1TextBox.Size = new System.Drawing.Size(128, 20);
             this.country1TextBox.TabIndex = 24;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "customerName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Customer";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.DataPropertyName = "active";
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Active";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "createDate";
+            this.dataGridViewTextBoxColumn4.HeaderText = "createDate";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "createdBy";
+            this.dataGridViewTextBoxColumn5.HeaderText = "createdBy";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "lastUpdate";
+            this.dataGridViewTextBoxColumn6.HeaderText = "lastUpdate";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "lastUpdateBy";
+            this.dataGridViewTextBoxColumn7.HeaderText = "lastUpdateBy";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
             // ManageCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1204, 450);
+            this.ClientSize = new System.Drawing.Size(890, 325);
             this.Controls.Add(country1Label);
             this.Controls.Add(this.country1TextBox);
             this.Controls.Add(city1Label);
@@ -293,12 +303,6 @@
 
         private System.Windows.Forms.BindingSource customerBindingSource;
         private System.Windows.Forms.DataGridView customerDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.Button addCustomerButton;
         private System.Windows.Forms.Button editCustomerButton;
         private System.Windows.Forms.Button deleteCustomerButton;
@@ -308,5 +312,11 @@
         private System.Windows.Forms.TextBox postalCodeTextBox;
         private System.Windows.Forms.TextBox city1TextBox;
         private System.Windows.Forms.TextBox country1TextBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
     }
 }

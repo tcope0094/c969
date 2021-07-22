@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.navGroupBox = new System.Windows.Forms.GroupBox();
             this.viewReportsButton = new System.Windows.Forms.Button();
             this.mgrAppointmentsButton = new System.Windows.Forms.Button();
@@ -35,10 +36,25 @@
             this.calendarGroupBox = new System.Windows.Forms.GroupBox();
             this.monthlyRadioButton = new System.Windows.Forms.RadioButton();
             this.weeklyRadioButton = new System.Windows.Forms.RadioButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.calendarDataGridView = new System.Windows.Forms.DataGridView();
+            this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.customerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.locationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.urlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createdByDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastUpdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastUpdateByDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.navGroupBox.SuspendLayout();
             this.calendarGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calendarDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // navGroupBox
@@ -86,7 +102,7 @@
             // 
             this.calendarGroupBox.Controls.Add(this.monthlyRadioButton);
             this.calendarGroupBox.Controls.Add(this.weeklyRadioButton);
-            this.calendarGroupBox.Controls.Add(this.dataGridView1);
+            this.calendarGroupBox.Controls.Add(this.calendarDataGridView);
             this.calendarGroupBox.Location = new System.Drawing.Point(363, 12);
             this.calendarGroupBox.Name = "calendarGroupBox";
             this.calendarGroupBox.Size = new System.Drawing.Size(628, 426);
@@ -115,14 +131,131 @@
             this.weeklyRadioButton.TabStop = true;
             this.weeklyRadioButton.Text = "weekly";
             this.weeklyRadioButton.UseVisualStyleBackColor = true;
+            this.weeklyRadioButton.CheckedChanged += new System.EventHandler(this.weeklyRadioButton_CheckedChanged);
             // 
-            // dataGridView1
+            // calendarDataGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 40);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(615, 380);
-            this.dataGridView1.TabIndex = 0;
+            this.calendarDataGridView.AllowUserToAddRows = false;
+            this.calendarDataGridView.AllowUserToDeleteRows = false;
+            this.calendarDataGridView.AutoGenerateColumns = false;
+            this.calendarDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.calendarDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.customerDataGridViewTextBoxColumn,
+            this.startDataGridViewTextBoxColumn,
+            this.endDataGridViewTextBoxColumn,
+            this.titleDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn,
+            this.locationDataGridViewTextBoxColumn,
+            this.contactDataGridViewTextBoxColumn,
+            this.typeDataGridViewTextBoxColumn,
+            this.urlDataGridViewTextBoxColumn,
+            this.createDateDataGridViewTextBoxColumn,
+            this.createdByDataGridViewTextBoxColumn,
+            this.lastUpdateDataGridViewTextBoxColumn,
+            this.lastUpdateByDataGridViewTextBoxColumn});
+            this.calendarDataGridView.DataSource = this.appointmentBindingSource;
+            this.calendarDataGridView.Location = new System.Drawing.Point(7, 40);
+            this.calendarDataGridView.Name = "calendarDataGridView";
+            this.calendarDataGridView.ReadOnly = true;
+            this.calendarDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.calendarDataGridView.Size = new System.Drawing.Size(615, 380);
+            this.calendarDataGridView.TabIndex = 0;
+            this.calendarDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.calendarDataGridView_CellFormatting);
+            // 
+            // appointmentBindingSource
+            // 
+            this.appointmentBindingSource.DataSource = typeof(DatabaseModel.appointment);
+            // 
+            // customerDataGridViewTextBoxColumn
+            // 
+            this.customerDataGridViewTextBoxColumn.DataPropertyName = "customer";
+            this.customerDataGridViewTextBoxColumn.HeaderText = "customer";
+            this.customerDataGridViewTextBoxColumn.Name = "customerDataGridViewTextBoxColumn";
+            this.customerDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // startDataGridViewTextBoxColumn
+            // 
+            this.startDataGridViewTextBoxColumn.DataPropertyName = "start";
+            this.startDataGridViewTextBoxColumn.HeaderText = "start";
+            this.startDataGridViewTextBoxColumn.Name = "startDataGridViewTextBoxColumn";
+            this.startDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // endDataGridViewTextBoxColumn
+            // 
+            this.endDataGridViewTextBoxColumn.DataPropertyName = "end";
+            this.endDataGridViewTextBoxColumn.HeaderText = "end";
+            this.endDataGridViewTextBoxColumn.Name = "endDataGridViewTextBoxColumn";
+            this.endDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // titleDataGridViewTextBoxColumn
+            // 
+            this.titleDataGridViewTextBoxColumn.DataPropertyName = "title";
+            this.titleDataGridViewTextBoxColumn.HeaderText = "title";
+            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // locationDataGridViewTextBoxColumn
+            // 
+            this.locationDataGridViewTextBoxColumn.DataPropertyName = "location";
+            this.locationDataGridViewTextBoxColumn.HeaderText = "location";
+            this.locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
+            this.locationDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // contactDataGridViewTextBoxColumn
+            // 
+            this.contactDataGridViewTextBoxColumn.DataPropertyName = "contact";
+            this.contactDataGridViewTextBoxColumn.HeaderText = "contact";
+            this.contactDataGridViewTextBoxColumn.Name = "contactDataGridViewTextBoxColumn";
+            this.contactDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // typeDataGridViewTextBoxColumn
+            // 
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "type";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "type";
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // urlDataGridViewTextBoxColumn
+            // 
+            this.urlDataGridViewTextBoxColumn.DataPropertyName = "url";
+            this.urlDataGridViewTextBoxColumn.HeaderText = "url";
+            this.urlDataGridViewTextBoxColumn.Name = "urlDataGridViewTextBoxColumn";
+            this.urlDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // createDateDataGridViewTextBoxColumn
+            // 
+            this.createDateDataGridViewTextBoxColumn.DataPropertyName = "createDate";
+            this.createDateDataGridViewTextBoxColumn.HeaderText = "createDate";
+            this.createDateDataGridViewTextBoxColumn.Name = "createDateDataGridViewTextBoxColumn";
+            this.createDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // createdByDataGridViewTextBoxColumn
+            // 
+            this.createdByDataGridViewTextBoxColumn.DataPropertyName = "createdBy";
+            this.createdByDataGridViewTextBoxColumn.HeaderText = "createdBy";
+            this.createdByDataGridViewTextBoxColumn.Name = "createdByDataGridViewTextBoxColumn";
+            this.createdByDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastUpdateDataGridViewTextBoxColumn
+            // 
+            this.lastUpdateDataGridViewTextBoxColumn.DataPropertyName = "lastUpdate";
+            this.lastUpdateDataGridViewTextBoxColumn.HeaderText = "lastUpdate";
+            this.lastUpdateDataGridViewTextBoxColumn.Name = "lastUpdateDataGridViewTextBoxColumn";
+            this.lastUpdateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastUpdateByDataGridViewTextBoxColumn
+            // 
+            this.lastUpdateByDataGridViewTextBoxColumn.DataPropertyName = "lastUpdateBy";
+            this.lastUpdateByDataGridViewTextBoxColumn.HeaderText = "lastUpdateBy";
+            this.lastUpdateByDataGridViewTextBoxColumn.Name = "lastUpdateByDataGridViewTextBoxColumn";
+            this.lastUpdateByDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -138,7 +271,8 @@
             this.navGroupBox.ResumeLayout(false);
             this.calendarGroupBox.ResumeLayout(false);
             this.calendarGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calendarDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -150,8 +284,22 @@
         private System.Windows.Forms.Button mgrAppointmentsButton;
         private System.Windows.Forms.Button mgrCustomerButton;
         private System.Windows.Forms.GroupBox calendarGroupBox;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView calendarDataGridView;
         private System.Windows.Forms.RadioButton monthlyRadioButton;
         private System.Windows.Forms.RadioButton weeklyRadioButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn endDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn locationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contactDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn urlDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createdByDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastUpdateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastUpdateByDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource appointmentBindingSource;
     }
 }

@@ -35,13 +35,21 @@ namespace C969_SchedulingSoftware.Forms
                 .Load();
 
             appointmentBindingSource.DataSource = appointmentDbcontext.appointments.Local.ToBindingList();
-
         }
 
         private void addButton_Click(object sender, EventArgs e)
         {
             var addAppointmentForm = new AddAppointment();
             addAppointmentForm.ShowDialog();
+            if(addAppointmentForm.DialogResult == DialogResult.OK)
+            {
+                appointmentDbcontext.appointments
+                .Where(a => a.userId == AppInfo.CurrentUser.userId)
+                .OrderBy(a => a.start)
+                .Load();
+
+                appointmentBindingSource.DataSource = appointmentDbcontext.appointments.Local.ToBindingList();
+            }
         }
 
         private void deleteButton_Click(object sender, EventArgs e)

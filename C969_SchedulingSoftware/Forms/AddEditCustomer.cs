@@ -55,7 +55,6 @@ namespace C969_SchedulingSoftware.Forms
                 customerBindingSource.Position = customerBindingSourcePosition;
                 cityComboBox.DataSource = customerDbcontext.cities.Local.ToBindingList();
                 cityComboBox.SelectedValue = customerToEdit.address.cityId;
-
             }
             else
             {
@@ -73,8 +72,6 @@ namespace C969_SchedulingSoftware.Forms
             {
                 EditCustomerSave();
             }
-            
-        
         }
 
         private address AddressSearch(address addressToSearch)
@@ -115,14 +112,11 @@ namespace C969_SchedulingSoftware.Forms
 
         private void cityComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             var search = customerDbcontext.cities
                 .Where(c => c.cityId == (int)cityComboBox.SelectedValue)
                 .First();
 
             country1TextBox.Text = search.country.country1;
-
-
         }
 
         private void AddCustomerSave()
@@ -150,7 +144,6 @@ namespace C969_SchedulingSoftware.Forms
             newCustomer.lastUpdateBy = "test";
 
             var searchResults = AddressSearch(newAddress);
-
 
             if (searchResults == null)
             {

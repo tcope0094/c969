@@ -35,9 +35,9 @@ namespace C969_SchedulingSoftware.Forms
 
             customerIdComboBox.DataSource = appointmentDbcontext.customers.Local.ToBindingList();
             startDateTimePicker.Format = DateTimePickerFormat.Custom;
-            startDateTimePicker.CustomFormat = "MM/dd/yyyy hh:mm";
+            startDateTimePicker.CustomFormat = "MM/dd/yyyy HH:mm";
             endDateTimePicker.Format = DateTimePickerFormat.Custom;
-            endDateTimePicker.CustomFormat = "MM/dd/yyyy hh:mm";
+            endDateTimePicker.CustomFormat = "MM/dd/yyyy HH:mm";
         }
 
         private void addCustomerLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

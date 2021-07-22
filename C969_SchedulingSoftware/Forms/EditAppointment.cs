@@ -1,4 +1,5 @@
 ﻿using DatabaseModel;
+using Org.BouncyCastle.Math.Field;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,24 +15,24 @@ namespace C969_SchedulingSoftware.Forms
 {
     public partial class EditAppointment : Form
     {
-        private U05tp4Entities appointmentDbcontext;
+        private U05tp4Entities appointmentDbcontext = new U05tp4Entities();
         private U05tp4Entities customerDbcontext = new U05tp4Entities();
         private appointment appointmentToEdit;
         private int appointmentBindingSourcePosition;
-        private DateTime dateTime = new DateTime();
-
-        public EditAppointment(ref U05tp4Entities appointmentDbcontext ,int appointmentIdToEdit, int appointmentBindingSourcePosition)
+        
+        public EditAppointment(int appointmentIdToEdit, int appointmentBindingSourcePosition)
         {
             InitializeComponent();
-            this.appointmentDbcontext = appointmentDbcontext;
             this.appointmentBindingSourcePosition = appointmentBindingSourcePosition;
             appointmentToEdit = AppointmentSearch(appointmentIdToEdit);
         }
 
         private void EditAppointment_Load(object sender, EventArgs e)
         {
-            appointmentDbcontext.appointments.Load();
-            appointmentDbcontext.customers.Load();
+            appointmentDbcontext.appointments
+                .Where(a => a.appointmentId == appointmentToEdit.appointmentId)
+                .Load();
+
             appointmentBindingSource.DataSource = appointmentDbcontext.appointments.Local.ToBindingList();
             appointmentBindingSource.Position = appointmentBindingSourcePosition;
 
@@ -42,6 +43,7 @@ namespace C969_SchedulingSoftware.Forms
 
             startDateTimePicker.Value = startDateTimePicker.Value.ToLocalTime();
             endDateTimePicker.Value = endDateTimePicker.Value.ToLocalTime();
+
         }
 
         private appointment AppointmentSearch(int appointmentId)
@@ -62,16 +64,13 @@ namespace C969_SchedulingSoftware.Forms
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            appointmentBindingSource.CancelEdit();
+            this.Close();
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-
-            TimeSpan startTime = startDateTimePicker.Value.TimeOfDay;
-            TimeSpan endTime = endDateTimePicker.Value.TimeOfDay;
-
-            if (InsideBusinessHours(startTime,endTime) && IsValidStartEnd(startTime,endTime))
+            if (IsValidSchedule())
             {   
                 startDateTimePicker.Value = startDateTimePicker.Value.ToUniversalTime();
                 endDateTimePicker.Value = endDateTimePicker.Value.ToUniversalTime();
@@ -79,30 +78,76 @@ namespace C969_SchedulingSoftware.Forms
                 appointmentBindingSource.EndEdit();
                 appointmentDbcontext.SaveChanges();
 
-                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                appointmentBindingSource.CancelEdit();
             }
         }
 
+        private bool IsValidSchedule()
+        {
+            TimeSpan startTime = startDateTimePicker.Value.TimeOfDay;
+            TimeSpan endTime = endDateTimePicker.Value.TimeOfDay;
+            DateTime startDate = startDateTimePicker.Value.Date;
+            DateTime endDate = endDateTimePicker.Value.Date;
+            bool valid = false;
 
-        private bool InsideBusinessHours(TimeSpan start, TimeSpan end)
+            bool validBusinessHours = IsInsideBusinessHours(startTime, endTime);
+            bool validStartEndTime = IsValidStartEndTime(startTime, endTime);
+            bool validStartEndDate = IsValidStartEndDate(startDate, endDate);
+
+            string errorMessage = "";
+
+            if (validBusinessHours && validStartEndTime && validStartEndDate)
+            {
+                valid = true;
+            }
+            if (!validBusinessHours)
+            {
+                errorMessage += "\nStart and End times must fall between 8AM - 5PM";
+            }
+            if (!validStartEndTime)
+            {
+                errorMessage += "\nStart time must be before End time";
+            }
+            if (!validStartEndDate)
+            {
+                errorMessage += "\nStart and End dates cannot span multiple days";
+            }
+
+            if (valid == true)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(errorMessage,"Invalid Schedule",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return false;
+            }
+            
+
+        }
+
+        private bool IsInsideBusinessHours(TimeSpan start, TimeSpan end)
         {
             TimeSpan businessStart = new TimeSpan(8, 0, 0);
             TimeSpan businessEnd = new TimeSpan(17, 0, 0);
 
 
-            if (start < businessStart && end > businessEnd)
-            {
-                MessageBox.Show("Scheduled start and end times must be between 8AM - 5PM", "Invalid Schedule", MessageBoxButtons.OK,MessageBoxIcon.Error);
-                return false;
-            }
-            else
+            if (start >= businessStart && end <= businessEnd)
             {
                 return true;
             }
-
+            else
+            {
+                return false;
+            }
         }
         
         // LAMBDA => simpler to write the validation for start time before end time this way
-        private Func<TimeSpan, TimeSpan, bool> IsValidStartEnd = (start, end) => start < end;
+        private Func<TimeSpan, TimeSpan, bool> IsValidStartEndTime = (start, end) => start < end;
+        private Func<DateTime, DateTime, bool> IsValidStartEndDate = (start, end) => start == end;
     }
 }

@@ -34,10 +34,14 @@ namespace C969_SchedulingSoftware.Forms
             appointmentDbcontext.customers.Load();
 
             customerIdComboBox.DataSource = appointmentDbcontext.customers.Local.ToBindingList();
+
             startDateTimePicker.Format = DateTimePickerFormat.Custom;
-            startDateTimePicker.CustomFormat = "MM/dd/yyyy HH:mm";
+            startDateTimePicker.CustomFormat = "MM/dd/yyyy hh:mm tt";
             endDateTimePicker.Format = DateTimePickerFormat.Custom;
-            endDateTimePicker.CustomFormat = "MM/dd/yyyy HH:mm";
+            endDateTimePicker.CustomFormat = "MM/dd/yyyy hh:mm tt";
+
+            startDateTimePicker.Value = startDateTimePicker.Value.ToLocalTime();
+            endDateTimePicker.Value = endDateTimePicker.Value.ToLocalTime();
         }
 
         private void addCustomerLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -71,8 +75,15 @@ namespace C969_SchedulingSoftware.Forms
             appointmentDbcontext.appointments.Add(newAppointment);
             try
             {
-                appointmentDbcontext.SaveChanges();
-                this.DialogResult = DialogResult.OK;
+                if (IsValidSchedule())
+                {
+                    startDateTimePicker.Value = startDateTimePicker.Value.ToUniversalTime();
+                    endDateTimePicker.Value = endDateTimePicker.Value.ToUniversalTime();
+
+                    appointmentDbcontext.SaveChanges();
+
+                    this.DialogResult = DialogResult.OK;
+                }
             }
             catch (Exception)
             {
@@ -85,5 +96,68 @@ namespace C969_SchedulingSoftware.Forms
         {
             this.DialogResult = DialogResult.Cancel;
         }
+        private bool IsValidSchedule()
+        {
+            TimeSpan startTime = startDateTimePicker.Value.TimeOfDay;
+            TimeSpan endTime = endDateTimePicker.Value.TimeOfDay;
+            DateTime startDate = startDateTimePicker.Value.Date;
+            DateTime endDate = endDateTimePicker.Value.Date;
+            bool valid = false;
+
+            bool validBusinessHours = IsInsideBusinessHours(startTime, endTime);
+            bool validStartEndTime = IsValidStartEndTime(startTime, endTime);
+            bool validStartEndDate = IsValidStartEndDate(startDate, endDate);
+
+            string errorMessage = "";
+
+            if (validBusinessHours && validStartEndTime && validStartEndDate)
+            {
+                valid = true;
+            }
+            if (!validBusinessHours)
+            {
+                errorMessage += "\nStart and End times must fall between 8AM - 5PM";
+            }
+            if (!validStartEndTime)
+            {
+                errorMessage += "\nStart time must be before End time";
+            }
+            if (!validStartEndDate)
+            {
+                errorMessage += "\nStart and End dates cannot span multiple days";
+            }
+
+            if (valid == true)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(errorMessage, "Invalid Schedule", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+
+        }
+
+        private bool IsInsideBusinessHours(TimeSpan start, TimeSpan end)
+        {
+            TimeSpan businessStart = new TimeSpan(8, 0, 0);
+            TimeSpan businessEnd = new TimeSpan(17, 0, 0);
+
+
+            if (start >= businessStart && end <= businessEnd)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        // LAMBDA => simpler to write the validation for start time before end time this way
+        private Func<TimeSpan, TimeSpan, bool> IsValidStartEndTime = (start, end) => start < end;
+        private Func<DateTime, DateTime, bool> IsValidStartEndDate = (start, end) => start == end;
     }
 }

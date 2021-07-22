@@ -35,6 +35,10 @@ namespace C969_SchedulingSoftware.Forms
                 .Load();
 
             appointmentBindingSource.DataSource = appointmentDbcontext.appointments.Local.ToBindingList();
+            dgvStartColumn.DefaultCellStyle.Format = "MM/dd/yyy hh:mm:ss tt";
+            dgvEndColumn.DefaultCellStyle.Format = "MM/dd/yyy hh:mm:ss tt";
+
+            editButton.Enabled = false;
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -54,16 +58,37 @@ namespace C969_SchedulingSoftware.Forms
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            appointmentBindingSource.RemoveCurrent();
-            appointmentBindingSource.EndEdit();
-            appointmentDbcontext.SaveChanges();
+            DialogResult deleteConfirm = MessageBox.Show("Are you sure you want to delete this appointment?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (deleteConfirm == DialogResult.Yes)
+            {
+                appointmentBindingSource.RemoveCurrent();
+                appointmentBindingSource.EndEdit();
+                appointmentDbcontext.SaveChanges();
+            }
+            else
+            {
+
+            }
         }
 
         private void editButton_Click(object sender, EventArgs e)
         {
             appointment appointmentToEdit = (appointment)appointmentBindingSource.Current;
-            var editAppointmentForm = new EditAppointment(ref appointmentDbcontext, appointmentToEdit.appointmentId, (int)appointmentBindingSource.Position);
-            editAppointmentForm.ShowDialog();
+            var editAppointmentForm = new EditAppointment(appointmentToEdit.appointmentId, (int)appointmentBindingSource.Position);
+            editAppointmentForm.Show();
+        }
+
+        private void appointmentDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if(e.Value is DateTime)
+            {
+                e.Value = ((DateTime)e.Value).ToLocalTime();
+            }
+        }
+
+        private void appointmentDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            editButton.Enabled = true;
         }
     }
 }

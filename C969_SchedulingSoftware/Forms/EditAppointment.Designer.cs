@@ -39,6 +39,7 @@
             System.Windows.Forms.Label urlLabel;
             System.Windows.Forms.Label customerNameLabel;
             this.contactTextBox = new System.Windows.Forms.TextBox();
+            this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.endDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.locationTextBox = new System.Windows.Forms.TextBox();
@@ -49,7 +50,6 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.customerNameTextBox = new System.Windows.Forms.TextBox();
-            this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.countryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             contactLabel = new System.Windows.Forms.Label();
@@ -138,6 +138,15 @@
             urlLabel.TabIndex = 27;
             urlLabel.Text = "Url:";
             // 
+            // customerNameLabel
+            // 
+            customerNameLabel.AutoSize = true;
+            customerNameLabel.Location = new System.Drawing.Point(41, 20);
+            customerNameLabel.Name = "customerNameLabel";
+            customerNameLabel.Size = new System.Drawing.Size(54, 13);
+            customerNameLabel.TabIndex = 30;
+            customerNameLabel.Text = "Customer:";
+            // 
             // contactTextBox
             // 
             this.contactTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.appointmentBindingSource, "contact", true));
@@ -145,6 +154,10 @@
             this.contactTextBox.Name = "contactTextBox";
             this.contactTextBox.Size = new System.Drawing.Size(200, 20);
             this.contactTextBox.TabIndex = 4;
+            // 
+            // appointmentBindingSource
+            // 
+            this.appointmentBindingSource.DataSource = typeof(DatabaseModel.appointment);
             // 
             // descriptionTextBox
             // 
@@ -156,7 +169,7 @@
             // 
             // endDateTimePicker
             // 
-            this.endDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.appointmentBindingSource, "end", true));
+            this.endDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.appointmentBindingSource, "end", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.endDateTimePicker.Location = new System.Drawing.Point(128, 147);
             this.endDateTimePicker.Name = "endDateTimePicker";
             this.endDateTimePicker.Size = new System.Drawing.Size(200, 20);
@@ -172,7 +185,7 @@
             // 
             // startDateTimePicker
             // 
-            this.startDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.appointmentBindingSource, "start", true));
+            this.startDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.appointmentBindingSource, "start", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.startDateTimePicker.Location = new System.Drawing.Point(128, 121);
             this.startDateTimePicker.Name = "startDateTimePicker";
             this.startDateTimePicker.Size = new System.Drawing.Size(200, 20);
@@ -222,15 +235,6 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // customerNameLabel
-            // 
-            customerNameLabel.AutoSize = true;
-            customerNameLabel.Location = new System.Drawing.Point(41, 20);
-            customerNameLabel.Name = "customerNameLabel";
-            customerNameLabel.Size = new System.Drawing.Size(54, 13);
-            customerNameLabel.TabIndex = 30;
-            customerNameLabel.Text = "Customer:";
-            // 
             // customerNameTextBox
             // 
             this.customerNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.appointmentBindingSource, "customer.customerName", true));
@@ -239,10 +243,6 @@
             this.customerNameTextBox.ReadOnly = true;
             this.customerNameTextBox.Size = new System.Drawing.Size(200, 20);
             this.customerNameTextBox.TabIndex = 31;
-            // 
-            // appointmentBindingSource
-            // 
-            this.appointmentBindingSource.DataSource = typeof(DatabaseModel.appointment);
             // 
             // countryBindingSource
             // 

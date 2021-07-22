@@ -32,5 +32,11 @@ namespace DatabaseModel
     
         public virtual customer customer { get; set; }
         public virtual user user { get; set; }
+
+        public appointment()
+        {
+            DateTime.SpecifyKind(start, DateTimeKind.Utc);
+            DateTime.SpecifyKind(end, DateTimeKind.Utc);
+        }
     }
 }

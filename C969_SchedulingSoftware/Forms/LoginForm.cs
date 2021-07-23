@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Resources;
@@ -14,6 +13,7 @@ using System.Data.Entity;
 using MySql.Data.MySqlClient;
 using C969_SchedulingSoftware.Properties;
 using System.Reflection;
+using DatabaseModel;
 
 namespace C969_SchedulingSoftware
 {
@@ -41,7 +41,6 @@ namespace C969_SchedulingSoftware
             usernameBox.Text = "test";
             passwordBox.Text = "test";
             SubmitLogin();
-
         }
 
         private void loginButton_Click(object sender, EventArgs e)
@@ -94,10 +93,16 @@ namespace C969_SchedulingSoftware
         {
             try
             {
+                bool passwordVerified = Password.VerifyPassword(usernameBox.Text, passwordBox.Text);
+                if (!passwordVerified)
+                {
+                    throw new InvalidOperationException();
+                }
                 var loginUser = dbcontext.users
-                    .Where(user => user.userName == usernameBox.Text && user.password == passwordBox.Text && user.active == 1)
+                    .Where(user => user.userName == usernameBox.Text && user.active == 1)
                     .Single();
-                if (loginUser != null)
+
+                if (loginUser != null && passwordVerified)
                 {
                     AppInfo.CurrentUser = loginUser;
                     LogFile.Login(LoginType.Success, loginUser.userName);
@@ -122,6 +127,38 @@ namespace C969_SchedulingSoftware
             {
                 loginButton.Enabled = true;
                 return true;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            user user;
+            using (U05tp4Entities context = new U05tp4Entities())
+            {
+                user = context.users
+                    .Where(u => u.userName == "test")
+                    .Single();
+            }
+            Password.HashPassword(user.userName, "test");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            user user;
+            using (U05tp4Entities context = new U05tp4Entities())
+            {
+                user = context.users
+                    .Where(u => u.userName == "tyler")
+                    .Single();
+            }
+            bool verified = Password.VerifyPassword(user.userName, passwordBox.Text);
+            if (verified)
+            {
+                MessageBox.Show("PASS");
+            }
+            else
+            {
+                MessageBox.Show("FAIL");
             }
         }
     }

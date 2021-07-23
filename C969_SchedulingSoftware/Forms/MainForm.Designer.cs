@@ -37,7 +37,6 @@
             this.monthlyRadioButton = new System.Windows.Forms.RadioButton();
             this.weeklyRadioButton = new System.Windows.Forms.RadioButton();
             this.calendarDataGridView = new System.Windows.Forms.DataGridView();
-            this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.customerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +46,8 @@
             this.contactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.urlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.manageUsersButton = new System.Windows.Forms.Button();
             this.navGroupBox.SuspendLayout();
             this.calendarGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.calendarDataGridView)).BeginInit();
@@ -55,6 +56,7 @@
             // 
             // navGroupBox
             // 
+            this.navGroupBox.Controls.Add(this.manageUsersButton);
             this.navGroupBox.Controls.Add(this.viewReportsButton);
             this.navGroupBox.Controls.Add(this.mgrAppointmentsButton);
             this.navGroupBox.Controls.Add(this.mgrCustomerButton);
@@ -71,7 +73,7 @@
             this.viewReportsButton.Name = "viewReportsButton";
             this.viewReportsButton.Size = new System.Drawing.Size(165, 23);
             this.viewReportsButton.TabIndex = 2;
-            this.viewReportsButton.Text = "viewReports";
+            this.viewReportsButton.Text = "View Reports";
             this.viewReportsButton.UseVisualStyleBackColor = true;
             this.viewReportsButton.Click += new System.EventHandler(this.viewReportsButton_Click);
             // 
@@ -81,7 +83,7 @@
             this.mgrAppointmentsButton.Name = "mgrAppointmentsButton";
             this.mgrAppointmentsButton.Size = new System.Drawing.Size(165, 23);
             this.mgrAppointmentsButton.TabIndex = 1;
-            this.mgrAppointmentsButton.Text = "mgrAppointments";
+            this.mgrAppointmentsButton.Text = "Manage Appointments";
             this.mgrAppointmentsButton.UseVisualStyleBackColor = true;
             this.mgrAppointmentsButton.Click += new System.EventHandler(this.mgrAppointmentsButton_Click);
             // 
@@ -91,7 +93,7 @@
             this.mgrCustomerButton.Name = "mgrCustomerButton";
             this.mgrCustomerButton.Size = new System.Drawing.Size(166, 23);
             this.mgrCustomerButton.TabIndex = 0;
-            this.mgrCustomerButton.Text = "mgrCustomer";
+            this.mgrCustomerButton.Text = "Manage Customers";
             this.mgrCustomerButton.UseVisualStyleBackColor = true;
             this.mgrCustomerButton.Click += new System.EventHandler(this.mgrCustomerButton_Click);
             // 
@@ -105,17 +107,17 @@
             this.calendarGroupBox.Size = new System.Drawing.Size(628, 426);
             this.calendarGroupBox.TabIndex = 1;
             this.calendarGroupBox.TabStop = false;
-            this.calendarGroupBox.Text = "calendarGroupBox";
+            this.calendarGroupBox.Text = "Calendar View";
             // 
             // monthlyRadioButton
             // 
             this.monthlyRadioButton.AutoSize = true;
             this.monthlyRadioButton.Location = new System.Drawing.Point(98, 17);
             this.monthlyRadioButton.Name = "monthlyRadioButton";
-            this.monthlyRadioButton.Size = new System.Drawing.Size(61, 17);
+            this.monthlyRadioButton.Size = new System.Drawing.Size(62, 17);
             this.monthlyRadioButton.TabIndex = 2;
             this.monthlyRadioButton.TabStop = true;
-            this.monthlyRadioButton.Text = "monthly";
+            this.monthlyRadioButton.Text = "Monthly";
             this.monthlyRadioButton.UseVisualStyleBackColor = true;
             // 
             // weeklyRadioButton
@@ -123,10 +125,10 @@
             this.weeklyRadioButton.AutoSize = true;
             this.weeklyRadioButton.Location = new System.Drawing.Point(7, 17);
             this.weeklyRadioButton.Name = "weeklyRadioButton";
-            this.weeklyRadioButton.Size = new System.Drawing.Size(58, 17);
+            this.weeklyRadioButton.Size = new System.Drawing.Size(61, 17);
             this.weeklyRadioButton.TabIndex = 1;
             this.weeklyRadioButton.TabStop = true;
-            this.weeklyRadioButton.Text = "weekly";
+            this.weeklyRadioButton.Text = "Weekly";
             this.weeklyRadioButton.UseVisualStyleBackColor = true;
             this.weeklyRadioButton.CheckedChanged += new System.EventHandler(this.weeklyRadioButton_CheckedChanged);
             // 
@@ -154,10 +156,6 @@
             this.calendarDataGridView.Size = new System.Drawing.Size(615, 380);
             this.calendarDataGridView.TabIndex = 0;
             this.calendarDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.calendarDataGridView_CellFormatting);
-            // 
-            // appointmentBindingSource
-            // 
-            this.appointmentBindingSource.DataSource = typeof(DatabaseModel.appointment);
             // 
             // customerDataGridViewTextBoxColumn
             // 
@@ -222,6 +220,20 @@
             this.urlDataGridViewTextBoxColumn.Name = "urlDataGridViewTextBoxColumn";
             this.urlDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // appointmentBindingSource
+            // 
+            this.appointmentBindingSource.DataSource = typeof(DatabaseModel.appointment);
+            // 
+            // manageUsersButton
+            // 
+            this.manageUsersButton.Location = new System.Drawing.Point(6, 211);
+            this.manageUsersButton.Name = "manageUsersButton";
+            this.manageUsersButton.Size = new System.Drawing.Size(166, 23);
+            this.manageUsersButton.TabIndex = 3;
+            this.manageUsersButton.Text = "Manage Users";
+            this.manageUsersButton.UseVisualStyleBackColor = true;
+            this.manageUsersButton.Click += new System.EventHandler(this.manageUsersButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -262,5 +274,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn contactDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn urlDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button manageUsersButton;
     }
 }

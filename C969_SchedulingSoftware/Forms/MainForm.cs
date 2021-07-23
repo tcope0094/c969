@@ -135,6 +135,7 @@ namespace C969_SchedulingSoftware
 
             weeklyDbcontext.appointments
                 .Where(a => a.start >= weekStart.Date && a.start <= weekEnd.Date)
+                .Where(a => a.userId == AppInfo.CurrentUser.userId)
                 .OrderBy(a => a.start)
                 .Load();
 
@@ -160,6 +161,7 @@ namespace C969_SchedulingSoftware
             
             monthlyDbcontext.appointments
                 .Where(a => a.start >= monthStart.Date && a.start <= monthEnd.Date)
+                .Where(a => a.userId == AppInfo.CurrentUser.userId)
                 .OrderBy(a => a.start)
                 .Load();
 
@@ -170,6 +172,12 @@ namespace C969_SchedulingSoftware
         {
             var viewReports = new ViewReports();
             viewReports.ShowDialog();
+        }
+
+        private void manageUsersButton_Click(object sender, EventArgs e)
+        {
+            var manageUsers = new ManageUsers();
+            manageUsers.ShowDialog();
         }
     }
 }

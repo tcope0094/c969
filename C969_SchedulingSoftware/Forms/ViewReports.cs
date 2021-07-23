@@ -92,10 +92,12 @@ namespace C969_SchedulingSoftware.Forms
                 if (userAppointments.Count != 0)
                 {
                     sb.Append(String.Format("{0,-20} {1,-25} {2,-25} {3,-15} {4,-20}", "Customer:", "Start Time:", "End Time:", "Title:", "Type:"));
+                    sb.Append(Environment.NewLine);
 
                     foreach (var appt in userAppointments)
                     {
                         sb.Append(String.Format("{0,-20} {1,-25} {2,-25} {3,-15} {4,-20}", appt.customer.ToString(), appt.start.ToLocalTime().ToString(), appt.end.ToLocalTime().ToString(), appt.title.ToString(), appt.type.ToString()));
+                        sb.Append(Environment.NewLine);
                     }
                 }
                 else

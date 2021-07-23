@@ -38,9 +38,9 @@ namespace C969_SchedulingSoftware
             loginButton.Enabled = false;
 
             //temp so I dont have to login everytime
-            usernameBox.Text = "test";
-            passwordBox.Text = "test";
-            SubmitLogin();
+            //usernameBox.Text = "test";
+            //passwordBox.Text = "test";
+            //SubmitLogin();
         }
 
         private void loginButton_Click(object sender, EventArgs e)

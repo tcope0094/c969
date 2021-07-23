@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Resources;
@@ -92,20 +93,22 @@ namespace C969_SchedulingSoftware
         private void SubmitLogin()
         {
             try
+            {
+                var loginUser = dbcontext.users
+                    .Where(user => user.userName == usernameBox.Text && user.password == passwordBox.Text && user.active == 1)
+                    .Single();
+                if (loginUser != null)
                 {
-                    var loginUser = dbcontext.users
-                        .Where(user => user.userName == usernameBox.Text && user.password == passwordBox.Text && user.active == 1)
-                        .Single();
-                    if (loginUser != null)
-                    {
-                        AppInfo.CurrentUser = loginUser;
-                        this.DialogResult = DialogResult.OK;
-                    }
+                    AppInfo.CurrentUser = loginUser;
+                    LogFile.Login(LoginType.Success, loginUser.userName);
+                    this.DialogResult = DialogResult.OK;
                 }
-                catch (InvalidOperationException)
-                {
-                    MessageBox.Show(AppInfo.MyResources.GetString("strLoginFailed"),"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            catch (InvalidOperationException)
+            {
+                LogFile.Login(LoginType.Failure, usernameBox.Text);
+                MessageBox.Show(AppInfo.MyResources.GetString("strLoginFailed"),"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private bool ValidateLoginBoxes()

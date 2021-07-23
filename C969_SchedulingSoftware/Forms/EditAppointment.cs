@@ -43,7 +43,6 @@ namespace C969_SchedulingSoftware.Forms
 
             startDateTimePicker.Value = startDateTimePicker.Value.ToLocalTime();
             endDateTimePicker.Value = endDateTimePicker.Value.ToLocalTime();
-
         }
 
         private appointment AppointmentSearch(int appointmentId)
@@ -77,6 +76,8 @@ namespace C969_SchedulingSoftware.Forms
                 
                 appointmentBindingSource.EndEdit();
                 appointmentDbcontext.SaveChanges();
+
+                TimeStamp.Update(appointmentToEdit);
 
                 this.Close();
             }

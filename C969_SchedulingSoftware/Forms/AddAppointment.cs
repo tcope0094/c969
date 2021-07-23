@@ -161,7 +161,7 @@ namespace C969_SchedulingSoftware.Forms
             }
         }
 
-        // LAMBDA => simpler to write the validation for start time before end time this way
+        // LAMBDA => simpler to write and understand these three validations when written as lambdas
         private Func<TimeSpan, TimeSpan, bool> IsValidStartEndTime = (start, end) => start < end;
         private Func<DateTime, DateTime, bool> IsValidStartEndDate = (start, end) => start == end;
         private Func<DateTime, bool> IsWeekday = day => day.DayOfWeek >= DayOfWeek.Monday && day.DayOfWeek <= DayOfWeek.Friday;

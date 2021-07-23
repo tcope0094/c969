@@ -26,6 +26,7 @@ namespace C969_SchedulingSoftware.Forms
         private DatabaseModel.U05tp4Entities customerDbcontext = new DatabaseModel.U05tp4Entities();
         private enum FormType { Add, Edit }
         private customer customerToEdit;
+        private address addressToEdit;
         private FormType formType;
         private int customerBindingSourcePosition;
         public AddEditCustomer(ref U05tp4Entities customerDbcontext)
@@ -166,15 +167,19 @@ namespace C969_SchedulingSoftware.Forms
         {
             if ((int)cityComboBox.SelectedValue != customerToEdit.address.cityId)
             {
-                var addressToUpdate = customerDbcontext.addresses
+                addressToEdit = customerDbcontext.addresses
                     .Where(a => a.addressId == customerToEdit.addressId)
                     .First();
 
-                addressToUpdate.cityId = (int)cityComboBox.SelectedValue;
+                addressToEdit.cityId = (int)cityComboBox.SelectedValue;
+
             }
             //customerToEdit.lastUpdate = DateTime.UtcNow;
             //customerToEdit.lastUpdateBy = AppInfo.CurrentUser.userName;
+            
             customerDbcontext.SaveChanges();
+            TimeStamp.Update(customerToEdit);
+            TimeStamp.Update(addressToEdit);
             this.DialogResult = DialogResult.OK;
         }
 

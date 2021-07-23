@@ -110,7 +110,30 @@ namespace C969_SchedulingSoftware.Forms
         }
         private void AppointmentsCreatedToday()
         {
+            var appointmentsToday = AppointmentSearch(DateTime.Now.Date);
+            var sb = new StringBuilder();
+            sb.Append($"All appointments created today: {DateTime.Now.ToShortDateString()}");
+            sb.Append(Environment.NewLine);
+
+            if (appointmentsToday.Count != 0)
+            {
+                sb.Append(String.Format("{0,-10} {1,-20} {2,-25} {3,-25} {4,-15} {5,-20}", "User:", "Customer:", "Start Time:", "End Time:", "Title:", "Type:"));
+                sb.Append(Environment.NewLine);
+
+                foreach (var appt in appointmentsToday)
+                {
+                    sb.Append(String.Format("{0,-10} {1,-20} {2,-25} {3,-25} {4,-15} {5,-20}", appt.user.ToString(), appt.customer.ToString(), appt.start.ToLocalTime().ToString(), appt.end.ToLocalTime().ToString(), appt.title.ToString(), appt.type.ToString()));
+                    sb.Append(Environment.NewLine);
+                }
+            }
+            else
+            {
+                sb.Append("No appointments created today");
+            }
             reportsOutput.Clear();
+            reportsOutput.AppendText(sb.ToString());
+            reportsOutput.AppendText(Environment.NewLine);
+            reportsOutput.AppendText(Environment.NewLine);
         }
 
         private void reportTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -139,6 +162,27 @@ namespace C969_SchedulingSoftware.Forms
                 {
                     return searchContext.appointments
                         .Where(a => a.userId == userId)
+                        .Include(a => a.user)
+                        .Include(a => a.customer)
+                        .ToList();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        private List<appointment> AppointmentSearch(DateTime date)
+        {
+            try
+            {
+                using (U05tp4Entities searchContext = new U05tp4Entities())
+                {
+                    return searchContext.appointments
+                        .Where(a => a.createDate.Day == date.Day)
+                        .Where(a => a.createDate.Month == date.Month)
+                        .Where(a => a.createDate.Year == date.Year)
                         .Include(a => a.user)
                         .Include(a => a.customer)
                         .ToList();

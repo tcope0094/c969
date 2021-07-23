@@ -40,7 +40,7 @@
             this.reportsOutput.Multiline = true;
             this.reportsOutput.Name = "reportsOutput";
             this.reportsOutput.ReadOnly = true;
-            this.reportsOutput.Size = new System.Drawing.Size(673, 542);
+            this.reportsOutput.Size = new System.Drawing.Size(803, 542);
             this.reportsOutput.TabIndex = 0;
             // 
             // reportTypeComboBox
@@ -70,7 +70,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(698, 611);
+            this.ClientSize = new System.Drawing.Size(827, 611);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.reportTypeComboBox);
             this.Controls.Add(this.reportsOutput);

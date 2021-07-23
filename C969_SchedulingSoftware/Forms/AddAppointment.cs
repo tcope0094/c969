@@ -107,6 +107,7 @@ namespace C969_SchedulingSoftware.Forms
             bool validBusinessHours = IsInsideBusinessHours(startTime, endTime);
             bool validStartEndTime = IsValidStartEndTime(startTime, endTime);
             bool validStartEndDate = IsValidStartEndDate(startDate, endDate);
+            bool validWeekday = IsWeekday(startDate);
 
             string errorMessage = "";
 
@@ -125,6 +126,10 @@ namespace C969_SchedulingSoftware.Forms
             if (!validStartEndDate)
             {
                 errorMessage += "\nStart and End dates cannot span multiple days";
+            }
+            if (!validWeekday)
+            {
+                errorMessage += "\nAppointments can only be scheduled Monday - Friday";
             }
 
             if (valid == true)
@@ -159,5 +164,6 @@ namespace C969_SchedulingSoftware.Forms
         // LAMBDA => simpler to write the validation for start time before end time this way
         private Func<TimeSpan, TimeSpan, bool> IsValidStartEndTime = (start, end) => start < end;
         private Func<DateTime, DateTime, bool> IsValidStartEndDate = (start, end) => start == end;
+        private Func<DateTime, bool> IsWeekday = day => day.DayOfWeek >= DayOfWeek.Monday && day.DayOfWeek <= DayOfWeek.Friday;
     }
 }

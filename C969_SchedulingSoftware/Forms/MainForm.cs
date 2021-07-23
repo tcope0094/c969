@@ -82,7 +82,18 @@ namespace C969_SchedulingSoftware
         private void mgrAppointmentsButton_Click(object sender, EventArgs e)
         {
             var manageAppointments = new ManageAppointments();
-            manageAppointments.Show();
+            manageAppointments.ShowDialog();
+            if (manageAppointments.DialogResult == DialogResult.OK)
+            {
+                if (weeklyRadioButton.Checked)
+                {
+                    WeeklyView();
+                }
+                else
+                {
+                    MonthlyView();
+                }
+            }
         }
 
         private void calendarDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -90,6 +101,19 @@ namespace C969_SchedulingSoftware
             if (e.Value is DateTime)
             {
                 e.Value = ((DateTime)e.Value).ToLocalTime();
+            }
+        }
+
+        private void weeklyRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (weeklyRadioButton.Checked)
+            {
+                WeeklyView();
+            }
+            else
+            {
+                MonthlyView();
             }
         }
 
@@ -111,29 +135,41 @@ namespace C969_SchedulingSoftware
 
             weeklyDbcontext.appointments
                 .Where(a => a.start >= weekStart.Date && a.start <= weekEnd.Date)
+                .OrderBy(a => a.start)
                 .Load();
 
             appointmentBindingSource.DataSource = weeklyDbcontext.appointments.Local.ToBindingList();
 
         }
 
-        private void weeklyRadioButton_CheckedChanged(object sender, EventArgs e)
+        private void MonthlyView()
         {
-            
-            if (weeklyRadioButton.Checked)
+            DateTime currentDay = DateTime.Now;
+            DateTime monthStart;
+            DateTime monthEnd;
+
+            if ((int)currentDay.Day == 1 && (int)currentDay.DayOfWeek == 1)
             {
-                WeeklyView();
+                monthStart = DateTime.Now.Date;
             }
             else
             {
-                MonthlyView();
+                monthStart = DateTime.Now.AddDays(((int)currentDay.Day - 1) * -1).Date;
             }
+            monthEnd = monthStart.AddMonths(1).AddDays(-1);
+            
+            monthlyDbcontext.appointments
+                .Where(a => a.start >= monthStart.Date && a.start <= monthEnd.Date)
+                .OrderBy(a => a.start)
+                .Load();
+
+            appointmentBindingSource.DataSource = monthlyDbcontext.appointments.Local.ToBindingList();
         }
 
-        private void MonthlyView()
+        private void viewReportsButton_Click(object sender, EventArgs e)
         {
-            monthlyDbcontext.appointments.Load();
-            appointmentBindingSource.DataSource = monthlyDbcontext.appointments.Local.ToBindingList();
+            var viewReports = new ViewReports();
+            viewReports.ShowDialog();
         }
     }
 }

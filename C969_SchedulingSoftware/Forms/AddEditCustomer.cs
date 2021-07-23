@@ -171,7 +171,11 @@ namespace C969_SchedulingSoftware.Forms
                     .First();
 
                 addressToUpdate.cityId = (int)cityComboBox.SelectedValue;
+                addressToUpdate.lastUpdate = DateTime.UtcNow;
+                addressToUpdate.lastUpdateBy = AppInfo.CurrentUser.userName;
             }
+            //customerToEdit.lastUpdate = DateTime.UtcNow;
+            //customerToEdit.lastUpdateBy = AppInfo.CurrentUser.userName;
             customerDbcontext.SaveChanges();
             this.DialogResult = DialogResult.OK;
         }

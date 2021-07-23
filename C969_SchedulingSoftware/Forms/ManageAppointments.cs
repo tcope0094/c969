@@ -87,5 +87,10 @@ namespace C969_SchedulingSoftware.Forms
         {
             editButton.Enabled = true;
         }
+
+        private void ManageAppointments_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+        }
     }
 }

@@ -154,6 +154,7 @@
             this.contactTextBox.Name = "contactTextBox";
             this.contactTextBox.Size = new System.Drawing.Size(200, 20);
             this.contactTextBox.TabIndex = 4;
+            this.contactTextBox.TextChanged += new System.EventHandler(this.contactTextBox_TextChanged);
             // 
             // appointmentBindingSource
             // 
@@ -166,6 +167,7 @@
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.Size = new System.Drawing.Size(200, 20);
             this.descriptionTextBox.TabIndex = 12;
+            this.descriptionTextBox.TextChanged += new System.EventHandler(this.descriptionTextBox_TextChanged);
             // 
             // endDateTimePicker
             // 
@@ -182,6 +184,7 @@
             this.locationTextBox.Name = "locationTextBox";
             this.locationTextBox.Size = new System.Drawing.Size(200, 20);
             this.locationTextBox.TabIndex = 20;
+            this.locationTextBox.TextChanged += new System.EventHandler(this.locationTextBox_TextChanged);
             // 
             // startDateTimePicker
             // 
@@ -198,6 +201,7 @@
             this.titleTextBox.Name = "titleTextBox";
             this.titleTextBox.Size = new System.Drawing.Size(200, 20);
             this.titleTextBox.TabIndex = 24;
+            this.titleTextBox.TextChanged += new System.EventHandler(this.titleTextBox_TextChanged);
             // 
             // typeTextBox
             // 
@@ -206,6 +210,7 @@
             this.typeTextBox.Name = "typeTextBox";
             this.typeTextBox.Size = new System.Drawing.Size(200, 20);
             this.typeTextBox.TabIndex = 26;
+            this.typeTextBox.TextChanged += new System.EventHandler(this.typeTextBox_TextChanged);
             // 
             // urlTextBox
             // 
@@ -214,6 +219,7 @@
             this.urlTextBox.Name = "urlTextBox";
             this.urlTextBox.Size = new System.Drawing.Size(200, 20);
             this.urlTextBox.TabIndex = 28;
+            this.urlTextBox.TextChanged += new System.EventHandler(this.urlTextBox_TextChanged);
             // 
             // saveButton
             // 
@@ -256,6 +262,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(376, 302);
             this.Controls.Add(customerNameLabel);
             this.Controls.Add(this.customerNameTextBox);

@@ -19,6 +19,7 @@ namespace C969_SchedulingSoftware.Forms
         private U05tp4Entities customerDbcontext = new U05tp4Entities();
         private appointment appointmentToEdit;
         private int appointmentBindingSourcePosition;
+        private bool formValidated;
         
         public EditAppointment(int appointmentIdToEdit, int appointmentBindingSourcePosition)
         {
@@ -43,6 +44,8 @@ namespace C969_SchedulingSoftware.Forms
 
             startDateTimePicker.Value = startDateTimePicker.Value.ToLocalTime();
             endDateTimePicker.Value = endDateTimePicker.Value.ToLocalTime();
+            ValidateBoxes();
+
         }
 
         private appointment AppointmentSearch(int appointmentId)
@@ -132,8 +135,6 @@ namespace C969_SchedulingSoftware.Forms
                 MessageBox.Show(errorMessage,"Invalid Schedule",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return false;
             }
-            
-
         }
 
         private bool IsInsideBusinessHours(TimeSpan start, TimeSpan end)
@@ -156,5 +157,76 @@ namespace C969_SchedulingSoftware.Forms
         private Func<TimeSpan, TimeSpan, bool> IsValidStartEndTime = (start, end) => start < end;
         private Func<DateTime, DateTime, bool> IsValidStartEndDate = (start, end) => start == end;
         private Func<DateTime, bool> IsWeekday = day => day.DayOfWeek >= DayOfWeek.Monday && day.DayOfWeek <= DayOfWeek.Friday;
+
+        private void ValidateBoxes()
+        {
+            List<TextBox> allBoxes = new List<TextBox>();
+
+            foreach (Control item in this.Controls)
+            {
+                if (item is TextBox && item.Name != "customerNameTextBox")
+                {
+                    allBoxes.Add((TextBox)item);
+                }
+            }
+
+            var failures = allBoxes
+                .Where(a => String.IsNullOrWhiteSpace(a.Text))
+                .ToList();
+
+            var successes = allBoxes
+                .Where(a => !failures.Any(f => f.Name == a.Name))
+                .ToList();
+
+            if (failures.Count == 0)
+            {
+                saveButton.Enabled = true;
+                foreach (var item in allBoxes)
+                {
+                    item.BackColor = Color.White;
+                }
+            }
+            else
+            {
+                saveButton.Enabled = false;
+                foreach (var s in successes)
+                {
+                    s.BackColor = Color.White;
+                }
+                foreach (var f in failures)
+                {
+                    f.BackColor = Color.Red;
+                }
+            }
+        }
+        private void titleTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ValidateBoxes();
+        }
+
+        private void descriptionTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ValidateBoxes();
+        }
+
+        private void typeTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ValidateBoxes();
+        }
+
+        private void contactTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ValidateBoxes();
+        }
+
+        private void locationTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ValidateBoxes();
+        }
+
+        private void urlTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ValidateBoxes();
+        }
     }
 }

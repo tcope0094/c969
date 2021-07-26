@@ -49,18 +49,18 @@
             city1Label.AutoSize = true;
             city1Label.Location = new System.Drawing.Point(36, 22);
             city1Label.Name = "city1Label";
-            city1Label.Size = new System.Drawing.Size(32, 13);
+            city1Label.Size = new System.Drawing.Size(27, 13);
             city1Label.TabIndex = 1;
-            city1Label.Text = "city1:";
+            city1Label.Text = "City:";
             // 
             // country1Label
             // 
             country1Label.AutoSize = true;
             country1Label.Location = new System.Drawing.Point(36, 48);
             country1Label.Name = "country1Label";
-            country1Label.Size = new System.Drawing.Size(51, 13);
+            country1Label.Size = new System.Drawing.Size(46, 13);
             country1Label.TabIndex = 15;
-            country1Label.Text = "country1:";
+            country1Label.Text = "Country:";
             // 
             // cityBindingSource
             // 
@@ -72,7 +72,7 @@
             this.city1TextBox.Location = new System.Drawing.Point(121, 19);
             this.city1TextBox.Name = "city1TextBox";
             this.city1TextBox.Size = new System.Drawing.Size(200, 20);
-            this.city1TextBox.TabIndex = 2;
+            this.city1TextBox.TabIndex = 0;
             this.city1TextBox.TextChanged += new System.EventHandler(this.city1TextBox_TextChanged);
             // 
             // saveButton
@@ -80,7 +80,7 @@
             this.saveButton.Location = new System.Drawing.Point(121, 80);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
-            this.saveButton.TabIndex = 38;
+            this.saveButton.TabIndex = 3;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
@@ -94,7 +94,7 @@
             this.countryComboBox.Location = new System.Drawing.Point(121, 48);
             this.countryComboBox.Name = "countryComboBox";
             this.countryComboBox.Size = new System.Drawing.Size(200, 21);
-            this.countryComboBox.TabIndex = 39;
+            this.countryComboBox.TabIndex = 1;
             this.countryComboBox.ValueMember = "countryId";
             // 
             // countryBindingSource
@@ -107,7 +107,7 @@
             this.countryLinkLabel.Location = new System.Drawing.Point(327, 51);
             this.countryLinkLabel.Name = "countryLinkLabel";
             this.countryLinkLabel.Size = new System.Drawing.Size(51, 13);
-            this.countryLinkLabel.TabIndex = 53;
+            this.countryLinkLabel.TabIndex = 2;
             this.countryLinkLabel.TabStop = true;
             this.countryLinkLabel.Text = "Add New";
             this.countryLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.countryLinkLabel_LinkClicked);
@@ -117,7 +117,7 @@
             this.cancelButton.Location = new System.Drawing.Point(246, 80);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 54;
+            this.cancelButton.TabIndex = 4;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -136,7 +136,7 @@
             this.Controls.Add(this.city1TextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddCity";
-            this.Text = "8";
+            this.Text = "Add City";
             this.Load += new System.EventHandler(this.AddCity_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cityBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).EndInit();

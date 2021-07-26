@@ -110,63 +110,63 @@
             // dgvStartColumn
             // 
             this.dgvStartColumn.DataPropertyName = "start";
-            this.dgvStartColumn.HeaderText = "start";
+            this.dgvStartColumn.HeaderText = "Start";
             this.dgvStartColumn.Name = "dgvStartColumn";
             this.dgvStartColumn.ReadOnly = true;
             // 
             // dgvEndColumn
             // 
             this.dgvEndColumn.DataPropertyName = "end";
-            this.dgvEndColumn.HeaderText = "end";
+            this.dgvEndColumn.HeaderText = "End";
             this.dgvEndColumn.Name = "dgvEndColumn";
             this.dgvEndColumn.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn16
             // 
             this.dataGridViewTextBoxColumn16.DataPropertyName = "customer";
-            this.dataGridViewTextBoxColumn16.HeaderText = "customer";
+            this.dataGridViewTextBoxColumn16.HeaderText = "Customer";
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
             this.dataGridViewTextBoxColumn16.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "title";
-            this.dataGridViewTextBoxColumn4.HeaderText = "title";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Title";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "description";
-            this.dataGridViewTextBoxColumn5.HeaderText = "description";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Description";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "location";
-            this.dataGridViewTextBoxColumn6.HeaderText = "location";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Location";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.DataPropertyName = "contact";
-            this.dataGridViewTextBoxColumn7.HeaderText = "contact";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Contact";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.DataPropertyName = "type";
-            this.dataGridViewTextBoxColumn8.HeaderText = "type";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Type";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn9
             // 
             this.dataGridViewTextBoxColumn9.DataPropertyName = "url";
-            this.dataGridViewTextBoxColumn9.HeaderText = "url";
+            this.dataGridViewTextBoxColumn9.HeaderText = "URL";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
             // 
@@ -181,7 +181,7 @@
             this.Controls.Add(this.appointmentDataGridView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ManageAppointments";
-            this.Text = "ManageAppointments";
+            this.Text = "Manage Appointments";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageAppointments_FormClosing);
             this.Load += new System.EventHandler(this.ManageAppointments_Load);
             ((System.ComponentModel.ISupportInitialize)(this.appointmentDataGridView)).EndInit();

@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.navGroupBox = new System.Windows.Forms.GroupBox();
+            this.manageUsersButton = new System.Windows.Forms.Button();
             this.viewReportsButton = new System.Windows.Forms.Button();
             this.mgrAppointmentsButton = new System.Windows.Forms.Button();
             this.mgrCustomerButton = new System.Windows.Forms.Button();
@@ -47,7 +48,6 @@
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.urlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.manageUsersButton = new System.Windows.Forms.Button();
             this.navGroupBox.SuspendLayout();
             this.calendarGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.calendarDataGridView)).BeginInit();
@@ -66,6 +66,16 @@
             this.navGroupBox.TabIndex = 0;
             this.navGroupBox.TabStop = false;
             this.navGroupBox.Text = "navGroupBox";
+            // 
+            // manageUsersButton
+            // 
+            this.manageUsersButton.Location = new System.Drawing.Point(6, 211);
+            this.manageUsersButton.Name = "manageUsersButton";
+            this.manageUsersButton.Size = new System.Drawing.Size(166, 23);
+            this.manageUsersButton.TabIndex = 3;
+            this.manageUsersButton.Text = "Manage Users";
+            this.manageUsersButton.UseVisualStyleBackColor = true;
+            this.manageUsersButton.Click += new System.EventHandler(this.manageUsersButton_Click);
             // 
             // viewReportsButton
             // 
@@ -115,7 +125,7 @@
             this.monthlyRadioButton.Location = new System.Drawing.Point(98, 17);
             this.monthlyRadioButton.Name = "monthlyRadioButton";
             this.monthlyRadioButton.Size = new System.Drawing.Size(62, 17);
-            this.monthlyRadioButton.TabIndex = 2;
+            this.monthlyRadioButton.TabIndex = 5;
             this.monthlyRadioButton.TabStop = true;
             this.monthlyRadioButton.Text = "Monthly";
             this.monthlyRadioButton.UseVisualStyleBackColor = true;
@@ -126,7 +136,7 @@
             this.weeklyRadioButton.Location = new System.Drawing.Point(7, 17);
             this.weeklyRadioButton.Name = "weeklyRadioButton";
             this.weeklyRadioButton.Size = new System.Drawing.Size(61, 17);
-            this.weeklyRadioButton.TabIndex = 1;
+            this.weeklyRadioButton.TabIndex = 4;
             this.weeklyRadioButton.TabStop = true;
             this.weeklyRadioButton.Text = "Weekly";
             this.weeklyRadioButton.UseVisualStyleBackColor = true;
@@ -160,79 +170,69 @@
             // customerDataGridViewTextBoxColumn
             // 
             this.customerDataGridViewTextBoxColumn.DataPropertyName = "customer";
-            this.customerDataGridViewTextBoxColumn.HeaderText = "customer";
+            this.customerDataGridViewTextBoxColumn.HeaderText = "Customer";
             this.customerDataGridViewTextBoxColumn.Name = "customerDataGridViewTextBoxColumn";
             this.customerDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // startDataGridViewTextBoxColumn
             // 
             this.startDataGridViewTextBoxColumn.DataPropertyName = "start";
-            this.startDataGridViewTextBoxColumn.HeaderText = "start";
+            this.startDataGridViewTextBoxColumn.HeaderText = "Start";
             this.startDataGridViewTextBoxColumn.Name = "startDataGridViewTextBoxColumn";
             this.startDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // endDataGridViewTextBoxColumn
             // 
             this.endDataGridViewTextBoxColumn.DataPropertyName = "end";
-            this.endDataGridViewTextBoxColumn.HeaderText = "end";
+            this.endDataGridViewTextBoxColumn.HeaderText = "End";
             this.endDataGridViewTextBoxColumn.Name = "endDataGridViewTextBoxColumn";
             this.endDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // titleDataGridViewTextBoxColumn
             // 
             this.titleDataGridViewTextBoxColumn.DataPropertyName = "title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "title";
+            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
             this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
             this.titleDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // descriptionDataGridViewTextBoxColumn
             // 
             this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
             this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // locationDataGridViewTextBoxColumn
             // 
             this.locationDataGridViewTextBoxColumn.DataPropertyName = "location";
-            this.locationDataGridViewTextBoxColumn.HeaderText = "location";
+            this.locationDataGridViewTextBoxColumn.HeaderText = "Location";
             this.locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
             this.locationDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // contactDataGridViewTextBoxColumn
             // 
             this.contactDataGridViewTextBoxColumn.DataPropertyName = "contact";
-            this.contactDataGridViewTextBoxColumn.HeaderText = "contact";
+            this.contactDataGridViewTextBoxColumn.HeaderText = "Contact";
             this.contactDataGridViewTextBoxColumn.Name = "contactDataGridViewTextBoxColumn";
             this.contactDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // typeDataGridViewTextBoxColumn
             // 
             this.typeDataGridViewTextBoxColumn.DataPropertyName = "type";
-            this.typeDataGridViewTextBoxColumn.HeaderText = "type";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
             this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
             this.typeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // urlDataGridViewTextBoxColumn
             // 
             this.urlDataGridViewTextBoxColumn.DataPropertyName = "url";
-            this.urlDataGridViewTextBoxColumn.HeaderText = "url";
+            this.urlDataGridViewTextBoxColumn.HeaderText = "URL";
             this.urlDataGridViewTextBoxColumn.Name = "urlDataGridViewTextBoxColumn";
             this.urlDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // appointmentBindingSource
             // 
             this.appointmentBindingSource.DataSource = typeof(DatabaseModel.appointment);
-            // 
-            // manageUsersButton
-            // 
-            this.manageUsersButton.Location = new System.Drawing.Point(6, 211);
-            this.manageUsersButton.Name = "manageUsersButton";
-            this.manageUsersButton.Size = new System.Drawing.Size(166, 23);
-            this.manageUsersButton.TabIndex = 3;
-            this.manageUsersButton.Text = "Manage Users";
-            this.manageUsersButton.UseVisualStyleBackColor = true;
-            this.manageUsersButton.Click += new System.EventHandler(this.manageUsersButton_Click);
             // 
             // MainForm
             // 
@@ -242,7 +242,7 @@
             this.Controls.Add(this.calendarGroupBox);
             this.Controls.Add(this.navGroupBox);
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "Scheduling Software";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.navGroupBox.ResumeLayout(false);
@@ -265,6 +265,7 @@
         private System.Windows.Forms.RadioButton monthlyRadioButton;
         private System.Windows.Forms.RadioButton weeklyRadioButton;
         private System.Windows.Forms.BindingSource appointmentBindingSource;
+        private System.Windows.Forms.Button manageUsersButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn startDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn endDataGridViewTextBoxColumn;
@@ -274,6 +275,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn contactDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn urlDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button manageUsersButton;
     }
 }

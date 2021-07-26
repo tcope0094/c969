@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addUserButton = new System.Windows.Forms.Button();
             this.updatePasswordButton = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -61,20 +61,6 @@
             this.userDataGridView.TabIndex = 1;
             this.userDataGridView.SelectionChanged += new System.EventHandler(this.userDataGridView_SelectionChanged);
             // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "userName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "userName";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "active";
-            this.dataGridViewTextBoxColumn4.HeaderText = "active";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
             // addUserButton
             // 
             this.addUserButton.Location = new System.Drawing.Point(13, 238);
@@ -94,6 +80,20 @@
             this.updatePasswordButton.Text = "Update Password";
             this.updatePasswordButton.UseVisualStyleBackColor = true;
             this.updatePasswordButton.Click += new System.EventHandler(this.updatePasswordButton_Click);
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "userName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Username";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "active";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Active";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // ManageUsers
             // 
@@ -116,9 +116,9 @@
 
         private System.Windows.Forms.BindingSource userBindingSource;
         private System.Windows.Forms.DataGridView userDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.Button addUserButton;
         private System.Windows.Forms.Button updatePasswordButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     }
 }

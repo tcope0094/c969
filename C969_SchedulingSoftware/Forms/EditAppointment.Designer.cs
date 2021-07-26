@@ -153,7 +153,7 @@
             this.contactTextBox.Location = new System.Drawing.Point(128, 173);
             this.contactTextBox.Name = "contactTextBox";
             this.contactTextBox.Size = new System.Drawing.Size(200, 20);
-            this.contactTextBox.TabIndex = 4;
+            this.contactTextBox.TabIndex = 5;
             this.contactTextBox.TextChanged += new System.EventHandler(this.contactTextBox_TextChanged);
             // 
             // appointmentBindingSource
@@ -166,7 +166,7 @@
             this.descriptionTextBox.Location = new System.Drawing.Point(128, 69);
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.Size = new System.Drawing.Size(200, 20);
-            this.descriptionTextBox.TabIndex = 12;
+            this.descriptionTextBox.TabIndex = 1;
             this.descriptionTextBox.TextChanged += new System.EventHandler(this.descriptionTextBox_TextChanged);
             // 
             // endDateTimePicker
@@ -175,7 +175,7 @@
             this.endDateTimePicker.Location = new System.Drawing.Point(128, 147);
             this.endDateTimePicker.Name = "endDateTimePicker";
             this.endDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.endDateTimePicker.TabIndex = 14;
+            this.endDateTimePicker.TabIndex = 4;
             // 
             // locationTextBox
             // 
@@ -183,7 +183,7 @@
             this.locationTextBox.Location = new System.Drawing.Point(128, 199);
             this.locationTextBox.Name = "locationTextBox";
             this.locationTextBox.Size = new System.Drawing.Size(200, 20);
-            this.locationTextBox.TabIndex = 20;
+            this.locationTextBox.TabIndex = 6;
             this.locationTextBox.TextChanged += new System.EventHandler(this.locationTextBox_TextChanged);
             // 
             // startDateTimePicker
@@ -192,7 +192,7 @@
             this.startDateTimePicker.Location = new System.Drawing.Point(128, 121);
             this.startDateTimePicker.Name = "startDateTimePicker";
             this.startDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.startDateTimePicker.TabIndex = 22;
+            this.startDateTimePicker.TabIndex = 3;
             // 
             // titleTextBox
             // 
@@ -200,7 +200,7 @@
             this.titleTextBox.Location = new System.Drawing.Point(128, 43);
             this.titleTextBox.Name = "titleTextBox";
             this.titleTextBox.Size = new System.Drawing.Size(200, 20);
-            this.titleTextBox.TabIndex = 24;
+            this.titleTextBox.TabIndex = 0;
             this.titleTextBox.TextChanged += new System.EventHandler(this.titleTextBox_TextChanged);
             // 
             // typeTextBox
@@ -209,7 +209,7 @@
             this.typeTextBox.Location = new System.Drawing.Point(128, 95);
             this.typeTextBox.Name = "typeTextBox";
             this.typeTextBox.Size = new System.Drawing.Size(200, 20);
-            this.typeTextBox.TabIndex = 26;
+            this.typeTextBox.TabIndex = 2;
             this.typeTextBox.TextChanged += new System.EventHandler(this.typeTextBox_TextChanged);
             // 
             // urlTextBox
@@ -218,7 +218,7 @@
             this.urlTextBox.Location = new System.Drawing.Point(128, 225);
             this.urlTextBox.Name = "urlTextBox";
             this.urlTextBox.Size = new System.Drawing.Size(200, 20);
-            this.urlTextBox.TabIndex = 28;
+            this.urlTextBox.TabIndex = 7;
             this.urlTextBox.TextChanged += new System.EventHandler(this.urlTextBox_TextChanged);
             // 
             // saveButton
@@ -226,7 +226,7 @@
             this.saveButton.Location = new System.Drawing.Point(127, 251);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
-            this.saveButton.TabIndex = 29;
+            this.saveButton.TabIndex = 8;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
@@ -236,7 +236,7 @@
             this.cancelButton.Location = new System.Drawing.Point(253, 251);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 30;
+            this.cancelButton.TabIndex = 9;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);

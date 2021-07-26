@@ -18,7 +18,6 @@ namespace C969_SchedulingSoftware
                     .Where(u => u.userId == entity.userId)
                     .Single();
 
-                update.lastUpdate = DateTime.UtcNow;
                 update.lastUpdateBy = AppInfo.CurrentUser.userName;
                 dbcontext.SaveChanges();
             }
@@ -31,7 +30,6 @@ namespace C969_SchedulingSoftware
                     .Where(a => a.addressId == entity.addressId)
                     .Single();
 
-                update.lastUpdate = DateTime.UtcNow;
                 update.lastUpdateBy = AppInfo.CurrentUser.userName;
                 dbcontext.SaveChanges();
             }
@@ -44,7 +42,6 @@ namespace C969_SchedulingSoftware
                     .Where(a => a.appointmentId == entity.appointmentId)
                     .Single();
 
-                update.lastUpdate = DateTime.UtcNow;
                 update.lastUpdateBy = AppInfo.CurrentUser.userName;
                 dbcontext.SaveChanges();
             }
@@ -57,7 +54,6 @@ namespace C969_SchedulingSoftware
                     .Where(a => a.cityId == entity.cityId)
                     .Single();
 
-                update.lastUpdate = DateTime.UtcNow;
                 update.lastUpdateBy = AppInfo.CurrentUser.userName;
                 dbcontext.SaveChanges();
             }
@@ -70,7 +66,6 @@ namespace C969_SchedulingSoftware
                     .Where(a => a.countryId == entity.countryId)
                     .Single();
 
-                update.lastUpdate = DateTime.UtcNow;
                 update.lastUpdateBy = AppInfo.CurrentUser.userName;
                 dbcontext.SaveChanges();
             }
@@ -83,11 +78,9 @@ namespace C969_SchedulingSoftware
                     .Where(a => a.customerId == entity.customerId)
                     .Single();
 
-                update.lastUpdate = DateTime.UtcNow;
                 update.lastUpdateBy = AppInfo.CurrentUser.userName;
                 dbcontext.SaveChanges();
             }
         }
-
     }
 }

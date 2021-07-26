@@ -33,14 +33,13 @@ namespace C969_SchedulingSoftware
             InitializeComponent();
             using (DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities())
             {
-                DateTime window = DateTime.UtcNow.AddDays(1);
+                DateTime window = DateTime.UtcNow.AddMinutes(15);
 
-                //commented out so it doesn't pop up while testing
-                //UpcomingAppointments = dbcontext.appointments
-                //.Where(appt => appt.userId == CurrentUser.userId)
-                //.Where(appt => appt.start > now)
-                //.Where(appt => appt.start <= window)
-                //.ToList();
+                UpcomingAppointments = dbcontext.appointments
+                .Where(appt => appt.userId == AppInfo.CurrentUser.userId)
+                .Where(appt => appt.start > now)
+                .Where(appt => appt.start <= window)
+                .ToList();
             }            
         }
 
@@ -48,11 +47,12 @@ namespace C969_SchedulingSoftware
         {
             weeklyRadioButton.Checked = true;
             WeeklyView();
+            navGroupBox.Text = $"Welcome {AppInfo.CurrentUser.userName}, what would you like to do?";
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
-            if (UpcomingAppointments != null)
+            if (UpcomingAppointments.Count > 0)
             {
                 string apptMessage = null;
                 using (DatabaseModel.U05tp4Entities dbcontext = new DatabaseModel.U05tp4Entities())
@@ -73,10 +73,8 @@ namespace C969_SchedulingSoftware
 
         private void mgrCustomerButton_Click(object sender, EventArgs e)
         {
-            //var customersForm = new CustomersForm();
-            //customersForm.Show();
-            var form1 = new ManageCustomers();
-            form1.Show();
+            var manageCustomers = new ManageCustomers();
+            manageCustomers.Show();
         }
 
         private void mgrAppointmentsButton_Click(object sender, EventArgs e)

@@ -37,6 +37,8 @@
             System.Windows.Forms.Label country1Label;
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.customerDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.addCustomerButton = new System.Windows.Forms.Button();
             this.editCustomerButton = new System.Windows.Forms.Button();
             this.deleteCustomerButton = new System.Windows.Forms.Button();
@@ -46,8 +48,6 @@
             this.postalCodeTextBox = new System.Windows.Forms.TextBox();
             this.city1TextBox = new System.Windows.Forms.TextBox();
             this.country1TextBox = new System.Windows.Forms.TextBox();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             address1Label = new System.Windows.Forms.Label();
             address2Label = new System.Windows.Forms.Label();
             phoneLabel = new System.Windows.Forms.Label();
@@ -131,15 +131,29 @@
             this.customerDataGridView.RowHeadersVisible = false;
             this.customerDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.customerDataGridView.Size = new System.Drawing.Size(205, 220);
-            this.customerDataGridView.TabIndex = 1;
+            this.customerDataGridView.TabIndex = 0;
             this.customerDataGridView.SelectionChanged += new System.EventHandler(this.customerDataGridView_SelectionChanged);
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "customerName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Customer";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.DataPropertyName = "active";
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Active";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
             // 
             // addCustomerButton
             // 
             this.addCustomerButton.Location = new System.Drawing.Point(33, 254);
             this.addCustomerButton.Name = "addCustomerButton";
             this.addCustomerButton.Size = new System.Drawing.Size(64, 23);
-            this.addCustomerButton.TabIndex = 13;
+            this.addCustomerButton.TabIndex = 1;
             this.addCustomerButton.Text = "Add";
             this.addCustomerButton.UseVisualStyleBackColor = true;
             this.addCustomerButton.Click += new System.EventHandler(this.addCustomerButton_Click);
@@ -149,7 +163,7 @@
             this.editCustomerButton.Location = new System.Drawing.Point(103, 254);
             this.editCustomerButton.Name = "editCustomerButton";
             this.editCustomerButton.Size = new System.Drawing.Size(64, 23);
-            this.editCustomerButton.TabIndex = 14;
+            this.editCustomerButton.TabIndex = 2;
             this.editCustomerButton.Text = "Edit";
             this.editCustomerButton.UseVisualStyleBackColor = true;
             this.editCustomerButton.Click += new System.EventHandler(this.editCustomerButton_Click);
@@ -159,7 +173,7 @@
             this.deleteCustomerButton.Location = new System.Drawing.Point(173, 254);
             this.deleteCustomerButton.Name = "deleteCustomerButton";
             this.deleteCustomerButton.Size = new System.Drawing.Size(65, 23);
-            this.deleteCustomerButton.TabIndex = 15;
+            this.deleteCustomerButton.TabIndex = 4;
             this.deleteCustomerButton.Text = "Delete";
             this.deleteCustomerButton.UseVisualStyleBackColor = true;
             this.deleteCustomerButton.Click += new System.EventHandler(this.deleteCustomerButton_Click);
@@ -217,20 +231,6 @@
             this.country1TextBox.ReadOnly = true;
             this.country1TextBox.Size = new System.Drawing.Size(128, 20);
             this.country1TextBox.TabIndex = 24;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "customerName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Customer";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "active";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Active";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
             // 
             // ManageCustomers
             // 

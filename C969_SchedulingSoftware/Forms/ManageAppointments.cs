@@ -72,7 +72,17 @@ namespace C969_SchedulingSoftware.Forms
         {
             appointment appointmentToEdit = (appointment)appointmentBindingSource.Current;
             var editAppointmentForm = new EditAppointment(appointmentToEdit.appointmentId, (int)appointmentBindingSource.Position);
-            editAppointmentForm.Show();
+            editAppointmentForm.ShowDialog();
+            if (editAppointmentForm.DialogResult == DialogResult.OK)
+            {
+                appointmentDbcontext.appointments
+                .Where(a => a.userId == AppInfo.CurrentUser.userId)
+                .OrderBy(a => a.start)
+                .Load();
+
+                appointmentBindingSource.DataSource = appointmentDbcontext.appointments.Local.ToBindingList();
+
+            }
         }
 
         private void appointmentDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

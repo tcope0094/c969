@@ -42,9 +42,9 @@
             country1Label.AutoSize = true;
             country1Label.Location = new System.Drawing.Point(10, 25);
             country1Label.Name = "country1Label";
-            country1Label.Size = new System.Drawing.Size(51, 13);
+            country1Label.Size = new System.Drawing.Size(46, 13);
             country1Label.TabIndex = 39;
-            country1Label.Text = "country1:";
+            country1Label.Text = "Country:";
             // 
             // saveButton
             // 
@@ -53,7 +53,7 @@
             this.saveButton.Location = new System.Drawing.Point(67, 62);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
-            this.saveButton.TabIndex = 51;
+            this.saveButton.TabIndex = 1;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
@@ -65,7 +65,7 @@
             this.country1TextBox.Location = new System.Drawing.Point(67, 22);
             this.country1TextBox.Name = "country1TextBox";
             this.country1TextBox.Size = new System.Drawing.Size(200, 20);
-            this.country1TextBox.TabIndex = 40;
+            this.country1TextBox.TabIndex = 0;
             this.country1TextBox.TextChanged += new System.EventHandler(this.country1TextBox_TextChanged);
             // 
             // cancelButton
@@ -75,7 +75,7 @@
             this.cancelButton.Location = new System.Drawing.Point(192, 62);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 55;
+            this.cancelButton.TabIndex = 2;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -91,7 +91,7 @@
             this.Controls.Add(this.country1TextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddCountry";
-            this.Text = "AddCountry";
+            this.Text = "Add Country";
             this.Load += new System.EventHandler(this.AddCountry_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

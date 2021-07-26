@@ -82,7 +82,7 @@ namespace C969_SchedulingSoftware.Forms
 
                 TimeStamp.Update(appointmentToEdit);
 
-                this.Close();
+                this.DialogResult = DialogResult.OK;
             }
             else
             {

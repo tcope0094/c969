@@ -40,8 +40,8 @@ namespace C969_SchedulingSoftware.Forms
             endDateTimePicker.Format = DateTimePickerFormat.Custom;
             endDateTimePicker.CustomFormat = "MM/dd/yyyy hh:mm tt";
 
-            startDateTimePicker.Value = startDateTimePicker.Value.ToLocalTime();
-            endDateTimePicker.Value = endDateTimePicker.Value.ToLocalTime();
+            //startDateTimePicker.Value = startDateTimePicker.Value.ToLocalTime();
+            //endDateTimePicker.Value = endDateTimePicker.Value.ToLocalTime();
             saveButton.Enabled = false;
         }
 
@@ -62,8 +62,8 @@ namespace C969_SchedulingSoftware.Forms
             newAppointment.title = titleTextBox.Text;
             newAppointment.type = typeTextBox.Text;
             newAppointment.description = descriptionTextBox.Text;
-            newAppointment.start = startDateTimePicker.Value;
-            newAppointment.end = endDateTimePicker.Value;
+            newAppointment.start = startDateTimePicker.Value.ToUniversalTime();
+            newAppointment.end = endDateTimePicker.Value.ToUniversalTime();
             newAppointment.location = locationTextBox.Text;
             newAppointment.url = urlTextBox.Text;
             newAppointment.userId = AppInfo.CurrentUser.userId;
@@ -72,25 +72,38 @@ namespace C969_SchedulingSoftware.Forms
             newAppointment.createdBy = AppInfo.CurrentUser.userName;
             newAppointment.lastUpdate = currentDateTime;
             newAppointment.lastUpdateBy = AppInfo.CurrentUser.userName;
-
-            appointmentDbcontext.appointments.Add(newAppointment);
             try
             {
+                bool userApptOverlap = ApptValidation.AppointmentOverlaps(AppInfo.CurrentUser, startDateTimePicker.Value, endDateTimePicker.Value);
+                bool customerApptOverlap = ApptValidation.AppointmentOverlaps(newAppointment.customerId, startDateTimePicker.Value, endDateTimePicker.Value);
+
+                if (userApptOverlap)
+                {
+                    throw new Exception("Selected Appointment times overlap with existing appointment for current user");
+                }
+                else if (customerApptOverlap)
+                {
+                    throw new Exception("Selected Appointment times overlap with existing appointment for selected customer");
+                }
+
                 if (IsValidSchedule())
                 {
-                    startDateTimePicker.Value = startDateTimePicker.Value.ToUniversalTime();
-                    endDateTimePicker.Value = endDateTimePicker.Value.ToUniversalTime();
+                    appointmentDbcontext.appointments.Add(newAppointment);
+                    //var startLocal = startDateTimePicker.Value;
+                    //var startUTC = startDateTimePicker.Value.ToUniversalTime();
+                    //startDateTimePicker.Value = startDateTimePicker.Value.ToUniversalTime();
+                    //endDateTimePicker.Value = endDateTimePicker.Value.ToUniversalTime();
 
                     appointmentDbcontext.SaveChanges();
 
                     this.DialogResult = DialogResult.OK;
                 }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
 
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -112,7 +125,7 @@ namespace C969_SchedulingSoftware.Forms
 
             string errorMessage = "";
 
-            if (validBusinessHours && validStartEndTime && validStartEndDate)
+            if (validBusinessHours && validStartEndTime && validStartEndDate && validWeekday)
             {
                 valid = true;
             }

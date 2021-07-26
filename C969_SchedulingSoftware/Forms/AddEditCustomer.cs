@@ -56,10 +56,12 @@ namespace C969_SchedulingSoftware.Forms
                 customerBindingSource.Position = customerBindingSourcePosition;
                 cityComboBox.DataSource = customerDbcontext.cities.Local.ToBindingList();
                 cityComboBox.SelectedValue = customerToEdit.address.cityId;
+                this.Text = "Edit Customer";
             }
             else
             {
                 cityComboBox.DataSource = cityDbcontext.cities.Local.ToBindingList();
+                this.Text = "Add Customer";
             }
 
             saveButton.Enabled = false;

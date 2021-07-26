@@ -40,6 +40,7 @@
             System.Windows.Forms.Label urlLabel;
             this.contactTextBox = new System.Windows.Forms.TextBox();
             this.customerIdComboBox = new System.Windows.Forms.ComboBox();
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.endDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.locationTextBox = new System.Windows.Forms.TextBox();
@@ -49,7 +50,6 @@
             this.urlTextBox = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.addCustomerLinkLabel = new System.Windows.Forms.LinkLabel();
             contactLabel = new System.Windows.Forms.Label();
             customerIdLabel = new System.Windows.Forms.Label();
@@ -72,13 +72,6 @@
             contactLabel.TabIndex = 3;
             contactLabel.Text = "contact:";
             // 
-            // contactTextBox
-            // 
-            this.contactTextBox.Location = new System.Drawing.Point(98, 58);
-            this.contactTextBox.Name = "contactTextBox";
-            this.contactTextBox.Size = new System.Drawing.Size(200, 20);
-            this.contactTextBox.TabIndex = 4;
-            // 
             // customerIdLabel
             // 
             customerIdLabel.AutoSize = true;
@@ -87,6 +80,77 @@
             customerIdLabel.Size = new System.Drawing.Size(51, 13);
             customerIdLabel.TabIndex = 9;
             customerIdLabel.Text = "Customer";
+            // 
+            // descriptionLabel
+            // 
+            descriptionLabel.AutoSize = true;
+            descriptionLabel.Location = new System.Drawing.Point(12, 140);
+            descriptionLabel.Name = "descriptionLabel";
+            descriptionLabel.Size = new System.Drawing.Size(61, 13);
+            descriptionLabel.TabIndex = 11;
+            descriptionLabel.Text = "description:";
+            // 
+            // endLabel
+            // 
+            endLabel.AutoSize = true;
+            endLabel.Location = new System.Drawing.Point(12, 193);
+            endLabel.Name = "endLabel";
+            endLabel.Size = new System.Drawing.Size(28, 13);
+            endLabel.TabIndex = 13;
+            endLabel.Text = "end:";
+            // 
+            // locationLabel
+            // 
+            locationLabel.AutoSize = true;
+            locationLabel.Location = new System.Drawing.Point(12, 218);
+            locationLabel.Name = "locationLabel";
+            locationLabel.Size = new System.Drawing.Size(47, 13);
+            locationLabel.TabIndex = 19;
+            locationLabel.Text = "location:";
+            // 
+            // startLabel
+            // 
+            startLabel.AutoSize = true;
+            startLabel.Location = new System.Drawing.Point(12, 167);
+            startLabel.Name = "startLabel";
+            startLabel.Size = new System.Drawing.Size(30, 13);
+            startLabel.TabIndex = 21;
+            startLabel.Text = "start:";
+            // 
+            // titleLabel
+            // 
+            titleLabel.AutoSize = true;
+            titleLabel.Location = new System.Drawing.Point(12, 88);
+            titleLabel.Name = "titleLabel";
+            titleLabel.Size = new System.Drawing.Size(26, 13);
+            titleLabel.TabIndex = 23;
+            titleLabel.Text = "title:";
+            // 
+            // typeLabel
+            // 
+            typeLabel.AutoSize = true;
+            typeLabel.Location = new System.Drawing.Point(12, 114);
+            typeLabel.Name = "typeLabel";
+            typeLabel.Size = new System.Drawing.Size(30, 13);
+            typeLabel.TabIndex = 25;
+            typeLabel.Text = "type:";
+            // 
+            // urlLabel
+            // 
+            urlLabel.AutoSize = true;
+            urlLabel.Location = new System.Drawing.Point(12, 244);
+            urlLabel.Name = "urlLabel";
+            urlLabel.Size = new System.Drawing.Size(21, 13);
+            urlLabel.TabIndex = 27;
+            urlLabel.Text = "url:";
+            // 
+            // contactTextBox
+            // 
+            this.contactTextBox.Location = new System.Drawing.Point(98, 58);
+            this.contactTextBox.Name = "contactTextBox";
+            this.contactTextBox.Size = new System.Drawing.Size(200, 20);
+            this.contactTextBox.TabIndex = 4;
+            this.contactTextBox.TextChanged += new System.EventHandler(this.contactTextBox_TextChanged);
             // 
             // customerIdComboBox
             // 
@@ -100,14 +164,9 @@
             this.customerIdComboBox.TabIndex = 10;
             this.customerIdComboBox.ValueMember = "customerId";
             // 
-            // descriptionLabel
+            // customerBindingSource
             // 
-            descriptionLabel.AutoSize = true;
-            descriptionLabel.Location = new System.Drawing.Point(12, 140);
-            descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.Size = new System.Drawing.Size(61, 13);
-            descriptionLabel.TabIndex = 11;
-            descriptionLabel.Text = "description:";
+            this.customerBindingSource.DataSource = typeof(DatabaseModel.customer);
             // 
             // descriptionTextBox
             // 
@@ -115,15 +174,7 @@
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.Size = new System.Drawing.Size(200, 20);
             this.descriptionTextBox.TabIndex = 12;
-            // 
-            // endLabel
-            // 
-            endLabel.AutoSize = true;
-            endLabel.Location = new System.Drawing.Point(12, 193);
-            endLabel.Name = "endLabel";
-            endLabel.Size = new System.Drawing.Size(28, 13);
-            endLabel.TabIndex = 13;
-            endLabel.Text = "end:";
+            this.descriptionTextBox.TextChanged += new System.EventHandler(this.descriptionTextBox_TextChanged);
             // 
             // endDateTimePicker
             // 
@@ -132,47 +183,20 @@
             this.endDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.endDateTimePicker.TabIndex = 14;
             // 
-            // locationLabel
-            // 
-            locationLabel.AutoSize = true;
-            locationLabel.Location = new System.Drawing.Point(12, 218);
-            locationLabel.Name = "locationLabel";
-            locationLabel.Size = new System.Drawing.Size(47, 13);
-            locationLabel.TabIndex = 19;
-            locationLabel.Text = "location:";
-            // 
             // locationTextBox
             // 
             this.locationTextBox.Location = new System.Drawing.Point(98, 215);
             this.locationTextBox.Name = "locationTextBox";
             this.locationTextBox.Size = new System.Drawing.Size(200, 20);
             this.locationTextBox.TabIndex = 20;
-            // 
-            // startLabel
-            // 
-            startLabel.AutoSize = true;
-            startLabel.Location = new System.Drawing.Point(12, 167);
-            startLabel.Name = "startLabel";
-            startLabel.Size = new System.Drawing.Size(30, 13);
-            startLabel.TabIndex = 21;
-            startLabel.Text = "start:";
+            this.locationTextBox.TextChanged += new System.EventHandler(this.locationTextBox_TextChanged);
             // 
             // startDateTimePicker
             // 
-            this.startDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.startDateTimePicker.Location = new System.Drawing.Point(98, 163);
             this.startDateTimePicker.Name = "startDateTimePicker";
             this.startDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.startDateTimePicker.TabIndex = 22;
-            // 
-            // titleLabel
-            // 
-            titleLabel.AutoSize = true;
-            titleLabel.Location = new System.Drawing.Point(12, 88);
-            titleLabel.Name = "titleLabel";
-            titleLabel.Size = new System.Drawing.Size(26, 13);
-            titleLabel.TabIndex = 23;
-            titleLabel.Text = "title:";
             // 
             // titleTextBox
             // 
@@ -180,15 +204,7 @@
             this.titleTextBox.Name = "titleTextBox";
             this.titleTextBox.Size = new System.Drawing.Size(200, 20);
             this.titleTextBox.TabIndex = 24;
-            // 
-            // typeLabel
-            // 
-            typeLabel.AutoSize = true;
-            typeLabel.Location = new System.Drawing.Point(12, 114);
-            typeLabel.Name = "typeLabel";
-            typeLabel.Size = new System.Drawing.Size(30, 13);
-            typeLabel.TabIndex = 25;
-            typeLabel.Text = "type:";
+            this.titleTextBox.TextChanged += new System.EventHandler(this.titleTextBox_TextChanged);
             // 
             // typeTextBox
             // 
@@ -196,15 +212,7 @@
             this.typeTextBox.Name = "typeTextBox";
             this.typeTextBox.Size = new System.Drawing.Size(200, 20);
             this.typeTextBox.TabIndex = 26;
-            // 
-            // urlLabel
-            // 
-            urlLabel.AutoSize = true;
-            urlLabel.Location = new System.Drawing.Point(12, 244);
-            urlLabel.Name = "urlLabel";
-            urlLabel.Size = new System.Drawing.Size(21, 13);
-            urlLabel.TabIndex = 27;
-            urlLabel.Text = "url:";
+            this.typeTextBox.TextChanged += new System.EventHandler(this.typeTextBox_TextChanged);
             // 
             // urlTextBox
             // 
@@ -212,6 +220,7 @@
             this.urlTextBox.Name = "urlTextBox";
             this.urlTextBox.Size = new System.Drawing.Size(200, 20);
             this.urlTextBox.TabIndex = 28;
+            this.urlTextBox.TextChanged += new System.EventHandler(this.urlTextBox_TextChanged);
             // 
             // saveButton
             // 
@@ -232,10 +241,6 @@
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-            // 
-            // customerBindingSource
-            // 
-            this.customerBindingSource.DataSource = typeof(DatabaseModel.customer);
             // 
             // addCustomerLinkLabel
             // 

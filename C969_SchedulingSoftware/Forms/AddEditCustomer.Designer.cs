@@ -148,6 +148,7 @@
             this.activeCheckBox.Size = new System.Drawing.Size(200, 24);
             this.activeCheckBox.TabIndex = 2;
             this.activeCheckBox.UseVisualStyleBackColor = true;
+            this.activeCheckBox.CheckedChanged += new System.EventHandler(this.activeCheckBox_CheckedChanged);
             // 
             // customerNameTextBox
             // 
@@ -156,6 +157,7 @@
             this.customerNameTextBox.Name = "customerNameTextBox";
             this.customerNameTextBox.Size = new System.Drawing.Size(200, 20);
             this.customerNameTextBox.TabIndex = 12;
+            this.customerNameTextBox.TextChanged += new System.EventHandler(this.customerNameTextBox_TextChanged);
             // 
             // address1TextBox
             // 
@@ -164,6 +166,7 @@
             this.address1TextBox.Name = "address1TextBox";
             this.address1TextBox.Size = new System.Drawing.Size(200, 20);
             this.address1TextBox.TabIndex = 18;
+            this.address1TextBox.TextChanged += new System.EventHandler(this.address1TextBox_TextChanged);
             // 
             // address2TextBox
             // 
@@ -172,6 +175,7 @@
             this.address2TextBox.Name = "address2TextBox";
             this.address2TextBox.Size = new System.Drawing.Size(200, 20);
             this.address2TextBox.TabIndex = 20;
+            this.address2TextBox.Tag = "not required";
             // 
             // phoneTextBox
             // 
@@ -180,6 +184,7 @@
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(200, 20);
             this.phoneTextBox.TabIndex = 34;
+            this.phoneTextBox.TextChanged += new System.EventHandler(this.phoneTextBox_TextChanged);
             // 
             // postalCodeTextBox
             // 
@@ -188,6 +193,7 @@
             this.postalCodeTextBox.Name = "postalCodeTextBox";
             this.postalCodeTextBox.Size = new System.Drawing.Size(200, 20);
             this.postalCodeTextBox.TabIndex = 36;
+            this.postalCodeTextBox.TextChanged += new System.EventHandler(this.postalCodeTextBox_TextChanged);
             // 
             // saveButton
             // 
@@ -248,6 +254,7 @@
             this.country1TextBox.ReadOnly = true;
             this.country1TextBox.Size = new System.Drawing.Size(199, 20);
             this.country1TextBox.TabIndex = 54;
+            this.country1TextBox.Tag = "not required";
             // 
             // AddEditCustomer
             // 

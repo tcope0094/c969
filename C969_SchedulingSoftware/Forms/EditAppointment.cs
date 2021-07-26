@@ -170,6 +170,8 @@ namespace C969_SchedulingSoftware.Forms
                 }
             }
 
+            // LAMBDA => using LINQ and lambda to iterate over the list of boxes to validate is much easier to implement and
+            // understand when written this way as opposed to iterating over it with a for or foreach loop
             var failures = allBoxes
                 .Where(a => String.IsNullOrWhiteSpace(a.Text))
                 .ToList();

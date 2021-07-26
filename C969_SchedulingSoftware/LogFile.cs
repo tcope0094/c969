@@ -15,7 +15,7 @@ namespace C969_SchedulingSoftware
             try
             {
                 Directory.CreateDirectory(@"./logs");
-                using (StreamWriter w = File.AppendText(@"./Logs/logins.log"))
+                using (StreamWriter w = File.AppendText(@"./logs/logins.log"))
                 {
                     var sb = new StringBuilder();
                     if (loginType == LoginType.Success)

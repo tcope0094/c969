@@ -62,6 +62,8 @@ namespace C969_SchedulingSoftware.Forms
                 cityComboBox.DataSource = cityDbcontext.cities.Local.ToBindingList();
             }
 
+            saveButton.Enabled = false;
+
         }
         private void saveButton_Click(object sender, EventArgs e)
         {
@@ -118,6 +120,7 @@ namespace C969_SchedulingSoftware.Forms
                 .First();
 
             country1TextBox.Text = search.country.country1;
+            saveButton.Enabled = true;
         }
 
         private void AddCustomerSave()
@@ -190,6 +193,72 @@ namespace C969_SchedulingSoftware.Forms
                 .First();
 
             return search;
+        }
+        private void ValidateBoxes()
+        {
+            List<TextBox> allBoxes = new List<TextBox>();
+
+            foreach (Control item in this.Controls)
+            {
+                if (item is TextBox && item.Tag != "not required")
+                {
+                    allBoxes.Add((TextBox)item);
+                }
+            }
+
+            var failures = allBoxes
+                .Where(a => String.IsNullOrWhiteSpace(a.Text))
+                .ToList();
+
+            var successes = allBoxes
+                .Where(a => !failures.Any(f => f.Name == a.Name))
+                .ToList();
+
+            if (failures.Count == 0)
+            {
+                saveButton.Enabled = true;
+                foreach (var item in allBoxes)
+                {
+                    item.BackColor = Color.White;
+                }
+            }
+            else
+            {
+                saveButton.Enabled = false;
+                foreach (var s in successes)
+                {
+                    s.BackColor = Color.White;
+                }
+                foreach (var f in failures)
+                {
+                    f.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void customerNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ValidateBoxes();
+        }
+
+        private void address1TextBox_TextChanged(object sender, EventArgs e)
+        {
+            ValidateBoxes();
+        }
+
+        private void phoneTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ValidateBoxes();
+        }
+
+        private void postalCodeTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ValidateBoxes();
+        }
+
+        private void activeCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            saveButton.Enabled = true;
         }
     }
 }

@@ -36,11 +36,6 @@ namespace C969_SchedulingSoftware
             loginButton.Text = AppInfo.MyResources.GetString("strLogin");
             exitButton.Text = AppInfo.MyResources.GetString("strExit");
             loginButton.Enabled = false;
-
-            //temp so I dont have to login everytime
-            usernameBox.Text = "test";
-            passwordBox.Text = "test";
-            SubmitLogin();
         }
 
         private void loginButton_Click(object sender, EventArgs e)

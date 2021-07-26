@@ -253,6 +253,7 @@
             this.Controls.Add(this.editCustomerButton);
             this.Controls.Add(this.addCustomerButton);
             this.Controls.Add(this.customerDataGridView);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "ManageCustomers";
             this.Text = "Manage Customers";
             this.Load += new System.EventHandler(this.ManageCustomers_Load);

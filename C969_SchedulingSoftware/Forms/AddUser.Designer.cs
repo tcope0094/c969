@@ -44,10 +44,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // userBindingSource
-            // 
-            this.userBindingSource.DataSource = typeof(DatabaseModel.user);
-            // 
             // passwordLabel
             // 
             passwordLabel.AutoSize = true;
@@ -56,6 +52,28 @@
             passwordLabel.Size = new System.Drawing.Size(56, 13);
             passwordLabel.TabIndex = 11;
             passwordLabel.Text = "Password:";
+            // 
+            // userNameLabel
+            // 
+            userNameLabel.AutoSize = true;
+            userNameLabel.Location = new System.Drawing.Point(16, 22);
+            userNameLabel.Name = "userNameLabel";
+            userNameLabel.Size = new System.Drawing.Size(58, 13);
+            userNameLabel.TabIndex = 15;
+            userNameLabel.Text = "Username:";
+            // 
+            // activeLabel
+            // 
+            activeLabel.AutoSize = true;
+            activeLabel.Location = new System.Drawing.Point(32, 76);
+            activeLabel.Name = "activeLabel";
+            activeLabel.Size = new System.Drawing.Size(40, 13);
+            activeLabel.TabIndex = 16;
+            activeLabel.Text = "Active:";
+            // 
+            // userBindingSource
+            // 
+            this.userBindingSource.DataSource = typeof(DatabaseModel.user);
             // 
             // passwordTextBox
             // 
@@ -67,15 +85,6 @@
             this.passwordTextBox.TabIndex = 2;
             this.passwordTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
             // 
-            // userNameLabel
-            // 
-            userNameLabel.AutoSize = true;
-            userNameLabel.Location = new System.Drawing.Point(16, 22);
-            userNameLabel.Name = "userNameLabel";
-            userNameLabel.Size = new System.Drawing.Size(58, 13);
-            userNameLabel.TabIndex = 15;
-            userNameLabel.Text = "Username:";
-            // 
             // userNameTextBox
             // 
             this.userNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "userName", true));
@@ -84,15 +93,6 @@
             this.userNameTextBox.Size = new System.Drawing.Size(200, 20);
             this.userNameTextBox.TabIndex = 1;
             this.userNameTextBox.TextChanged += new System.EventHandler(this.userNameTextBox_TextChanged);
-            // 
-            // activeLabel
-            // 
-            activeLabel.AutoSize = true;
-            activeLabel.Location = new System.Drawing.Point(32, 76);
-            activeLabel.Name = "activeLabel";
-            activeLabel.Size = new System.Drawing.Size(40, 13);
-            activeLabel.TabIndex = 16;
-            activeLabel.Text = "Active:";
             // 
             // activeCheckBox
             // 
@@ -136,6 +136,7 @@
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(userNameLabel);
             this.Controls.Add(this.userNameTextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "AddUser";
             this.Text = "AddUser";
             this.Load += new System.EventHandler(this.AddUser_Load);

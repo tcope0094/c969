@@ -74,6 +74,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.reportTypeComboBox);
             this.Controls.Add(this.reportsOutput);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "ViewReports";
             this.Text = "ViewReports";
             this.Load += new System.EventHandler(this.ViewReports_Load);

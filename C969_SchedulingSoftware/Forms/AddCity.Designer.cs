@@ -134,7 +134,7 @@
             this.Controls.Add(country1Label);
             this.Controls.Add(city1Label);
             this.Controls.Add(this.city1TextBox);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "AddCity";
             this.Text = "Add City";
             this.Load += new System.EventHandler(this.AddCity_Load);

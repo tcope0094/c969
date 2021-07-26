@@ -279,6 +279,7 @@
             this.Controls.Add(this.typeTextBox);
             this.Controls.Add(urlLabel);
             this.Controls.Add(this.urlTextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "AddAppointment";
             this.Text = "AddEditAppointment";
             this.Load += new System.EventHandler(this.AddEditAppointment_Load);

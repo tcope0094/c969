@@ -102,6 +102,7 @@
             this.Controls.Add(this.userTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.passwordTextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "UpdatePassword";
             this.Text = "UpdatePassword";
             this.Load += new System.EventHandler(this.UpdatePassword_Load);

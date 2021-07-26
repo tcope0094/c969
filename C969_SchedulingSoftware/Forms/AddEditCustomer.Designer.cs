@@ -280,6 +280,7 @@
             this.Controls.Add(this.activeCheckBox);
             this.Controls.Add(customerNameLabel);
             this.Controls.Add(this.customerNameTextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "AddEditCustomer";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.AddEditCustomer_Load);

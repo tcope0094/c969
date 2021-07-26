@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userDataGridView = new System.Windows.Forms.DataGridView();
-            this.addUserButton = new System.Windows.Forms.Button();
-            this.updatePasswordButton = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addUserButton = new System.Windows.Forms.Button();
+            this.updatePasswordButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -45,6 +45,8 @@
             // 
             // userDataGridView
             // 
+            this.userDataGridView.AllowUserToAddRows = false;
+            this.userDataGridView.AllowUserToDeleteRows = false;
             this.userDataGridView.AutoGenerateColumns = false;
             this.userDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.userDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -60,6 +62,20 @@
             this.userDataGridView.Size = new System.Drawing.Size(205, 220);
             this.userDataGridView.TabIndex = 1;
             this.userDataGridView.SelectionChanged += new System.EventHandler(this.userDataGridView_SelectionChanged);
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "userName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Username";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "active";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Active";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // addUserButton
             // 
@@ -81,20 +97,6 @@
             this.updatePasswordButton.UseVisualStyleBackColor = true;
             this.updatePasswordButton.Click += new System.EventHandler(this.updatePasswordButton_Click);
             // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "userName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Username";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "active";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Active";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
             // ManageUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -103,8 +105,10 @@
             this.Controls.Add(this.updatePasswordButton);
             this.Controls.Add(this.addUserButton);
             this.Controls.Add(this.userDataGridView);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "ManageUsers";
-            this.Text = "ManageUsers";
+            this.Text = "Manage Users";
             this.Load += new System.EventHandler(this.ManageUsers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userDataGridView)).EndInit();

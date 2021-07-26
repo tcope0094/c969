@@ -241,6 +241,7 @@
             this.ClientSize = new System.Drawing.Size(1003, 450);
             this.Controls.Add(this.calendarGroupBox);
             this.Controls.Add(this.navGroupBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "MainForm";
             this.Text = "Scheduling Software";
             this.Load += new System.EventHandler(this.MainForm_Load);

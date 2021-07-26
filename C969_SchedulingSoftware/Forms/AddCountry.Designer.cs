@@ -89,7 +89,7 @@
             this.Controls.Add(this.saveButton);
             this.Controls.Add(country1Label);
             this.Controls.Add(this.country1TextBox);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "AddCountry";
             this.Text = "Add Country";
             this.Load += new System.EventHandler(this.AddCountry_Load);

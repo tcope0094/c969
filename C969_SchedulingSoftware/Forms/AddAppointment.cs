@@ -74,8 +74,8 @@ namespace C969_SchedulingSoftware.Forms
             newAppointment.lastUpdateBy = AppInfo.CurrentUser.userName;
             try
             {
-                bool userApptOverlap = ApptValidation.AppointmentOverlaps(AppInfo.CurrentUser, startDateTimePicker.Value, endDateTimePicker.Value);
-                bool customerApptOverlap = ApptValidation.AppointmentOverlaps(newAppointment.customerId, startDateTimePicker.Value, endDateTimePicker.Value);
+                bool userApptOverlap = ApptValidation.AppointmentOverlaps(AppInfo.CurrentUser, startDateTimePicker.Value.ToUniversalTime(), endDateTimePicker.Value.ToUniversalTime());
+                bool customerApptOverlap = ApptValidation.AppointmentOverlaps(newAppointment.customerId, startDateTimePicker.Value.ToUniversalTime(), endDateTimePicker.Value.ToUniversalTime());
 
                 if (userApptOverlap)
                 {
@@ -89,10 +89,6 @@ namespace C969_SchedulingSoftware.Forms
                 if (IsValidSchedule())
                 {
                     appointmentDbcontext.appointments.Add(newAppointment);
-                    //var startLocal = startDateTimePicker.Value;
-                    //var startUTC = startDateTimePicker.Value.ToUniversalTime();
-                    //startDateTimePicker.Value = startDateTimePicker.Value.ToUniversalTime();
-                    //endDateTimePicker.Value = endDateTimePicker.Value.ToUniversalTime();
 
                     appointmentDbcontext.SaveChanges();
 

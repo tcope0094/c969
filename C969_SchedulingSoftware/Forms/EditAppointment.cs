@@ -72,21 +72,40 @@ namespace C969_SchedulingSoftware.Forms
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if (IsValidSchedule())
-            {   
-                startDateTimePicker.Value = startDateTimePicker.Value.ToUniversalTime();
-                endDateTimePicker.Value = endDateTimePicker.Value.ToUniversalTime();
-                
-                appointmentBindingSource.EndEdit();
-                appointmentDbcontext.SaveChanges();
-
-                //TimeStamp.Update(appointmentToEdit);
-
-                this.DialogResult = DialogResult.OK;
-            }
-            else
+            try
             {
-                appointmentBindingSource.CancelEdit();
+                bool userApptOverlap = ApptValidation.AppointmentOverlaps(AppInfo.CurrentUser, startDateTimePicker.Value.ToUniversalTime(), endDateTimePicker.Value.ToUniversalTime());
+                bool customerApptOverlap = ApptValidation.AppointmentOverlaps(appointmentToEdit.customerId, startDateTimePicker.Value.ToUniversalTime(), endDateTimePicker.Value.ToUniversalTime());
+
+                if (userApptOverlap)
+                {
+                    throw new Exception("Selected Appointment times overlap with existing appointment for current user");
+                }
+                else if (customerApptOverlap)
+                {
+                    throw new Exception("Selected Appointment times overlap with existing appointment for selected customer");
+                }
+
+                if (IsValidSchedule())
+                {
+                    startDateTimePicker.Value = startDateTimePicker.Value.ToUniversalTime();
+                    endDateTimePicker.Value = endDateTimePicker.Value.ToUniversalTime();
+
+                    appointmentBindingSource.EndEdit();
+                    appointmentDbcontext.SaveChanges();
+
+
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    appointmentBindingSource.CancelEdit();
+                }
+
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -129,10 +129,10 @@ namespace C969_SchedulingSoftware
             {
                 weekStart = DateTime.Now.AddDays(((int)currentDay - 1) * -1).Date;
             }
-            weekEnd = weekStart.AddDays(4);
+            weekEnd = weekStart.AddDays(5).AddSeconds(-1);
 
             weeklyDbcontext.appointments
-                .Where(a => a.start >= weekStart.Date && a.start <= weekEnd.Date)
+                .Where(a => a.start >= weekStart.Date && a.start <= weekEnd)
                 .Where(a => a.userId == AppInfo.CurrentUser.userId)
                 .OrderBy(a => a.start)
                 .Load();

@@ -80,7 +80,7 @@ namespace C969_SchedulingSoftware.Forms
                 appointmentBindingSource.EndEdit();
                 appointmentDbcontext.SaveChanges();
 
-                TimeStamp.Update(appointmentToEdit);
+                //TimeStamp.Update(appointmentToEdit);
 
                 this.DialogResult = DialogResult.OK;
             }

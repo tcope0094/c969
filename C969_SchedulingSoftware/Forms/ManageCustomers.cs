@@ -43,6 +43,7 @@ namespace C969_SchedulingSoftware.Forms
             if (addCustomer.DialogResult == DialogResult.OK)
             {
                 customerDbcontext.customers.Load();
+                customerDbcontext.addresses.Load();
                 customerBindingSource.DataSource = customerDbcontext.customers.Local.ToBindingList();
             }
         }

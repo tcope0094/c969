@@ -183,8 +183,8 @@ namespace C969_SchedulingSoftware.Forms
             //customerToEdit.lastUpdateBy = AppInfo.CurrentUser.userName;
             
             customerDbcontext.SaveChanges();
-            TimeStamp.Update(customerToEdit);
-            TimeStamp.Update(addressToEdit);
+            //TimeStamp.Update(customerToEdit);
+            //TimeStamp.Update(addressToEdit);
             this.DialogResult = DialogResult.OK;
         }
 

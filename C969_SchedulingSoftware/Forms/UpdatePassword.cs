@@ -32,7 +32,7 @@ namespace C969_SchedulingSoftware.Forms
         private void saveButton_Click(object sender, EventArgs e)
         {
             Password.HashPassword(userToUpdate.userName, passwordTextBox.Text);
-            TimeStamp.Update(userToUpdate);
+            //TimeStamp.Update(userToUpdate);
             this.DialogResult = DialogResult.OK;
         }
 

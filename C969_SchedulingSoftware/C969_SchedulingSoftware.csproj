@@ -200,7 +200,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>strings.es.resx</DependentUpon>
     </Compile>
-    <Compile Include="TimeStamp.cs" />
     <Compile Include="ApptValidation.cs" />
     <EmbeddedResource Include="Forms\AddCity.resx">
       <DependentUpon>AddCity.cs</DependentUpon>
@@ -210,6 +209,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddAppointment.resx">
       <DependentUpon>AddAppointment.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddEditCustomer.resx">
       <DependentUpon>AddEditCustomer.cs</DependentUpon>
